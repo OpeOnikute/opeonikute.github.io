@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  background: linear-gradient(rgba(10, 13, 62, 0.5), rgba(10, 13, 62, 0.5)),
+    url(/img/bg.jpeg);
+  background-position: center;
+  font-family: "PT Sans", sans-serif;
+}
+
+p {
+  margin: 5px 0;
+}
+
+ul {
+  margin: 0;
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #eab208; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+main {
+  justify-content: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 10vw;
+  max-width: 800px;
+  line-height: 30px;
+  letter-spacing: 3px;
+}
+
+main h1 {
+  font-size: 300%;
+  font-weight: 900;
+  margin-top: 0;
+  margin-bottom: 5vw;
+}
+
+main a {
+  color: inherit;
+  text-decoration: none;
+}
+.colored {
+  color: #eab208;
+}
+
+.link-flex {
+  display: flex;
+  padding: 5vw 0 0;
+  width: 80%;
+  line-height: initial;
+}
+.link-flex i {
+  font-size: 200%;
+}
+
+.link-item {
+  flex-basis: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+.link-item small {
+  font-size: 0.7rem;
+}
+@media (max-width: 478px) {
+  main {
+    width: 90%;
+    margin: auto;
+  }
+}
