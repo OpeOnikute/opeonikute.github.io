@@ -111,10 +111,17 @@ header {
 
 header .brand {
   background-image: url(/img/favicon/ms-icon-310x310.png);
-  min-width: 20px;
+  padding: 10px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 0% 50%;
+}
+
+header .text {
+  color: #05071F;
+  padding: 15px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 header .social-links {
