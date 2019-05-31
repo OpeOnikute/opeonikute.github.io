@@ -4,10 +4,11 @@ title: Running Chrome in a container
 sub_title: 
 date: June 2019
 featured_image: 
+synopsis: I thought this wasn't gonna be possible because MacOS, but it blew my mind when it did so, blogpost.
 image-theme: dark
 ---
 
-I thought this wasn't gonna be possible because MacOS, but it blew my mind when it did so, blogpost. I found [this Dockerfile](https://github.com/jessfraz/dockerfiles/blob/master/chrome/beta/Dockerfile) from [Jess Frazelle](https://github.com/jessfraz)'s amazing repo that contains dockerfiles for a bunch of stuff. 
+I thought this wasn't gonna be possible because MacOS, but it blew my mind when it worked so, blogpost. I found [this Dockerfile](https://github.com/jessfraz/dockerfiles/blob/master/chrome/beta/Dockerfile) from [Jess Frazelle](https://github.com/jessfraz)'s amazing repo that contains dockerfiles for a bunch of stuff. 
 
 ### Steps
 
