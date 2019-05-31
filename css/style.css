@@ -189,6 +189,9 @@ footer a {
   main.blog {
     margin: 10vw;
   }
+  main.blog img {
+    width: 90%;
+  }
 }
 
 @media (max-width: 478px) {
