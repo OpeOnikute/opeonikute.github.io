@@ -18,7 +18,7 @@ A couple of months ago, a tanker explosion happened in Lagos. A lot of people lo
 - API - Node v8
 - Server - Heroku dyno
 - File storage - Cloudinary
-- Github - [Frontend](https://github.com/OpeOnikute/safety-alert-fe), [https://github.com/OpeOnikute/safety-alert-api](API)
+- Github - [Frontend](https://github.com/OpeOnikute/safety-alert-fe), [API](https://github.com/OpeOnikute/safety-alert-api)
 
 ### Features
 
