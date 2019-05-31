@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ejo</title>
+    <meta
+      name="description"
+      content=""
+    />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@Ope__O" />
+    <meta name="twitter:title" content="Opeyemi Onikute | Kilon Pop?" />
+    <meta
+      name="twitter:description"
+      content=""
+    />
+    <meta name="twitter:creator" content="@Ope__O" />
+
+    <meta
+      name="twitter:image"
+      content="/media/Screen_Shot_2019-05-31_at_18-68f781df-b88a-4804-9262-e39b15ef598a.28.03.png"
+    />
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Opeyemi Onikute | Kilon Pop?" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://opeonikute.github.io" />
+    <meta
+      property="og:image"
+      content="https://opeonikute.github.io/img/favicon/android-icon-192x192.png"
+    />
+    <meta
+      property="og:description"
+      content=""
+    />
+    <meta property="og:site_name" content="Opeyemi Onikute" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=PT+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/img/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/img/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/img/favicon/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/js/highlight/styles/vs2015.css">
+  </head>
+  <body>
+    <header>
+        <div>
+            <a href="/" class="brand"></a>
+            <a href="/blog" class="text">Thoughts and Notions</a>
+        </div>
+        <div class="pull-right social-links">
+            <span><a href="https://twitter.com/Ope__O" target="_blank"><i class="fa fa-twitter"></i></a></span>
+            <span><a href="https://github.com/opeonikute"><i class="fa fa-github" target="_blank"></i></a></span>
+            <span><a href="https://www.linkedin.com/in/opeyemi-onikute-a97779b9/"><i class="fa fa-linkedin" target="_blank"></i></a></span>
+        </div>
+    </header>
+    <main class="blog ">
+      <div class="blog-title">
+        <h1>Ejo</h1>
+        <h2>Yoruba Snake Game (June 2015)</h3>
+      </div>
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/K5F-aGDIYaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p>This main purpose of this post is to describe how the game was built. Most of it is already covered in the video tutorial though. I just added all the Yoruba nonsense.</p>
+
+<p>The game consists of:</p>
+
+<ul>
+  <li>A snake eating eba.</li>
+  <li>Scoreboard.</li>
+  <li>Health bar.</li>
+  <li>Exciting animations for a 2D game.</li>
+  <li>Pause menu.</li>
+  <li>About Menu.</li>
+</ul>
+
+<p>Rules:</p>
+
+<ul>
+  <li>If he eats himself three times, he dies.</li>
+  <li>Bushes at the edge are poisonous so they drain all his health.</li>
+  <li>You get bonus points after eating a particular amount at intervals.</li>
+</ul>
+
+<h3 id="setup">Setup</h3>
+
+<p>Pygame is a standard Python library for making games. It’s very popular and has great support. It’s the main module for the game. Pyganim is used here to add animations to the game.</p>
+
+<p>In this phase we:</p>
+
+<ul>
+  <li>Import dependencies.</li>
+  <li>Setup the game screen (Text, Display Width and Height, Icon, Caption, Colors etc).</li>
+  <li>
+    <p>Load images.</p>
+
+    <p>import pygame
+  import pyganim
+  import os
+  import random</p>
+
+    <p>pygame.init()</p>
+
+    <p>images_path = os.getcwd() + “\images\”</p>
+
+    <p># Setting the display width and height
+  display_width = 800
+  display_height = 600
+  gameDisplay = pygame.display.set_mode((display_width,display_height))
+  pygame.display.set_caption(‘Ejo’)</p>
+  </li>
+</ul>
+
+<h3 id="animations">Animations</h3>
+
+<p>The way the animations work is mostly to create frames and go through them at pre-defined speeds. To make an infinite animation, you can create an infinite loop. For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>game_overAnim = pyganim.PygAnimation([(images_path + 'game_over2.png', 150), (images_path + 'game_over3.png', 100)])
+bonusAnim = pyganim.PygAnimation([(images_path+'bonus_text1.png', 150), (images_path+'bonus_text2.png', 100)])
+
+while game_over is True:
+		game_overAnim.play()
+</code></pre></div></div>
+
+<h3 id="screen-display">Screen Display</h3>
+
+<p>The pygame screen is a cartesian plane. What you have to do is write content to the screen at specified coordinates. After writing, you need to call <code class="highlighter-rouge">pygame.display.update</code>.</p>
+
+<p><code class="highlighter-rouge">message_to_screen</code> is a helper function used throughout the game to well, display a message to the screen. First, it gets the rendered font from calling <code class="highlighter-rouge">text_objects</code> and determines where the centre of the message should be.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def message_to_screen(msg, color, y_displace=0, x_displace=0, size="small", font=None, font_size=None):
+    """
+    :param msg:
+    :param color:
+    :param y_displace:
+    :param x_displace:
+    :param size:
+    :param font:
+    :param font_size:
+    :return:
+    """
+    text_surf, text_rect = text_objects(msg, color, size, font, font_size)
+    text_rect.center = (display_width/2) + x_displace, (display_height/2) + y_displace
+    gameDisplay.blit(text_surf, text_rect)
+
+def text_objects(text, color, size = None,  font = None, fontSize = None):
+    """
+    :param text:
+    :param color:
+    :param size:
+    :param font:
+    :param fontSize:
+    :return:
+    """
+    text_surface = None
+
+    if size == 'small':
+        text_surface = small_font.render(text, True, color)
+    elif size == 'medium':
+        text_surface = med_fontButton.render(text, True, color)
+    elif size == 'large':
+        text_surface = large_font.render(text, True, color)
+    elif font is not None:
+        font = pygame.font.Font(r'C:\Users\Ope O\Downloads\Fonts' + '\\' + font , fontSize)
+        text_surface = font.render(text, True, color)
+
+    return text_surface, text_surface.get_rect()
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">gameDisplay.blit(image, x, y)</code> is used to display images to the screen. You’d come across it often in the code.</p>
+
+<h3 id="snake">Snake</h3>
+
+<p>The snake is a list, which is appended to increase the length etc. The main characteristics of the snake are:</p>
+
+<ol>
+  <li><strong>Length</strong> - As long as the items in the list, plus the length. Each item that’s not the head has a block size of 20.</li>
+  <li><strong>Health</strong> - Starts off at 90. Reduced by 30 if snake eats itself and totally if you enter the barrier.</li>
+  <li><strong>Skin</strong> - Each entry in the list (that is not the head) is displayed using an image loaded from source.</li>
+  <li><strong>Head</strong> - First list element. An image is used to depict this too.</li>
+  <li>
+    <p><strong>Direction</strong> - The snake moves in a direction by continuously adding to the coordinates in the main game loop. The default block size is 20.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> for event in pygame.event.get():
+ 		if event.type == pygame.QUIT:
+ 		    game_exit = True
+ 		if event.type == pygame.KEYDOWN:
+ 		    if event.key == pygame.K_LEFT:
+ 		        direction = 'left'
+ 		        lead_x_change = -block_size
+ 		        lead_y_change = 0
+ 		    elif event.key == pygame.K_RIGHT:
+ 		        direction = 'right'
+ 		        lead_x_change = block_size
+ 		        lead_y_change = 0 
+ 		    elif event.key == pygame.K_UP:
+ 		        direction = 'up'
+ 		        lead_y_change = -block_size
+ 		        lead_x_change = 0 
+ 		    elif event.key == pygame.K_DOWN:
+ 		        direction = 'down'
+ 		        lead_y_change = block_size
+ 		        lead_x_change = 0
+ 		    elif event.key == pygame.K_p:
+ 		        pause()
+    
+ lead_x += lead_x_change
+ lead_y += lead_y_change
+    
+ snake_head = list()
+ snake_head.append(lead_x)
+ snake_head.append(lead_y)
+ snake_list.append(snake_head)
+</code></pre></div>    </div>
+
+    <p>When the direction is changed, the snake head needs to be rotated to face the direction it’s moving.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> def Snake(block_size, snake_list):
+     """
+     functionality for rotation
+     :param block_size:
+     :param snake_list:
+     :return:
+     """
+    
+     head = None
+        
+     if direction == 'right':
+         head = pygame.transform.rotate(img, 270)
+     if direction == 'left':
+         head = pygame.transform.rotate(img, 90)
+     if direction == 'up':
+         head = img
+     if direction == 'down':
+         head = pygame.transform.rotate(img, 180)
+    
+     gameDisplay.blit(head, (snake_list[-1][0], snake_list[-1][1]))
+    
+     for XnY in snake_list[:-1]:
+         gameDisplay.blit(skin,  (XnY[0], XnY[1]))
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Position</strong> - Each part of the snake’s body has it’s own (x &amp; y) coordinates.</li>
+</ol>
+
+<h3 id="game-loop">Game Loop</h3>
+
+<p>Most of the functionality of the game is implemented by running while loops, including what is called the main game loop. The loop is only exited on some user input e.g. exit.</p>
+
+<p>Going back to calling <code class="highlighter-rouge">pygame.display.update</code>, the display needs to be updated after each iteration of the loop to ensure graphics are rendered properly.</p>
+
+<p>In the while loops, various conditions are checked to determine if an action needs to be taken. Some examples of this are:</p>
+
+<ul>
+  <li>The snake head intersecting with a body part.</li>
+  <li>User pressing pause.</li>
+  <li>Snake head meeting the barrier.</li>
+  <li>
+    <p>Snake head intersecting with eba.</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  # And this is the code for when the snake 'eats' an apple
+  if (rand_apple_x &lt; lead_x &lt; rand_apple_x + AppleThickness) or (
+        rand_apple_x &lt; lead_x + block_size &lt; rand_apple_x + AppleThickness):
+    if rand_apple_y &lt; lead_y &lt; rand_apple_y + AppleThickness:
+        rand_apple_x, rand_apple_y = randAppleGen()
+        score_value += 4
+        snake_length += 4
+    elif rand_apple_y &lt; lead_y + block_size &lt; rand_apple_y + AppleThickness:
+        rand_apple_x, rand_apple_y = randAppleGen()
+        snake_length += 4
+        score_value += 4
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="eba">Eba</h3>
+
+<p>The eba is displayed using an image loaded from source. It’s main functionality is to be generated in pseudo-random positions for the user to chase, and re-generate when it’s ‘eaten’.</p>
+
+<p>The apple thickness is a global variable set by default to 30.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def randAppleGen():
+    """
+    :return:
+    """
+    rand_apple_x = round(random.randrange(40, display_width - AppleThickness - 40))
+    rand_apple_y = round(random.randrange(30, display_height - AppleThickness - 30))
+
+    return rand_apple_x, rand_apple_y
+</code></pre></div></div>
+
+<h3 id="score">Score</h3>
+
+<p>The score is text displayed at the upper right corner.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def score_update(score):
+    """
+    :param score:
+    :return:
+    """
+    text = small_font.render('Score: ' + str(score), True, white)
+    gameDisplay.blit(text, [display_width - 765,20])
+</code></pre></div></div>
+
+<h3 id="health-bar">Health Bar</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def health_bars(snake_health):
+    """
+    :param snake_health:
+    :return:
+    """
+    if snake_health &gt; 75:
+        snake_health_color = green
+    elif snake_health &gt; 50:
+        snake_health_color = yellow
+    else:
+        snake_health_color = red
+    health_text = small_font.render('Health: ', True, white)
+    gameDisplay.blit(health_text,[display_width-210, 20])
+    pygame.draw.rect(gameDisplay, black , (display_width-131, 25, 92, 22))
+    pygame.draw.rect(gameDisplay, white , (display_width-130, 26, 90, 20))
+    pygame.draw.rect(gameDisplay, snake_health_color , (display_width-130, 26, snake_health, 20))
+</code></pre></div></div>
+
+<h3 id="screenshots">Screenshots</h3>
+
+<p><img src="/media/Screen_Shot_2019-05-31_at_18-68f781df-b88a-4804-9262-e39b15ef598a.28.03.png" alt="" /></p>
+
+<p><img src="/media/Screen_Shot_2019-05-31_at_18-32ec9275-d6d9-4a6c-89ef-824339f11203.28.22.png" alt="" /></p>
+
+<p><img src="/media/Screen_Shot_2019-05-31_at_18-09e1055d-8ae0-492f-a813-bf87fab95dea.28.32.png" alt="" /></p>
+
+<h3 id="running-in-docker">Running in Docker</h3>
+
+<p>I tried to put the app in a container for the purpose of this post, but couldn’t. I’ll publish another post soon about that whole process and why it might not be a dead-end.</p>
+
+<p>Tbh though, all you really need is to have Python on your machine and probably ability to create a virtualenv.</p>
+
+<h3 id="ideasimprovements">Ideas/Improvements</h3>
+
+<ol>
+  <li>Soundtrack.</li>
+  <li>Storyline.</li>
+  <li>Different levels e.g. random obstacles get introduced at higher levels.</li>
+  <li>High Score.</li>
+</ol>
+
+<p>If you want to see the entire picture, the repo is open-source <a href="https://github.com/OpeOnikute/Ejo---The-Yoruba-Snake-Game">here</a>. Feel free to clone and contribute.</p>
+
+    </main>
+    <footer>
+      <small>&copy; Ope Onikute. </small> <small class="pull-right"><a href="https://twitter.com/Ope__O" target="_blank">@Ope__O</a></small> 
+    </footer>
+    <script src="/js/app.js"></script>
+    <script src="/js/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
