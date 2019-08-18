@@ -1,3 +1,7 @@
+- title: Running Pygame in a Docker container (MacOS)
+  link: Running-Pygame-in-a-Docker-container-MacOS
+  date: August 2019
+  synopsis: When I was going through the Ejo repo again, i tried to /*dockerize*/ the application like I normally do.
 - title: Running Chrome in a container
   link: running-chrome-in-a-container
   date: June 2019
