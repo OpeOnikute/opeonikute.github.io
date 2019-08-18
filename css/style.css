@@ -189,6 +189,32 @@ code.highlighter-rouge {
   background: #1E1E1E;
   color: #DCDCDC;
 }
+.share-container {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.share-container h6 {
+  margin: 0;
+  color: #eab208;
+  text-transform: uppercase;
+}
+
+.share-container div {
+  display: flex;
+  font-size: 250%;
+  justify-content: center;
+}
+
+.share-container span {
+  margin-right: 25px;
+}
+
+.share-container a {
+  color: #fff;
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   .link-flex {
     flex-direction: column;
