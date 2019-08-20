@@ -11,7 +11,7 @@ Basic web page that describes me and links people to my different tings.
 - Add title, date and synopsis to posts list in `_data/posts.yml`.
 
 # Running builds
-- `bundle exec jekyll build`
+- `bundle exec jekyll build` and `bundle exec jekyll serve`
 
 # Contribution
 

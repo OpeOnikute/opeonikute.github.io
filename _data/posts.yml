@@ -1,3 +1,7 @@
+- title: SSL configuration on a load balanced platform
+  link: SSL-configuration-on-a-load-balanced-platform
+  date: August 2019
+  synopsis: Most web applications start out as monoliths, where all the components live on the same server instance. When the time comes to scale, the go-to architecture is usually multiple server instances behind a load-balancer.
 - title: Running Pygame in a Docker container (MacOS)
   link: Running-Pygame-in-a-Docker-container-MacOS
   date: August 2019
