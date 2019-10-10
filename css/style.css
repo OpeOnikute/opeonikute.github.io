@@ -34,13 +34,33 @@ ul.posts li::before {
   margin-left: 0;
 }
 
+/* TABLE STYLING */
+table {
+  border-collapse: collapse;
+  border: 1px solid;
+}
+
+thead {
+  text-align: left;
+}
+
+th, td {
+  padding: 10px;
+}
+
+td {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+/* END TABLE STYLING */
+
 main {
   justify-content: center;
   color: #fff;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  margin: 0 10vw;
+  margin: 2vw 10vw;
   max-width: 800px;
   line-height: 30px;
   letter-spacing: 3px;
@@ -157,7 +177,7 @@ footer a {
 
 .link-flex {
   display: flex;
-  padding: 5vw 0 0;
+  padding: 2vw 0 0;
   width: 80%;
   line-height: initial;
 }
