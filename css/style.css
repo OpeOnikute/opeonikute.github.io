@@ -230,9 +230,15 @@ code.highlighter-rouge {
   margin-right: 25px;
 }
 
-.share-container a {
+.share-container a{
   color: #fff;
   text-decoration: none;
+}
+
+.about-container {
+  border-top: 1px solid white;
+  margin-top: 3vw;
+  padding-top: 2vw;
 }
 
 @media (max-width: 768px) {

@@ -1,3 +1,7 @@
+- title: High Availability in Kubernetes (Part 1)
+  link: High-Availability-in-Kubernetes-Part-1
+  date: October 2019
+  synopsis: Availability means well, available. If you say something is available, it means it's there when you need/want it. 
 - title: SSL configuration on a load balanced platform (Part 2)
   link: SSL-configuration-on-a-load-balanced-platform-part-2
   date: October 2019
