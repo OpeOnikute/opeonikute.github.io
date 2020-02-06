@@ -21,9 +21,7 @@ The scenario is, your interviewer is a developer/engineer on the team you’re a
 4. **If you can, express your idea with a brief sketch**. It makes you more memorable and leaves nothing to chance in terms of your points being passed across properly.
 5. **If you have any improvements to your solution, mention them**. These are the stuff you thought  would be overkill, or didn’t have enough time to implement. That might be what your interviewer is looking for. Ideally, you should contact your interviewer to ask questions about how deep you should go whilst solving the challenge, if you have the time.
 6. **Remember to give your interviewer your back story, even if they don’t ask for it**. This way you control their impression of you, emphasize your strengths, and make yourself more memorable. 
-
 You can’t assume that your interviewer has read your resume extensively and has done background checks, so he/she knows you built NodeJS. 
-
 It’s more likely that he/she only skimmed through because 200 people applied.
 7. **If you take a different approach from conventional best practice with good cause, be sure to put that in your documentation**. The person reviewing your code might not understand that approach and might even screen you out at that point because of that.
 8. **If you get there more than 30 minutes early, try to find a place to hang out before entering**. Arriving for your interview an hour before the time can be awkward as the interviewer might not know what to do with you till he/she is ready.
