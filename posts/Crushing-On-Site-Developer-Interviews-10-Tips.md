@@ -4,13 +4,13 @@ title: Crushing On-site Developer Interviews
 sub_title: 10 Tips from interviewing Nigerian developers
 date: February 2020
 featured_image: https://opeonikute.dev/img/Background.png
-synopsis: In the past year and a half, I’ve been interviewed and also interviewed people on behalf of my company. In that time, some patterns have presented themselves and I’d like to give brief advice based on what I’ve noticed conducting on-site interviews. 
+synopsis: In the past year and a half, I’ve been interviewed and also interviewed people on behalf of my company. In that time, I've noticed some patterns conducting on-site interviews and I’d like to give brief advice based on them. 
 image-theme: dark
 ---
 
 Attending and conducting interviews is a key part of the hiring process for most jobs. For software engineers/developers, the interview process is usually broken down into phases, e.g. phone screen -> coding challenge/test -> on-site interview -> offer.
 
-In the past year and a half, I’ve been interviewed and also interviewed people on behalf of my company. In that time, some patterns have presented themselves and I’d like to give brief advice based on what I’ve noticed conducting on-site interviews. 
+In the past year and a half, I’ve been interviewed and also interviewed people on behalf of my company. In that time, I've noticed some patterns conducting on-site interviews and I’d like to give brief advice based on them.
 
 The scenario is, your interviewer is a developer/engineer on the team you’re applying to join, and you completed a challenge online and submitted your code. 
 
