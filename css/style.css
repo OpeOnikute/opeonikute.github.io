@@ -79,6 +79,10 @@ main a {
   text-decoration: none;
 }
 
+main strong {
+  font-size: 105%;
+}
+
 main.blog {
   margin: 5vw 20vw;
   max-width: auto;
