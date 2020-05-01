@@ -104,6 +104,11 @@ main.blog.dark img {
   background: #1E1E1E;
 }
 
+main.no-image-styling img {
+    background: none;
+    padding: 0;
+}
+
 .blog a {
   color: #eab208;
 }
@@ -208,11 +213,17 @@ footer a {
   padding-top: 5vw;
   text-align: center;
 }
-code.highlighter-rouge {
-  padding: 0.5em;
-  background: #1E1E1E;
-  color: #DCDCDC;
+code {
+  line-height: 20px;
+  letter-spacing: normal;
+  border-radius: 5px;
+  padding: 2em 1.5em !important;
 }
+code.highlighter-rouge {
+    padding: 0.5em !important;
+    background: #1E1E1E;
+    color: #DCDCDC;
+  }
 .share-container {
   padding-top: 10px;
   text-align: center;
