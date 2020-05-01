@@ -55,7 +55,7 @@ def count_words(words):
         if word == "more":
             count += 1
 
-		# Compute how much time the task took
+    # Compute how much time the task took
     diff = datetime.now() - start
 
     print('Number of occurences:', count)
@@ -174,7 +174,6 @@ import json
 # insert rmq connection logic
 
 def callback(ch, method, properties, body):
-    # Body should be an array
     print(" [x] Received")
     
     payload = json.loads(body)
