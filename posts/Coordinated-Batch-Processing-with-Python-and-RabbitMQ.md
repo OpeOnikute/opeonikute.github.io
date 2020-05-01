@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Coordinated Batch Processing with Python and RabbitMQ
-sub_title: Parallel Work distribution
+sub_title: Concurrent Work distribution
 date: April 2020
 featured_image: https://opeonikute.dev/media/rmq_triple_diagram.png
 synopsis: As an engineer, when you have a piece of processing work to be done, you're always concerned with how best to achieve that work efficiently. 
@@ -12,9 +12,9 @@ As an engineer, when you have a piece of processing work to be done, you're alwa
 
 For most simple workloads, you likely don't have to think about writing the most optimal process. You can get away with a simple `for` loop that iterates over all the items that need processing and you're done. Simple and sweet.
 
-When workloads start to get larger, things get more interesting. You start to realize that the `for` loop has begun to take longer to finish. You now need to explore ways to split that workload among different processes. With each process doing a bit of the work in parallel, your total processing time (TPT) reduces and you're happy. 
+When workloads start to get larger, things get more interesting. You start to realize that the `for` loop has begun to take longer to finish. You now need to explore ways to split that workload among different processes. With each process doing a bit of the work concurrently, your total processing time (TPT) reduces and you're happy. 
 
-This concept is one of the various ways you can apply co-ordinated batch processing to handle complex workloads. In this post, we'll be exploring a simple pattern for parallel work processing, **the join pattern**, whilst writing logic in Python and providing work queues with RabbitMQ.
+This concept is one of the various ways you can apply co-ordinated batch processing to handle complex workloads. In this post, we'll be exploring a simple pattern for concurrent work processing, **the join pattern**, whilst writing logic in Python and providing work queues with RabbitMQ.
 
 ## Requirements
 
