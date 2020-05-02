@@ -44,7 +44,7 @@ services:
 
 The sample work we are going to be doing, is counting how many times the word "more" occurs in a group of sample texts from Shakespeare. To make the amount of work we are doing more complex, I doubled all the text about four times into one large text file of about 45MB.
 
-Since we are going to be re-using this logic amongst different queues, a good first step is to create a function that houses this logic, so it's re-usable. This code lives in `[main.py](http://main.py)` so we can import it from each worker.
+Since we are going to be re-using this logic amongst different queues, a good first step is to create a function that houses this logic, so it's re-usable. This code lives in `main.py` so we can import it from each worker.
 
 ```python
 def count_words(words):   
@@ -121,7 +121,7 @@ channel.basic_consume(queue='process_words',
 
 ---
 
-Now that we have an overview of how we're working with RMQ, we can now discuss all the approaches we're taken.
+Now that we have an overview of how we're working with RMQ, we can now discuss all the approaches we are taking.
 
 ### Approach 1: Single Queue
 
@@ -362,6 +362,15 @@ Since the main difference in the code is adding `process_words_3` to all the cod
 ![Triple Work Queue](/media/rmq_triple_result.png)
 
 The TPT was **~7s** using three queues. 
+
+### Side Note on Concurrency vs. Parallelism
+When I first wrote this post I believed this was parallel processing, but it's not. Instead it is concurrent programming. 
+
+Based on their [definitions](https://howtodoinjava.com/java/multi-threading/concurrency-vs-parallelism/), **Concurrency** means multiple tasks which start, run, and complete in overlapping time periods, whilst **Parallelism** means when multiple tasks run at the same time e.g. on a multi-core processor.
+
+The faster processing in this pattern comes from this concurrent processing using multiple queues.
+
+Another interesting thing to note is that it is almost impossible to do parallel processing in Python using multi-threading [because of a process known as the Global Interpreter Lock](https://www.quantstart.com/articles/Parallelising-Python-with-Threading-and-Multiprocessing/).
 
 ## Conclusion
 
