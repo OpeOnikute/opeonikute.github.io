@@ -170,6 +170,15 @@ header .social-links {
   color: #05071F;
 }
 
+img.gravatar {
+    width: 100%;
+    max-width: 15vw;
+    min-width: 200px;
+    border: 1px solid;
+    border-radius: 50%;
+    margin: 2vw 0;
+}
+
 footer {
   color: white;
   padding: 20px 30px;
