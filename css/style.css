@@ -69,8 +69,7 @@ main {
 main h1 {
   font-size: 300%;
   font-weight: 900;
-  margin-top: 0;
-  margin-bottom: 3vw;
+  margin: 3vw 0;
   line-height: 4rem;
 }
 
@@ -81,6 +80,13 @@ main a {
 
 main strong {
   font-size: 105%;
+}
+
+main.projects {
+  min-height: 80vh;
+  /* margin-top: 0; */
+  margin-bottom: 0;
+  justify-content: flex-start;
 }
 
 main.blog {
@@ -265,6 +271,40 @@ code.highlighter-rouge {
   padding-top: 2vw;
 }
 
+ul.about {
+  padding: 0;
+}
+
+ul.about li.about-item.first {
+  margin: 0 0 3vw;
+}
+
+ul.about li.about-item {
+  margin: 3vw 0;
+}
+
+ul.about li.about-item h3 {
+  margin-bottom: 0;
+}
+
+ul.about li.about-item::before{
+  content: none;
+}
+
+.about-content {
+  padding: 0 20px;
+}
+
+.about-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-header span {
+  font-size: 200%;
+  color: #eab208; /* Change the color */
+}
+
 @media (max-width: 768px) {
   .link-flex {
     flex-direction: column;
@@ -275,6 +315,19 @@ code.highlighter-rouge {
   }
   main.blog img {
     width: 90%;
+  }
+  .about-content {
+    padding: 0;
+  }
+  .about-item {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  .about-item.first{
+    border-top: none;
+  }
+  .about-item.last {
+    border-bottom: none;
   }
 }
 
