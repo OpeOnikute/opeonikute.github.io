@@ -13,7 +13,7 @@ var twitterShare = document.querySelector('#twitter');
 
 twitterShare.onclick = function(e) {
   e.preventDefault();
-  var twitterWindow = window.open('https://twitter.com/share?text=' + text  + '&url=' + document.URL, 'twitter-popup', 'height=350,width=600');
+  var twitterWindow = window.open('https://twitter.com/share?text=' + text  + '&url=' + document.URL + '&via=Ope__O', 'twitter-popup', 'height=350,width=600');
   if(twitterWindow.focus) { twitterWindow.focus(); }
     return false;
   }
