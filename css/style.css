@@ -1,7 +1,6 @@
 body {
   margin: 0;
-  background: linear-gradient(rgba(10, 13, 62, 0.5), rgba(10, 13, 62, 0.5)),
-    url(/img/bg.jpeg);
+  background: rgb(2 3 33 / 91%);
   background-position: center;
   font-family: "PT Sans", sans-serif;
 }
