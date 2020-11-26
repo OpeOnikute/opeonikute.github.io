@@ -59,7 +59,7 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  margin: 2vw 10vw;
+  margin: auto;
   max-width: 800px;
   line-height: 30px;
   letter-spacing: 3px;
@@ -89,12 +89,12 @@ main.projects {
 }
 
 main.blog {
-  margin: 5vw 20vw;
+  margin: auto;
   max-width: auto;
 }
 
 main.blog-list {
-  margin: 30px 10vw;
+  margin: auto;
   justify-content: flex-start;
 }
 
