@@ -94,7 +94,7 @@ main.blog {
 }
 
 main.blog-list {
-  margin: auto;
+  margin: 2vw auto;
   justify-content: flex-start;
 }
 
