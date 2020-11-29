@@ -383,4 +383,9 @@ ul.about li.about-item::before{
   main.blog ul, main.blog ol {
     padding-inline-start: 10px;
   }
+
+  main.blog img {
+    width: 96vw;
+    margin-left: -16vw;
+  }
 }
