@@ -384,7 +384,7 @@ ul.about li.about-item::before{
     padding-inline-start: 10px;
   }
 
-  main.blog img {
+  main.blog.full-image img {
     width: 96vw;
     margin-left: -16vw;
   }
