@@ -114,9 +114,34 @@ main.no-image-styling img {
     padding: 0;
 }
 
+main.blog blockquote {
+  quotes: "“" "”" "‘" "’";
+  margin: 40px;
+}
+
+main.blog blockquote::before {
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  vertical-align: -0.4em;
+}
+
+main.blog blockquote p {
+  display: inline;
+}
+
+main.blog h2 {
+  margin-block-end: 0.43em;
+}
+
 .blog a {
   color: #eab208;
 }
+
+.blog-title {
+  margin-bottom: 1em;
+}
+
 .blog-title h1 {
   margin-bottom: 0;
 }
@@ -337,6 +362,10 @@ ul.about li.about-item::before{
     margin: 10vw auto;
   }
 
+  main h1 {
+    font-size: 200%;
+  }
+
   .link-flex {
     flex-direction: column;
     min-height: 40vh;
@@ -347,5 +376,11 @@ ul.about li.about-item::before{
   .link-wrapper {
     flex-direction: column;
     min-height: 30vh;
+  }
+  main.blog blockquote {
+    margin: 40px 20px;
+  }
+  main.blog ul, main.blog ol {
+    padding-inline-start: 10px;
   }
 }
