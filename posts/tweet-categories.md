@@ -67,7 +67,7 @@ This talks about a system in which users can decide what they want to see on the
 
 ## Notes
 
-1. When a Spotify playlist is deleted, the user "unfollows" and it remains available for other users. In the same sense when you delete a category.
+1. When a Spotify playlist is deleted, the user "unfollows" and it remains available for other users.
 2. [Thread by Chidi on how the Twitter timeline serves tweets](https://twitter.com/ChidiWilliams__/status/1332675824131190785).
 3. [Twitter timelines @Scale](https://youtu.be/1LcyCbly73U?t=212).
 4. [Infrastructure Behind Twitter (Scale)](https://blog.twitter.com/engineering/en_us/topics/infrastructure/2017/the-infrastructure-behind-twitter-scale.html).
