@@ -57,7 +57,7 @@ There are three options for this.
 
 4. **Can categories be spammed with wrong tweets like people do with hashtags e.g can I do "I like my women BBW" and put it in a category called "Software Engineering".**
 
-    Very much so, but they determine their categories themselves. If they aren’t tweeting according to them, it’s up to their followers to decide if they are really worth following.
+    Very much so, but users determine their categories themselves. If they aren’t tweeting according to them, it’s up to their followers to decide if they are really worth following.
 
 ## Summary
 
