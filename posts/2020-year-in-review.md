@@ -33,7 +33,7 @@ I've spent a lot of time grokking problems around observability and the more I d
 
 If you don't have that visibility, your mean time to detect and resolve issues is longer, and your customers will have a bad experience leading to a loss in revenue.
 
-This year I've grokked Distributed Tracing, APM, Network (TCP, UDP, DNS), System (CPU, Memory, I/O etc), Dashboarding, Synthetics etc, and there's still so much more to discover in other layers.
+This year I've grokked Distributed Tracing, APM, Network (TCP, UDP, DNS), System (CPU, Memory, I/O etc), Dashboarding, Synthetics etc. There is still so much more to discover in [all the layers](https://www.cloudflare.com/en-gb/learning/ddos/glossary/open-systems-interconnection-model-osi/).
 
 If you're interested in learning more about what observability is, [Cory Watson's blog](http://onemogin.com/observability/) has a lot of great resources.
 
@@ -72,7 +72,7 @@ Writing: I wrote [three articles this year](https://opeonikute.dev/posts). I pla
 
 ## The Future
 
-**Observability**: Next year I'm going to spend a lot of time still thinking about. I also plan to get a better understanding of how Linux systems work, to help with observing them. Depending on how my eBPF exploration goes, I might learn how to write C properly.
+**Observability**: Next year I'm going to spend a lot of time still thinking about observability. I also plan to get a better understanding of how Linux systems work, to help with observing them. Depending on how my eBPF exploration goes, I might learn how to write C properly.
 
 **Templice**: I also plan to finish building and test a new product at the beginning of the year. Excited about the people I'm working with on this one. More on that later.
 
