@@ -23,7 +23,7 @@ I transitioned from a previous full-stack role to a DevOps role at [Paystack](ht
 
 My reasons for the transition were achieved in just 6 months and then my expectations kept getting exceeded. I also managed to get promoted within my first 3 months which was cool 🎉.
 
-My role is a blend of Observability & DevOps, which means I get to spend a lot of time looking under the hood to understand how complex systems work, building tools to automate that and sharing that information with other engineers.
+My role is a blend of Observability & DevOps, which means I get to spend a lot of time looking under the hood to understand how complex systems work, building tools to automate that and sharing the information with everyone (evangelism).
 
 ## Observability
 
