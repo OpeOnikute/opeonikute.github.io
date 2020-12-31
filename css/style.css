@@ -3,6 +3,7 @@ body {
   background: rgb(2 3 33 / 91%);
   background-position: center;
   font-family: "PT Sans", sans-serif;
+  transition: background-color 0.5s ease;
 }
 
 p {
@@ -328,6 +329,52 @@ ul.about li.about-item::before{
   font-size: 200%;
   color: #eab208; /* Change the color */
 }
+
+span.theme-switcher {
+  background-image: url(/img/icons8-sun-240.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease;
+}
+
+/* Dark theme styles */
+span.theme-switcher.light-theme {
+  background-image: url(/img/icons8-crescent-moon-100.png);
+}
+
+body.light-theme {
+  background: #fff;
+}
+
+header.light-theme {
+  background: rgb(2 3 33 / 91%);  
+}
+
+header.light-theme .brand {
+  background-image: url(/img/favicon/ms-icon-310x310-white.png);
+}
+
+.social-links.light-theme span > a {
+  color: #fff;
+}
+
+main.light-theme {
+  color: rgb(2 3 33 / 91%);
+}
+
+.about-container.light-theme {
+  border-top: 1px solid rgb(2 3 33 / 91%);  
+}
+
+.share-container.light-theme a {
+  color: rgb(2 3 33 / 91%);  
+}
+
+footer.light-theme {
+  color: rgb(2 3 33 / 91%);  
+}
+/* End Dark theme styles */
 
 @media (max-width: 768px) {
   .link-flex {
