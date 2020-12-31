@@ -19,9 +19,9 @@ My life changed a lot this year and overall I’m grateful for all the progress 
 
 ## Work
 
-I transitioned into a full-time DevOps role at [Paystack](http://paystack.com/) at the beginning of the year, and it been amazing so far. The best thing about working in Paystack is the culture and then the people. Everywhere you turn, there’s someone who is a genius at what they do.
+I transitioned from a previous full-stack role to a DevOps role at [Paystack](http://paystack.com/) at the beginning of the year, and it has been amazing so far. The best thing about working at Paystack is the culture and then the people. Everywhere you turn, there’s someone who is a genius at what they do.
 
-My reasons for the transition were achieved in just 6 months and then some. I also managed to get promoted within my first 3 months which was cool 🎉.
+My reasons for the transition were achieved in just 6 months and then my expectations kept getting exceeded. I also managed to get promoted within my first 3 months which was cool 🎉.
 
 My role is a blend of Observability & DevOps, which means I get to spend a lot of time looking under the hood to understand how complex systems work, building tools to automate that and sharing that information with other engineers.
 
@@ -33,7 +33,7 @@ I've spent a lot of time grokking problems around observability and the more I d
 
 If you don't have that visibility, your mean time to detect and resolve issues is longer, and your customers will have a bad experience leading to a loss in revenue.
 
-This year I've grokked Distributed Tracing, APM, Network (TCP, UDP, DNS), System (CPU, Memory, I/O etc) and there's still so much more to discover in other layers.
+This year I've grokked Distributed Tracing, APM, Network (TCP, UDP, DNS), System (CPU, Memory, I/O etc), Dashboarding, Synthetics etc, and there's still so much more to discover in other layers.
 
 If you're interested in learning more about what observability is, [Cory Watson's blog](http://onemogin.com/observability/) has a lot of great resources.
 
