@@ -101,6 +101,7 @@ $  nano start.sh
         -v "$(pwd)/<your-version-number>-linuxkit:/lib/modules/<your-version-number>-linuxkit/build"
         -v "$(pwd)/<your-version-number>-linuxkit:/usr/src/<your-version-number>-linuxkit"
         --workdir /usr/share/bcc/toolsdocker-bpf
+        docker-bpf
     ```
 - Test out one of the tools such as `execsnoop`.
     ```bash
