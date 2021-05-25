@@ -1,6 +1,6 @@
 // Add target blank to all post links
 window.onload = function () {
-    document.querySelectorAll('.blog a').forEach(a => a.setAttribute('target', '_blank'));
+    document.querySelectorAll('.blog a:not(.footnote):not(.reversefootnote)').forEach(a => a.setAttribute('target', '_blank'));
 }
 
 var text = document.querySelector('title') || '';
