@@ -87,10 +87,7 @@ You can use [this repository](https://github.com/OpeOnikute/vagrant-bcctools) to
 
 [^1]: I talk about generating flame-graphs for Node applications in a post coming out soon.
 
-[^2]: In a sane world, you should be able to install perf in the container using `apt-get install linux-tools-common linux-tools-generic linux-tools-uname -r` and be done with it, but you can't because there are no Linux headers in Docker for Mac. I discussed this briefly in [this post](https://opeonikute.dev/posts/how-to-set-up-bcc-for-ebpf-on-mac-os). 
-
-You end up with errors like this:
-
+[^2]: In a sane world, you should be able to install perf in the container using `apt-get install linux-tools-common linux-tools-generic linux-tools-uname -r` and be done with it, but you can't because there are no Linux headers in Docker for Mac. I discussed this briefly in [this post](https://opeonikute.dev/posts/how-to-set-up-bcc-for-ebpf-on-mac-os). You end up with errors like this:
 ```docker
 E: Unable to locate package linux-tools-common
 E: Unable to locate package linux-tools-generic
