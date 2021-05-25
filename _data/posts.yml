@@ -1,4 +1,4 @@
-- title: How to use perf on MacOS
+- title: How to use perf on MacOS for code profiling
   link: how-to-use-perf-on-macos
   date: May 2021
   synopsis: This is a quick post that details how to run perf (also known as perf_events) on an OSX machine.

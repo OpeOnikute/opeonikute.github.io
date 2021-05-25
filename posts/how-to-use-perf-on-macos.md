@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to use perf on MacOS
+title: How to use perf on MacOS for code profiling
 sub_title:
 date: May 2021
 featured_image: https://opeonikute.dev/img/Background.png
