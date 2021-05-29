@@ -96,14 +96,11 @@ This method demonstrates intrusive profiling by recording perf events directly w
     PORT=3000 ./perf record -e cycles:u -g -- node --perf-basic-prof app.js &
     ```
 - Use curl to call the endpoint containing the code path. This will cause the problematic function to run.
-
     ```bash
     curl "http://localhost:3000/api/tick"
     curl "http://localhost:3000/api/end"
     ```
-
 - Create the flamegraph
-
     ```bash
     if [ ! -d FlameGraph ]
     then
@@ -119,19 +116,14 @@ This method demonstrates intrusive profiling by recording perf events directly w
 **With Sample Repo**
 
 - Clone the repository if you haven't already.
-
     ```bash
     git clone https://github.com/OpeOnikute/node-example-flamegraph.git && cd node-example-flamegraph
     ```
-
 - Build the docker images and start the containers.
-
     ```bash
     docker-compose up -d
     ```
-
 - Run the [flame-internal.sh](https://github.com/OpeOnikute/node-example-flamegraph/blob/master/flame-internal.sh) script on the container. A flamegraph will be generated and sent to the `/out` directory on your machine.
-
     ```bash
     docker-compose exec node_8x ./flame-internal.sh
     ```
@@ -145,13 +137,10 @@ This method demonstrates how you can profile an already-running Node process whe
 - Install perf. I wrote about doing this on MacOS [here](https://opeonikute.dev/posts/how-to-use-perf-on-macos), but if you're doing this on a Linux environment you can install from the package manager.
 - Run your Node app with the `perf_basic_prof_only_functions` option enabled. This enables perf find the Javascript symbols from the v8 engine, by generating a `/tmp/node-PID.map` file.
 - Run perf record to collect stacks from the running node process. Ensure you're generating traffic to the application first. e.g. you can write a browser function that pings an endpoint every second.
-
     ```bash
     ./perf record -F99 -p "$(pgrep -n node)" -g -- sleep 30
     ```
-
 - Create the flamegraph
-
     ```bash
     if [ ! -d FlameGraph ]
     then
@@ -167,19 +156,14 @@ This method demonstrates how you can profile an already-running Node process whe
 **With Sample Repo**
 
 - Clone the repository if you haven't already.
-
     ```bash
     git clone https://github.com/OpeOnikute/node-example-flamegraph.git && cd node-example-flamegraph
     ```
-
 - Build the docker images and start the containers.
-
     ```bash
     docker-compose up -d
     ```
-
 - Run the [flame-external.sh](https://github.com/OpeOnikute/node-example-flamegraph/blob/master/flame-external.sh) script on the container. A flamegraph will be generated and sent to the `/out` directory on your machine.
-
     ```bash
     docker-compose exec node_8x ./flame-external.sh
     ```
