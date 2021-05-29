@@ -15,7 +15,7 @@ You have tried to reproduce in other environments, but you can't. Figuring it ou
 
 This post attempts to help with an answer to that, by discussing CPU profiling with flame-graphs using NodeJS as the target runtime. Although it uses Node, it's been intentionally written in a way that would get you started with profiling CPU for any known process or application once you have its Process ID.
 
-# Background on CPU Profiling and Flame-graphs
+## Background on CPU Profiling and Flame-graphs
 
 **Profiling** is a method used to get empirical information the performance of code paths in software. It's a really useful means of determining performance bottlenecks and finding performance wins in a system. A bottleneck might start out inconsequential, but as systems scale it will become more prominent.
 
@@ -57,9 +57,9 @@ You can figure out what is consuming CPU resources by looking for what process s
 
 When you consider that the code you write is powered by underlying frameworks and sometimes modules which may be the source of an issue, being able to profile to get empirical evidence is important.
 
-# Profiling NodeJS CPU
+## Profiling NodeJS CPU
 
-## Background on  Profiling JIT-Compiled Languages
+### Background on  Profiling JIT-Compiled Languages
 
 Before we talk about profiling Node, let's gain some understanding of how languages like Node are profiled. This would help you understand the strategies for similar languages and even come up with your own strategy.
 
@@ -69,7 +69,7 @@ JIT-compiled languages don't have symbol tables by default, which means If you p
 
 Perf [^4] has solved for this by allowing the VM maintain a `/tmp/perf-PID.map` file for symbol translation. Java and Node have this implemented, adding that context to the resulting flame-graphs.
 
-## Practical - NodeJS Profiling Example
+### Practical - NodeJS Profiling Example
 
 When trying to solve a performance problem like the one in our POV, there are various scenarios you can find yourself in. For the purpose of understanding basic profiling, we'll limit it to two - profiling on the shell (external) and profiling the Node process itself (internal). 
 
@@ -84,7 +84,7 @@ To help create an actual scenario, I have added the code to [a sample Github rep
 
 With each scenario there are two options - manual and with the sample repo. If you are trying to profile on your own application, you can try the manual option(s). If you're just exploring and want to learn, use the sample repo.
 
-### Profiling the Node Process internally
+#### Profiling the Node Process internally
 
 This method demonstrates intrusive profiling by recording perf events directly when starting Node. It's useful for direct profiling when trying to find a bottleneck.
 
@@ -138,7 +138,7 @@ This method demonstrates intrusive profiling by recording perf events directly w
     docker-compose exec node_8x ./flame-internal.sh
     ```
 
-### Profiling on the shell (bash)
+#### Profiling on the shell (bash)
 
 This method demonstrates how you can profile an already-running Node process when you are connected to the shell. Useful when there's an ongoing issue and you need to generate a flame-graph. It can also be adapted to profile another process as long as it has symbol tables generated.
 
@@ -200,7 +200,7 @@ After running the steps above, open the generated flame-graph in your browser. I
 
 By interpreting the graph using the On-CPU method introduced in the [Background]() section, we can see that the `node` process is using up CPU, and the section of our code with the issue is `get /usr/src/app/node_modules/fast-levenshtein/levenshtein.js:27`!
 
-# Conclusion
+## Conclusion
 
 Congrats on making it this far! We've covered quite a bit in this post. Here are the highlights:
 
@@ -220,7 +220,7 @@ Using APM tools we could do some of this profiling and graph them over time, and
 
 Keep an eye out!
 
-# Notes
+## Notes
 
 [^1]: More information about profiling this way can be found in this post - [Easy profiling for Node.js Applications](https://nodejs.org/en/docs/guides/simple-profiling/#easy-profiling-for-node-js-applications).
 
@@ -230,7 +230,7 @@ Keep an eye out!
 
 [^4]: Perf is a linux tool also called perf_events. It is powerful - it can instrument CPU performance and is capable of lightweight profiling. It is included in the Linux kernel.
 
-# Further Reading
+## Further Reading
 
 [https://nodejs.org/en/docs/guides/simple-profiling/](https://nodejs.org/en/docs/guides/simple-profiling/)
 
