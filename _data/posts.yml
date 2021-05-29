@@ -1,3 +1,7 @@
+- title: NodeJS in Flames
+  link: node-js-in-flames
+  date: May 2021
+  synopsis: This post discusses CPU profiling with flame-graphs using NodeJS as the target runtime.
 - title: How to use perf on MacOS for code profiling
   link: how-to-use-perf-on-macos
   date: May 2021
