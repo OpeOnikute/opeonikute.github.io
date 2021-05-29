@@ -202,6 +202,14 @@ Using APM tools we could do some of this profiling and graph them over time, and
 
 Keep an eye out!
 
+## Further Reading
+
+- [https://nodejs.org/en/docs/guides/simple-profiling/](https://nodejs.org/en/docs/guides/simple-profiling/)
+
+- [https://nodejs.org/en/docs/guides/diagnostics-flamegraph/](https://nodejs.org/en/docs/guides/diagnostics-flamegraph/)
+
+- [http://www.brendangregg.com/blog/2014-09-17/node-flame-graphs-on-linux.html](http://www.brendangregg.com/blog/2014-09-17/node-flame-graphs-on-linux.html)
+
 ## Notes
 
 [^1]: More information about profiling this way can be found in this post - [Easy profiling for Node.js Applications](https://nodejs.org/en/docs/guides/simple-profiling/#easy-profiling-for-node-js-applications).
@@ -211,11 +219,3 @@ Keep an eye out!
 [^3]: Symbol tables contain a mapping of functions to memory addresses. More information [here](http://www.brendangregg.com/perf.html#Symbols\).
 
 [^4]: Perf is a linux tool also called perf_events. It is powerful - it can instrument CPU performance and is capable of lightweight profiling. It is included in the Linux kernel.
-
-## Further Reading
-
-[https://nodejs.org/en/docs/guides/simple-profiling/](https://nodejs.org/en/docs/guides/simple-profiling/)
-
-[https://nodejs.org/en/docs/guides/diagnostics-flamegraph/](https://nodejs.org/en/docs/guides/diagnostics-flamegraph/)
-
-[http://www.brendangregg.com/blog/2014-09-17/node-flame-graphs-on-linux.html](http://www.brendangregg.com/blog/2014-09-17/node-flame-graphs-on-linux.html)
