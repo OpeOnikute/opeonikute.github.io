@@ -92,11 +92,9 @@ This method demonstrates intrusive profiling by recording perf events directly w
 
 - Install perf. I wrote about doing this on MacOS [here](https://opeonikute.dev/posts/how-to-use-perf-on-macos), but if you're doing this on a Linux environment you can install from the package manager.
 - Run the Node app with perf enabled
-
     ```bash
     PORT=3000 ./perf record -e cycles:u -g -- node --perf-basic-prof app.js &
     ```
-
 - Use curl to call the endpoint containing the code path. This will cause the problematic function to run.
 
     ```bash
