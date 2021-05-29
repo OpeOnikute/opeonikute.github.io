@@ -205,9 +205,7 @@ Keep an eye out!
 ## Further Reading
 
 - [https://nodejs.org/en/docs/guides/simple-profiling/](https://nodejs.org/en/docs/guides/simple-profiling/)
-
 - [https://nodejs.org/en/docs/guides/diagnostics-flamegraph/](https://nodejs.org/en/docs/guides/diagnostics-flamegraph/)
-
 - [http://www.brendangregg.com/blog/2014-09-17/node-flame-graphs-on-linux.html](http://www.brendangregg.com/blog/2014-09-17/node-flame-graphs-on-linux.html)
 
 ## Notes
