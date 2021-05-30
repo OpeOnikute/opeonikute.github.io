@@ -47,9 +47,9 @@ It can quickly become cumbersome to go through all the lines to figure out where
 
 Flame-graphs help visualize profiling data which could become hundreds of lines long. They are also a useful way to just figure out everything that your code is doing, including the syscalls [^2]. In the context of profiling a single process, each bar in the graph represents a function. The runtime of which may include executing another function. These "child" function are stacked on top of their parents on the graph. 
 
+Here's how to interpret a flame-graph:
 ![/media/Screen_Shot_2021-05-27_at_21.49.49.png](/media/Screen_Shot_2021-05-27_at_21.49.49.png)
-
-How to interpret a flame-graph. Source: [https://netflixtechblog.com/java-in-flames-e763b3d32166](https://netflixtechblog.com/java-in-flames-e763b3d32166)
+Source: [https://netflixtechblog.com/java-in-flames-e763b3d32166](https://netflixtechblog.com/java-in-flames-e763b3d32166)
 
 A function that has no stacks on top of it is running **On-CPU**. This means the function is where the CPU spent its time in that period. Child functions increase the duration of their parents, and this propagates down the graph. 
 
