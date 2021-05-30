@@ -9,7 +9,7 @@ synopsis: This post discusses CPU profiling with flame-graphs using NodeJS as th
 
 Hi, let's do a quick POV. 
 
-You are software engineer building amazing products, shipping them to production and telling bad jokes on Twitter. Once or twice a month when Mercury is in retrograde, you are confronted with a complex bug on production. A part of the code seems to be hogging CPU on the server and sometimes taking it down.
+You are a software engineer building amazing products, shipping them to production and telling bad jokes on Twitter. Once or twice a month when Mercury is in retrograde, you are confronted with a complex bug on production. A part of the code seems to be hogging CPU on the server and sometimes taking it down.
 
 You have tried to reproduce in other environments, but you can't. Figuring it out as it happens on prod seems to be the only option. How do you solve this?
 
@@ -17,7 +17,7 @@ This post attempts to help with an answer to that, by discussing CPU profiling w
 
 ## Background on CPU Profiling and Flame-graphs
 
-**Profiling** is a method used to get empirical information the performance of code paths in software. It's a really useful means of determining performance bottlenecks and finding performance wins in a system. A bottleneck might start out inconsequential, but as systems scale it will become more prominent.
+**Profiling** is a method used to get empirical information about the performance of code paths in software. It's a really useful means of determining performance bottlenecks and finding performance wins in a system. A bottleneck might start out inconsequential, but as systems scale it will become more prominent.
 
 Profiling tools have various ways of displaying the information, which are often specific to the language in question. For example, here's how it looks if you run node with the profile option (`—prof`) enabled [^1]:
 
