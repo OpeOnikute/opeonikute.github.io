@@ -80,7 +80,7 @@ In both cases we'll be use a basic framework:
 - Use the perf report to generate a flame-graph.
 - Interpret the flame-graph to see what function/code path is using up CPU.
 
-To help create an actual scenario, I have added the code to [a sample Github repository](https://github.com/OpeOnikute/node-example-flamegraph). I encourage you to clone the repo and follow along so you gain basic practical experience.
+To help create an actual scenario, I have added the code to [a sample Github repository](https://github.com/OpeOnikute/node-example-flamegraph). In the NodeJS code there is a function that hogs CPU and increases the overrall time taken to process requests, making it problematic. I encourage you to clone the repo and follow along so you gain basic practical experience.
 
 With each scenario there are two options - manual and with the sample repo. If you are trying to profile on your own application, you can try the manual option(s). If you're just exploring and want to learn, use the sample repo.
 
@@ -201,6 +201,8 @@ There is more to the topic than I have covered in this post. Some questions shou
 Using APM tools we could do some of this profiling and graph them over time, and even track performance between deployments. I haven't done as much exploration of what the reality of that looks like, but intend to do so soon and will be covering in subsequent posts.
 
 Keep an eye out!
+
+Thanks to [Griffith](https://twitter.com/yaw__asare), [Ife](https://twitter.com/IfeSobog) and [Chidi](https://twitter.com/ChidiWilliams__) for reading drafts of this.
 
 ## Further Reading
 
