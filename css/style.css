@@ -63,7 +63,7 @@ main {
   margin: auto;
   max-width: 800px;
   line-height: 30px;
-  letter-spacing: normal;
+  letter-spacing: 0.5px;
 }
 
 main h1 {
