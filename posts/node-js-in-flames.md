@@ -168,7 +168,7 @@ This method demonstrates how you can profile an already-running Node process whe
     docker-compose exec node_8x ./flame-external.sh
     ```
 
-**WARNING** - the map file generated has been known to grow in size, which is why we are using the `perf_basic_prof_only_functions` options, which looks for less symbols than the `-perf-basic-prof` which can only be run for a couple of hours before the tmp file becomes really big. Regardless, if you are running servers for long periods, you should watch the growth in size of the files and better still remove the option after you're done profiling.
+**WARNING** - the map file generated has been known to grow in size, which is why we are using the `perf_basic_prof_only_functions` option, which looks for less symbols than the `-perf-basic-prof` which can only be run for a couple of hours before the `/tmp/perf-PID.map` file becomes really big. Regardless, if you are running servers for long periods, you should watch the growth in size of the files and better still remove the option after you're done profiling.
 
 After running the steps above, open the generated flame-graph in your browser. If you used the sample repo, the results from internal and external profiling should look like this:
 
@@ -180,7 +180,7 @@ After running the steps above, open the generated flame-graph in your browser. I
 
 ![/media/flame-external-8.16.1.svg](/media/flame-external-8.16.1.svg)
 
-By interpreting the graph using the On-CPU method introduced in the [Background]() section, we can see that the `node` process is using up CPU, and the section of our code with the issue is `get /usr/src/app/node_modules/fast-levenshtein/levenshtein.js:27`!
+By interpreting the graph using the On-CPU method introduced in the Background section, we can see that the `node` process is using up CPU, and the section of our code with the issue is `get /usr/src/app/node_modules/fast-levenshtein/levenshtein.js:27`!
 
 ## Conclusion
 
@@ -198,9 +198,7 @@ There is more to the topic than I have covered in this post. Some questions shou
 - What if we don't have access to the prod server? Is there another way to do this profiling?
 - Are flame-graphs the only way to represent this data?
 
-Using APM tools we could do some of this profiling and graph them over time, and even track performance between deployments. I haven't done as much exploration of what the reality of that looks like, but intend to do so soon and will be covering in subsequent posts.
-
-Keep an eye out!
+Using APM tools we could do some of this profiling and graph them over time, and even track performance between deployments. I haven't done as much exploration of what the reality of that looks like yet. I intend to do so soon and will be covering in subsequent posts, so keep an eye out!
 
 Thanks to [Griffith](https://twitter.com/yaw__asare), [Ife](https://twitter.com/IfeSobog) and [Chidi](https://twitter.com/ChidiWilliams__) for reading drafts of this.
 
