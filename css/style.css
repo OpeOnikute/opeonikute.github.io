@@ -439,7 +439,7 @@ footer.light-theme {
 
 /* Github Gist */
 /* Body */
-.gist-data tbody { background-color: Black; }
+.gist-data tbody { background-color: #1E1E1E; }
 
 /* Line Numbers */
 .gist-data tbody td:nth-of-type(1) {
