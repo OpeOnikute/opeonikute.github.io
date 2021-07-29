@@ -11,7 +11,7 @@ As a person that likes to maximise my output and minimise the input required, I 
 
 These are my favourite:
 
-<script src="[https://gist.github.com/OpeOnikute/0f359be9b019819a3cd1c989df6ec0fe.js](https://gist.github.com/OpeOnikute/0f359be9b019819a3cd1c989df6ec0fe.js)"></script>
+<script src="https://gist.github.com/OpeOnikute/0f359be9b019819a3cd1c989df6ec0fe.js"></script>
 
 I especially like the functions because I can shorten long commands that have variable input. e.g. to start an ssm session, I just have to type:
 
