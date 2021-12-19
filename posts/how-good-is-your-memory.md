@@ -432,7 +432,7 @@ In this post, we’ve discussed memory usage in Node and a bunch of different st
 
 Troubleshooting with `llnode` is less popular however, and might be the perfect solution for some production scenarios. Hopefully you find that interesting and explore more. The code samples can be found in [this repository](https://github.com/OpeOnikute/how-good-is-your-memory). Let me know if you have any comments or concerns!
 
-Thanks to Chidi and Ari for looking through drafts of this ❤️
+Thanks to Chidi, Ari and Ife for looking through drafts of this ❤️
 
 ## Further Reading
 
