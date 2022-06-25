@@ -110,7 +110,7 @@ main.blog-list h2 {
   margin: 1em 0 0;
 }
 
-main.blog-list a {
+main.blog-list a.external {
   color: #eab208;
 }
 
