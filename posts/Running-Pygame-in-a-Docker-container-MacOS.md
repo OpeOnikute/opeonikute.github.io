@@ -5,7 +5,6 @@ sub_title:
 read_time: 3
 date: August 2019
 featured_image: https://opeonikute.dev//media/Screen_Shot_2019-05-31_at_09-548f6c6f-d375-44d3-b794-845e5e2a0041.23.51.png
-synopsis: When I was going through the Ejo repo again, i tried to *dockerize* the application like I normally do.
 image-theme: dark
 ---
 

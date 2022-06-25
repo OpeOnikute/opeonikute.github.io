@@ -4,7 +4,6 @@ title: CTIS - Covenant University Traveller Information System
 sub_title: Final School Project Summary
 read_time: 6
 date: April 2018
-synopsis: The concept of the Advanced Traveller Information System (ATIS) is a part of a broader spectrum of traffic systems know as Intelligent Transportation Systems (ITS). 
 featured_image: https://opeonikute.dev/media/Untitled-09766bbe-1c37-43a8-9454-d02d747fd616.png
 ---
 

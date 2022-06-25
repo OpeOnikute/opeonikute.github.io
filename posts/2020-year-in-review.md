@@ -5,7 +5,6 @@ sub_title:
 read_time: 5
 date: December 2020
 featured_image: https://opeonikute.dev/img/Background.png
-synopsis: I didn’t want to write this, but it’s important to take stock and have a reference point for the future. My life changed a lot this year.
 image-theme: dark
 ---
 

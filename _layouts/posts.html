@@ -91,12 +91,11 @@
         <li>
             {% for item in site.data.posts %}
             <a class="post-item" href="/posts/{{item.link}}">
-              <div class="blog-title">
-                <h2>{{item.title}}</h2>
-              </div>
-              <p>{{item.synopsis}}</p>
-              <h4>{{item.date}}</h4>
+              {{item.title}}
             </a>
+            <span class="date">
+              {{item.date}}
+            </span>
             {% endfor %}
         </li>
       </ul>

@@ -5,7 +5,6 @@ sub_title:
 read_time: 2
 date: May 2021
 featured_image: https://opeonikute.dev/img/Background.png
-synopsis: This is a quick post that details how to run perf (also known as perf_events) on an OSX machine.
 ---
 
 This is a quick post that details how to run perf (also known as perf_events) on an OSX machine. Perf is a powerful Linux tool - it can instrument CPU performance and is capable of lightweight profiling. You can get more context about what perf can do [here](http://www.brendangregg.com/perf.html).

@@ -5,7 +5,6 @@ sub_title: 10 Tips from interviewing Nigerian developers
 read_time: 2
 date: February 2020
 featured_image: https://opeonikute.dev/img/Background.png
-synopsis: In the past year and a half, I’ve been interviewed and also interviewed people on behalf of my company. In that time, I've noticed some patterns conducting on-site interviews and I’d like to give brief advice based on them. 
 image-theme: dark
 ---
 

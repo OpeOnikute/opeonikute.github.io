@@ -5,7 +5,6 @@ sub_title: Concurrent Work distribution
 read_time: 6
 date: April 2020
 featured_image: https://opeonikute.dev/media/rmq_triple_diagram.png
-synopsis: As an engineer, when you have a piece of processing work to be done, you're always concerned with how best to achieve that work efficiently. 
 image-theme: dark no-image-styling
 ---
 

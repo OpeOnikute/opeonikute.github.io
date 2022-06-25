@@ -155,18 +155,8 @@ main.blog h2 {
   color: rgb(201 201 214);
 }
 
-a.post-item {
-  color: inherit;
-  padding: 30px;
-}
-
-.post-item h2 {
-  margin-top: auto;
-  margin-bottom: 0;
-}
-
-.post-item h4 {
-  margin-top: 0;
+.posts .date {
+  font-size: small;
   color: #eab208;
 }
 

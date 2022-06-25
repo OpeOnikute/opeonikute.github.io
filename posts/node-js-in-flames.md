@@ -5,7 +5,6 @@ sub_title:
 read_time: 8
 date: May 2021
 featured_image: https://opeonikute.dev/media/flame-external-8.16.1.svg
-synopsis: This post discusses CPU profiling with flame-graphs using NodeJS as the target runtime.
 ---
 
 Hi, let's do a quick POV. 

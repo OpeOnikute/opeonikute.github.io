@@ -4,7 +4,6 @@ title: SSL configuration on a load-balanced platform
 sub_title: Options and caveats.
 read_time: 3
 date: August 2019
-synopsis: Most web applications start out as monoliths, where all the components live on the same server instance. When the time comes to scale, the go-to architecture is usually multiple server instances behind a load-balancer.
 featured_image: https://opeonikute.dev//media/Scale_diagrams_(1)-bfbd1fc4-acc3-4415-a2cd-c78a6edd9224.png
 ---
 

@@ -1,76 +1,57 @@
 - title: How good is your memory?
   link: how-good-is-your-memory
   date: December 2021
-  synopsis: It’s important to think about memory performance because in simple terms - bad performance can cause hard-to-squash bugs, downtimes, loss-in-revenue and other bad things that the grinch would love at Christmas.
 - title: Life is short, bash commands should be too
   link: shorter-bash-commands
   date: July 2021
-  synopsis: My favorite bash aliases.
 - title: NodeJS in Flames
   link: node-js-in-flames
   date: May 2021
-  synopsis: This post discusses CPU profiling with flame-graphs using NodeJS as the target runtime.
 - title: How to use perf on MacOS for code profiling
   link: how-to-use-perf-on-macos
   date: May 2021
-  synopsis: This is a quick post that details how to run perf (also known as perf_events) on an OSX machine.
 - title: How to set up BCC for eBPF on MacOS
   link: how-to-set-up-bcc-for-ebpf-on-mac-os
   date: January 2021
-  synopsis: I recently began exploring eBPF, starting with Brendan Gregg's BPF book. One of the first requirements is to install BCC tools, and my first instinct was to use Docker.
 - title: 2020 - Year in Review
   link: 2020-year-in-review
   date: December 2020
-  synopsis: I didn’t want to write this, but it’s important to take stock and have a reference point for the future. My life changed a lot this year.
 - title: Tweet Categories - A possible solution to the dedicated accounts problem
   link: tweet-categories
   date: November 2020
-  synopsis: Twitter users have a common problem, in which they only follow another user because of their tweets about a particular topic, and end up having to view other tweets that they aren't interested in.
 - title: Coordinated Batch-Processing with Python and RabbitMQ
   link: Coordinated-Batch-Processing-with-Python-and-RabbitMQ
   date: April 2020
-  synopsis: As an engineer, when you have a piece of processing work to be done, you're always concerned with how best to achieve that work efficiently. 
 - title: Crushing On-site Developer Interviews - 10 Tips from interviewing Nigerian developers
   link: Crushing-On-Site-Developer-Interviews-10-Tips
   date: February 2020
-  synopsis: In the past year and a half, I’ve been interviewed and also interviewed people on behalf of my company. In that time, I've noticed some patterns conducting on-site interviews and I’d like to give brief advice based on them.
 - title: How to make a simple logo watermark tool in 100 lines of Golang
   link: How-to-make-a-simple-logo-watermark-tool-in-100-lines
   date: October 2019
-  synopsis: A common need for creatives is to place our logo on pictures we produce. e.g. A photographer with 100s of dope pictures about to post them on social media.
 - title: High Availability in Kubernetes (Part 1)
   link: High-Availability-in-Kubernetes-Part-1
   date: October 2019
-  synopsis: Availability means well, available. If you say something is available, it means it's there when you need/want it. 
 - title: SSL configuration on a load balanced platform (Part 2)
   link: SSL-configuration-on-a-load-balanced-platform-part-2
   date: October 2019
-  synopsis: I saw that Amazon Route 53 also allows you install SSL on your servers with just a click. This is a slight but important improvement on the Cloudflare setup in which we had to download and install the certificates on the load balancer manually.
 - title: SSL configuration on a load balanced platform
   link: SSL-configuration-on-a-load-balanced-platform
   date: August 2019
-  synopsis: Most web applications start out as monoliths, where all the components live on the same server instance. When the time comes to scale, the go-to architecture is usually multiple server instances behind a load-balancer.
 - title: Running Pygame in a Docker container (MacOS)
   link: Running-Pygame-in-a-Docker-container-MacOS
   date: August 2019
-  synopsis: When I was going through the Ejo repo again, i tried to /*dockerize*/ the application like I normally do.
 - title: Running Chrome in a container
   link: running-chrome-in-a-container
   date: June 2019
-  synopsis: I thought this wasn't gonna be possible because MacOS, but it blew my mind when it did so, blogpost.
 - title: Safety Alert
   link: safety-alert
   date: July 2018  
-  synopsis: A couple of months ago, a tanker explosion happened in Lagos. A lot of people lost their lives. 
 - title: CTIS - Covenant University Traveller Information System
   link: ctis
   date: April 2018
-  synopsis: The concept of the Advanced Traveller Information System (ATIS) is a part of a broader spectrum of traffic systems know as Intelligent Transportation Systems (ITS). 
 - title: Write++
   link: write
   date: July 2016  
-  synopsis: Inspired by Automated Insights, the aim of this project is to generate stories/articles based on user inputs.
 - title: Ejo
   link: ejo
   date: June 2015
-  synopsis: This main purpose of this post is to describe how the game was built. Most of it is already covered in the video tutorial though. I just added all the Yoruba nonsense. 

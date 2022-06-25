@@ -5,7 +5,6 @@ sub_title:
 read_time: 5
 date: October 2019
 featured_image: https://opeonikute.dev/img/Background.png
-synopsis: A common need for creatives is to place our logo on pictures we produce. e.g. A photographer with 100s of dope pictures about to post them on social media. 
 ---
 
 A common need for creatives is to place our logo on pictures we produce. e.g. A photographer with 100s of dope pictures about to post them on social media. 
