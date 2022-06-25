@@ -2,6 +2,7 @@
 layout: post
 title: SSL configuration on a load-balanced platform (Part 2)
 sub_title: Cloudflare vs Route 53
+read_time: 2
 date: October 2019
 synopsis: I saw that Amazon Route 53 also allows you install SSL on your servers with just a click. This is a slight but important improvement on the Cloudflare setup in which we had to download and install the certificates on the load balancer manually.
 featured_image: https://opeonikute.dev/img/Background.png

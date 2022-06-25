@@ -2,6 +2,7 @@
 layout: post
 title: High Availability in Kubernetes
 sub_title: Part 1
+read_time: 2
 date: October 2019
 featured_image: https://opeonikute.dev/img/Background.png
 synopsis: Availability means well, **available**. If you say something is available, it means it's there when you need/want it.

@@ -2,6 +2,7 @@
 layout: post
 title: How good is your memory?
 sub_title: Musings about memory performance in NodeJS apps.
+read_time: 13
 date: December 2021
 featured_image: https://opeonikute.dev/media/how_good_is_your_mem_1.png
 synopsis: It’s important to think about memory performance because in simple terms - bad performance can cause hard-to-squash bugs, downtimes, loss-in-revenue and other bad things that the grinch would love at Christmas.

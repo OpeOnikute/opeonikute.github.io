@@ -2,6 +2,7 @@
 layout: post
 title: How to use perf on MacOS for code profiling
 sub_title:
+read_time: 2
 date: May 2021
 featured_image: https://opeonikute.dev/img/Background.png
 synopsis: This is a quick post that details how to run perf (also known as perf_events) on an OSX machine.
