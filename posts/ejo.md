@@ -2,6 +2,7 @@
 layout: post
 title: Ejo
 sub_title: Yoruba Snake Game
+read_time: 5
 date: June 2015
 synopsis: This main purpose of this post is to describe how the game was built. Most of it is already covered in the video tutorial though. I just added all the Yoruba nonsense. 
 featured_image: https://opeonikute.dev//media/Screen_Shot_2019-05-31_at_18-68f781df-b88a-4804-9262-e39b15ef598a.28.03.png

@@ -2,6 +2,7 @@
 layout: post
 title: Running Chrome in a container
 sub_title: 
+read_time: 1
 date: June 2019
 featured_image: 
 synopsis: I thought this wasn't gonna be possible because MacOS, but it blew my mind when it did so, blogpost.

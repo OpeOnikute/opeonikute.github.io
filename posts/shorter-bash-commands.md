@@ -2,6 +2,7 @@
 layout: post
 title: Life is short, bash commands should be too
 sub_title:
+read_time: 1
 date: July 2021
 featured_image: https://opeonikute.dev/img/Background.png
 synopsis: As a person that likes to maximise my output and minimise the input required, I don't like having to type and re-type all my bash commands repeatedly during the day.
