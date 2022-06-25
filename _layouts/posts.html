@@ -87,8 +87,48 @@
       </div>
     </header>
     <main class="blog-list">
+      <h2>Observability and Performance</h2>
       <ul class="posts">
-        {% for item in site.data.posts %}
+        {% for item in site.data.observability_performance %}
+        <li>
+            <a class="post-item" href="/posts/{{item.link}}">
+              {{item.title}}
+            </a>
+            <span class="date">
+              {{item.date}}
+            </span>
+        </li>
+        {% endfor %}
+      </ul>
+      <h2>System Design</h2>
+      <ul class="posts">
+        {% for item in site.data.system_design %}
+        <li>
+            <a class="post-item" href="/posts/{{item.link}}">
+              {{item.title}}
+            </a>
+            <span class="date">
+              {{item.date}}
+            </span>
+        </li>
+        {% endfor %}
+      </ul>
+      <h2>Containers</h2>
+      <ul class="posts">
+        {% for item in site.data.containers %}
+        <li>
+            <a class="post-item" href="/posts/{{item.link}}">
+              {{item.title}}
+            </a>
+            <span class="date">
+              {{item.date}}
+            </span>
+        </li>
+        {% endfor %}
+      </ul>
+      <h2>Others</h2>
+      <ul class="posts">
+        {% for item in site.data.others %}
         <li>
             <a class="post-item" href="/posts/{{item.link}}">
               {{item.title}}
