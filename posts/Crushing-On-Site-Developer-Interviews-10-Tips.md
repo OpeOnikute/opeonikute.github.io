@@ -3,7 +3,7 @@ layout: post
 title: Crushing On-site Developer Interviews
 sub_title: 10 Tips from interviewing Nigerian developers
 read_time: 2
-date: February 2020
+date: Feb 2020
 featured_image: https://opeonikute.dev/img/Background.png
 image-theme: dark
 ---

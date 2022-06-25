@@ -99,6 +99,31 @@ main.blog-list {
   justify-content: flex-start;
 }
 
+main.blog-list h1 {
+  font-size: 2em;
+}
+
+main.blog-list h2 {
+  font-size: 1.25em;
+  margin: 1em 0 0;
+}
+
+main.blog-list .posts {
+  margin: 1em 0;
+}
+
+main.blog-list ul  {
+  margin: 1em 0;
+}
+
+main.blog-list ul li  {
+  margin-bottom: 0.6rem;
+}
+
+main.blog-list ul li::before  {
+  margin-left: -0.2em;
+}
+
 main.blog img {
   width: 100%;
   margin: 15px 0;

@@ -3,7 +3,7 @@ layout: post
 title: How to set up BCC for eBPF on MacOS
 sub_title: 
 read_time: 4
-date: January 2021
+date: Jan 2021
 featured_image: https://opeonikute.dev/img/Background.png
 ---
 

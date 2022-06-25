@@ -3,7 +3,7 @@ layout: post
 title: CTIS - Covenant University Traveller Information System
 sub_title: Final School Project Summary
 read_time: 6
-date: April 2018
+date: Apr 2018
 featured_image: https://opeonikute.dev/media/Untitled-09766bbe-1c37-43a8-9454-d02d747fd616.png
 ---
 

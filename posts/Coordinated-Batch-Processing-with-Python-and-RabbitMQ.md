@@ -3,7 +3,7 @@ layout: post
 title: Coordinated Batch Processing with Python and RabbitMQ
 sub_title: Concurrent Work distribution
 read_time: 6
-date: April 2020
+date: Apr 2020
 featured_image: https://opeonikute.dev/media/rmq_triple_diagram.png
 image-theme: dark no-image-styling
 ---

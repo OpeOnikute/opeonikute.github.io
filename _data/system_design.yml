@@ -3,7 +3,7 @@
   date: Nov 2020
 - title: Coordinated Batch-Processing with Python and RabbitMQ
   link: Coordinated-Batch-Processing-with-Python-and-RabbitMQ
-  date: April 2020
+  date: Apr 2020
 - title: High Availability in Kubernetes (Part 1)
   link: High-Availability-in-Kubernetes-Part-1
   date: Oct 2019
@@ -12,4 +12,4 @@
   date: Oct 2019
 - title: SSL configuration on a load balanced platform
   link: SSL-configuration-on-a-load-balanced-platform
-  date: August 2019
+  date: Aug 2019
