@@ -150,6 +150,11 @@ main.blog h2 {
   margin-top: 0;
 }
 
+.blog-title .title-date {
+  font-size: smaller;
+  color: rgb(201 201 214);
+}
+
 a.post-item {
   color: inherit;
   padding: 30px;
@@ -338,7 +343,7 @@ span.theme-switcher {
   transition: background-image 1s ease;
 }
 
-/* Dark theme styles */
+/* Light theme styles */
 span.theme-switcher.light-theme {
   background-image: url(/img/icons8-crescent-moon-100.png);
 }
@@ -363,6 +368,10 @@ main.light-theme {
   color: rgb(2 3 33 / 91%);
 }
 
+main.blog.light-theme .title-date {
+  color: rgb(121 121 138);
+}
+
 .about-container.light-theme {
   border-top: 1px solid rgb(2 3 33 / 91%);  
 }
@@ -374,7 +383,7 @@ main.light-theme {
 footer.light-theme {
   color: rgb(2 3 33 / 91%);  
 }
-/* End Dark theme styles */
+/* End Light theme styles */
 
 @media (max-width: 768px) {
   .link-flex {
