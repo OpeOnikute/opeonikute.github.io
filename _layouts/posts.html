@@ -88,16 +88,16 @@
     </header>
     <main class="blog-list">
       <ul class="posts">
+        {% for item in site.data.posts %}
         <li>
-            {% for item in site.data.posts %}
             <a class="post-item" href="/posts/{{item.link}}">
               {{item.title}}
             </a>
             <span class="date">
               {{item.date}}
             </span>
-            {% endfor %}
         </li>
+        {% endfor %}
       </ul>
     </main>
     <footer>
