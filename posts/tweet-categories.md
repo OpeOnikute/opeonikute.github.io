@@ -3,8 +3,7 @@ layout: post
 title: Tweet Categories
 sub_title: A possible solution to the dedicated accounts problem.
 read_time: 4
-date: November 2020
-synopsis: Twitter users have a common problem, in which they only follow another user because of their tweets about a particular topic, and end up having to view other tweets that they aren't interested in.
+date: Nov 2020
 featured_image: https://opeonikute.dev/media/twitter_timeline_push.png
 image-theme: full-image
 ---

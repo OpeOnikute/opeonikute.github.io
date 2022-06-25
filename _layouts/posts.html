@@ -87,19 +87,65 @@
       </div>
     </header>
     <main class="blog-list">
-      <ul class="posts">
-        <li>
-            {% for item in site.data.posts %}
-            <a class="post-item" href="/posts/{{item.link}}">
-              <div class="blog-title">
-                <h2>{{item.title}}</h2>
-              </div>
-              <p>{{item.synopsis}}</p>
-              <h4>{{item.date}}</h4>
-            </a>
-            {% endfor %}
-        </li>
-      </ul>
+      <div>
+        <h1>👋</h1>
+        <p>These days I write about reliability, observability and performance.</p>
+        <p>Feel free to reach out to me on Twitter <a class="external" href="https://twitter.com/Ope__O" target="_blank">@Ope__O</a> to discuss anything you find interesting!</p>
+      </div>
+      <div>
+        <h2>Observability and Performance</h2>
+        <ul class="posts">
+          {% for item in site.data.observability_performance %}
+          <li>
+              <a class="post-item" href="/posts/{{item.link}}">
+                {{item.title}}
+              </a>
+              <span class="date">
+                {{item.date}}
+              </span>
+          </li>
+          {% endfor %}
+        </ul>
+        <h2>System Design</h2>
+        <ul class="posts">
+          {% for item in site.data.system_design %}
+          <li>
+              <a class="post-item" href="/posts/{{item.link}}">
+                {{item.title}}
+              </a>
+              <span class="date">
+                {{item.date}}
+              </span>
+          </li>
+          {% endfor %}
+        </ul>
+        <h2>Containers</h2>
+        <ul class="posts">
+          {% for item in site.data.containers %}
+          <li>
+              <a class="post-item" href="/posts/{{item.link}}">
+                {{item.title}}
+              </a>
+              <span class="date">
+                {{item.date}}
+              </span>
+          </li>
+          {% endfor %}
+        </ul>
+        <h2>Others</h2>
+        <ul class="posts">
+          {% for item in site.data.others %}
+          <li>
+              <a class="post-item" href="/posts/{{item.link}}">
+                {{item.title}}
+              </a>
+              <span class="date">
+                {{item.date}}
+              </span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </main>
     <footer>
       <small>&copy; Ope Onikute. </small> <small class="pull-right"><a href="https://twitter.com/Ope__O" target="_blank">@Ope__O</a></small> 

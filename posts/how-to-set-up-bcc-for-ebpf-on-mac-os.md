@@ -3,9 +3,8 @@ layout: post
 title: How to set up BCC for eBPF on MacOS
 sub_title: 
 read_time: 4
-date: January 2021
+date: Jan 2021
 featured_image: https://opeonikute.dev/img/Background.png
-synopsis: I recently began exploring eBPF, starting with Brendan Gregg's BPF book. One of the first requirements is to install BCC tools, and my first instinct was to use Docker.
 ---
 
 I recently began exploring eBPF, starting with Brendan Gregg's BPF [Performance Tools: Linux System and Application Observability](https://search.safaribooksonline.com/book/operating-systems-and-server-administration/linux/9780136588870). One of the first requirements is to install [BCC](https://github.com/iovisor/bcc), and my first instinct was to use Docker [1]. 

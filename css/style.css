@@ -99,6 +99,37 @@ main.blog-list {
   justify-content: flex-start;
 }
 
+main.blog-list h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+  line-height: 2rem;
+}
+
+main.blog-list h2 {
+  font-size: 1.25em;
+  margin: 1em 0 0;
+}
+
+main.blog-list a.external {
+  color: #eab208;
+}
+
+main.blog-list .posts {
+  margin: 1em 0;
+}
+
+main.blog-list ul  {
+  margin: 1em 0;
+}
+
+main.blog-list ul li  {
+  margin-bottom: 0.6rem;
+}
+
+main.blog-list ul li::before  {
+  margin-left: -0.2em;
+}
+
 main.blog img {
   width: 100%;
   margin: 15px 0;
@@ -155,18 +186,8 @@ main.blog h2 {
   color: rgb(201 201 214);
 }
 
-a.post-item {
-  color: inherit;
-  padding: 30px;
-}
-
-.post-item h2 {
-  margin-top: auto;
-  margin-bottom: 0;
-}
-
-.post-item h4 {
-  margin-top: 0;
+.posts .date {
+  font-size: small;
   color: #eab208;
 }
 
