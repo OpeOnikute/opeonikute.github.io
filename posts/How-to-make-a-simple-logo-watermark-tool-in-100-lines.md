@@ -3,7 +3,7 @@ layout: post
 title: How to make a simple logo watermark tool in 100 lines of Golang
 sub_title: 
 read_time: 5
-date: October 2019
+date: Oct 2019
 featured_image: https://opeonikute.dev/img/Background.png
 ---
 

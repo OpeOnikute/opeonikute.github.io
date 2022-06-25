@@ -3,7 +3,7 @@ layout: post
 title: 2020 - Year in Review
 sub_title:
 read_time: 5
-date: December 2020
+date: Dec 2020
 featured_image: https://opeonikute.dev/img/Background.png
 image-theme: dark
 ---

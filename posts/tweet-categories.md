@@ -3,7 +3,7 @@ layout: post
 title: Tweet Categories
 sub_title: A possible solution to the dedicated accounts problem.
 read_time: 4
-date: November 2020
+date: Nov 2020
 featured_image: https://opeonikute.dev/media/twitter_timeline_push.png
 image-theme: full-image
 ---

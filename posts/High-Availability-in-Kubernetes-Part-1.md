@@ -3,7 +3,7 @@ layout: post
 title: High Availability in Kubernetes
 sub_title: Part 1
 read_time: 2
-date: October 2019
+date: Oct 2019
 featured_image: https://opeonikute.dev/img/Background.png
 ---
 
