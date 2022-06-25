@@ -101,11 +101,17 @@ main.blog-list {
 
 main.blog-list h1 {
   font-size: 2em;
+  margin: 0.67em 0;
+  line-height: 2rem;
 }
 
 main.blog-list h2 {
   font-size: 1.25em;
   margin: 1em 0 0;
+}
+
+main.blog-list a {
+  color: #eab208;
 }
 
 main.blog-list .posts {
