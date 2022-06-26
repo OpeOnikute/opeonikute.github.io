@@ -84,11 +84,11 @@ To help create an actual scenario, I have added the code to [a sample Github rep
 
 With each scenario there are two options - manual and with the sample repo. If you are trying to profile on your own application, you can try the manual option(s). If you're just exploring and want to learn, use the sample repo.
 
-#### Profiling the Node Process internally
+#### #1 - Profiling the Node Process internally
 
 This method demonstrates intrusive profiling by recording perf events directly when starting Node. It's useful for direct profiling when trying to find a bottleneck.
 
-**Manually**
+**#1.1 Manually**
 
 - Install perf. I wrote about doing this on MacOS [here](https://opeonikute.dev/posts/how-to-use-perf-on-macos), but if you're doing this on a Linux environment you can install from the package manager.
 - Run the Node app with perf enabled
@@ -113,7 +113,7 @@ This method demonstrates intrusive profiling by recording perf events directly w
     cp flame1.svg "./out/flame-internal-$NODE_VERSION.svg"
     ```
 
-**With Sample Repo**
+**#1.2 With Sample Repo**
 
 - Clone the repository if you haven't already.
     ```bash
@@ -128,11 +128,11 @@ This method demonstrates intrusive profiling by recording perf events directly w
     docker-compose exec node_8x ./flame-internal.sh
     ```
 
-#### Profiling on the shell (bash)
+#### #2 - Profiling on the shell (bash)
 
 This method demonstrates how you can profile an already-running Node process when you are connected to the shell. Useful when there's an ongoing issue and you need to generate a flame-graph. It can also be adapted to profile another process as long as it has symbol tables generated.
 
-**Manually**
+**#2.1 Manually**
 
 - Install perf. I wrote about doing this on MacOS [here](https://opeonikute.dev/posts/how-to-use-perf-on-macos), but if you're doing this on a Linux environment you can install from the package manager.
 - Run your Node app with the `perf_basic_prof_only_functions` option enabled. This enables perf find the Javascript symbols from the v8 engine, by generating a `/tmp/node-PID.map` file.
@@ -153,7 +153,7 @@ This method demonstrates how you can profile an already-running Node process whe
     cp flame1.svg "./out/flame-internal-$NODE_VERSION.svg"
     ```
 
-**With Sample Repo**
+**#2.2 With Sample Repo**
 
 - Clone the repository if you haven't already.
     ```bash
