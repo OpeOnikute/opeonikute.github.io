@@ -67,10 +67,22 @@ main {
 }
 
 main h1 {
-  font-size: 300%;
+  font-size: 2em;
   font-weight: 900;
   margin: 3vw 0;
   line-height: 4rem;
+}
+
+main h2 {
+  font-size: 1.5em;
+}
+
+main h3 {
+  font-size: 1.25em;
+}
+
+main h4 {
+  font-size: 1.17em;
 }
 
 main a {
@@ -440,7 +452,7 @@ footer.light-theme {
   }
 
   main h1 {
-    font-size: 200%;
+    line-height: 2.5rem;
   }
 
   .link-flex {
