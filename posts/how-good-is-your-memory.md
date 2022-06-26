@@ -73,7 +73,7 @@ This means that the only way your program will free up memory is if it has a hea
 
 Now that we understand the basics of how Node allocates and frees memory, let's run through a checklist of possible issues we can have with memory.
 
-### Is NodeJS the cause of memory exhaustion?
+### #1 - Is NodeJS the cause of memory exhaustion?
 
 This is an article about memory usage in NodeJS applications, so it's easy to assume that Node will always be the cause of the problem, but it won't. The correct first step is to get information about what's eating up memory. 
 
@@ -99,7 +99,7 @@ A couple of ways you can do this are:
     This way when you are troubleshooting an issue, you can see when the spike started, if it happens from time to time, if it's short-lived etc.
     You can go with a commercial agent like [Datadog](https://docs.datadoghq.com/agent/) or [New Relic](https://docs.newrelic.com/docs/new-relic-one/use-new-relic-one/cross-product-functions/install-configure/install-new-relic/), check out an open-source agent [^2], or [run a Python tracker alongside your application](https://pypi.org/project/Procpath/) and visualise when you’re ready.
     
-### Do you have a memory leak in Node? Is your app crashing?
+### #2 - Do you have a memory leak in Node? Is your app crashing?
 
 A memory leak happens when your program allocates a memory continuously without freeing it. It becomes a problem if the process running your program then runs out of available memory and crashes, leading to a downtime [^3].
 
@@ -264,7 +264,7 @@ With `llnode` in your arsenal, you can figure out these sorts of issues on the a
 
 An important disclaimer is that **core dump files contain everything that was in memory at the time it was generated, which could include sensitive data like keys and user passwords**. You should treat them with care and take measures to secure them properly. They can also be very large depending on the application memory usage, so be aware of any disk space constraints you may have and remember to turn them off when you're done troubleshooting, especially if your servers aren't ephemeral.
 
-#### Is your application freeing up memory properly?
+### #3 - Is your application freeing up memory properly?
 
 ![/media/how_good_is_your_mem_4.png](/media/how_good_is_your_mem_4.png)
 
@@ -281,7 +281,7 @@ To confirm if you're freeing up memory, you can do the following:
 - Take a look at the memory usage graph of your Node process. It should be in a seesaw pattern as it grows and GC cleans up.
 - If it is growing unbounded - send some traffic, take a core dump or heap snapshot and then use the corresponding tool to see what is staying in memory after GC cycles, and what is keeping it there.
 
-#### Are you storing large objects in memory?
+### #4 - Are you storing large objects in memory?
 
 If you have large objects in memory, you run several risks including memory crashes, slower processing etc. It’s even worse if those objects aren’t being garbage-collected - you’ll get a memory crash faster than you can say Jack Sparrow.
 
@@ -372,7 +372,7 @@ I can think of two examples of when objects can get heavy and should be noted;
   This is something to be careful about, especially if your application is log-heavy.
 - Processing large data - When doing large processing from files for example, it might be tempting to load large chunks of them into memory in batches. It would be best to [stream](https://nodejs.dev/learn/nodejs-streams) instead, for reasons we’ve covered before now.
 
-#### Are you using global variables?
+### #5 - Are you using global variables?
 
 The gist with global variables is that they won’t be Garbage-Collected (removed from memory). While it’s not recommended, you can get by with global variables as long as you are not storing large amounts of data in them and not cleaning them up yourself.
 
