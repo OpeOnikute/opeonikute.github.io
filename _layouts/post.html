@@ -90,7 +90,7 @@
     <main class="blog {{page.image-theme}}">
       <div class="blog-title">
         <h1>{{page.title}}</h1>
-        <p class="title-date">{{page.date}} • {{page.read_time}} min read</p>
+        <p class="title-date">{{page.date}} • {% if page.updated %} {{page.updated}} {% endif %} • {{page.read_time}} min read</p>
       </div>
       {{content}}
       <div class="about-container">
