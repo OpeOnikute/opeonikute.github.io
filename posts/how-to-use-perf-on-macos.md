@@ -4,6 +4,7 @@ title: How to use perf on MacOS for code profiling
 sub_title:
 read_time: 2
 date: May 2021
+updated: Jul 2022
 featured_image: https://opeonikute.dev/img/Background.png
 ---
 
@@ -11,7 +12,7 @@ This is a quick post that details how to run perf (also known as perf_events) on
 
 It is usually included in the Linux kernel, but there's no way install it on a Mac. This is a pain because you'd usually want to profile (and generate flame-graphs [^1]) for your applications locally and not on a prod/staging server because that has a suitable Linux distribution running.
 
-On OSX you can use Docker containers to create such an environment and install perf on it:
+On OSX you can use Docker containers to create such an environment and install perf by downloading the Linux kernel source and building perf manually:
 
 1. Create a Dockerfile with the base image of the distribution you intend to use. e.g. if you're targeting a Node app for profiling, you can use a Node base image which is debian-based.
 
@@ -25,22 +26,20 @@ On OSX you can use Docker containers to create such an environment and install p
 
     ```docker
 
-    RUN HOME=$(pwd) && \ 
+    RUN LINUX_NUM=$(uname -r | cut -d'.' -f1) && \
         # Gets the Linux version and strips out the 'linuxkit' part
         LINUX_VER=$(uname -r | cut -d'.' -f1-3 | cut -d'-' -f1) && \
         # Downloads compressed linux-tools for the version
-        wget "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$LINUX_VER.tar.xz"
-
-    RUN HOME=$(pwd) && \ 
-        LINUX_VER=$(uname -r | cut -d'.' -f1-3 | cut -d'-' -f1) && \
-    		# Un-compress the source and compile with make
+        wget "https://cdn.kernel.org/pub/linux/kernel/v$LINUX_NUM.x/linux-$LINUX_VER.tar.xz" && \
         tar -xf "./linux-$LINUX_VER.tar.xz" && cd "linux-$LINUX_VER/tools/perf/" && \ 
         apt-get update && apt -y install flex bison && \ 
         make -C . && make install && \
-        cd $HOME
+        # copy perf into the executable path. Works as long as "/usr/local/bin"
+        # is in the $PATH variable
+        cp perf /usr/local/bin
     ```
 
-3. Since this a Node app, do the normal Node things like install packages and copy in source code to the image.
+3. Since our example is a Node app, we'll do the normal Node things like install packages and copy in source code to the image.
 
     ```docker
     COPY package*.json ./
@@ -73,8 +72,12 @@ On OSX you can use Docker containers to create such an environment and install p
     # Enables you run perf without some kernel errors
     echo 0 > /proc/sys/kernel/kptr_restrict
 
+    # If perf isn't in your executable path, use it from the directory
     cd ./linux-$(uname -r | cut -d'.' -f1-3 | cut -d'-' -f1)/tools/perf
     ./perf record -F99 -p "$(pgrep -n node)" -g -- sleep 30
+
+    # Else, use it directly
+    perf record -F99 -p "$(pgrep -n node)" -g -- sleep 30
     ```
 
 As a bonus, you can copy perf to the `/bin` directory so you can access it anywhere, but I haven't tested that.
