@@ -32,7 +32,8 @@ On OSX you can use Docker containers to create such an environment and install p
         # Downloads compressed linux-tools for the version
         wget "https://cdn.kernel.org/pub/linux/kernel/v$LINUX_NUM.x/linux-$LINUX_VER.tar.xz" && \
         tar -xf "./linux-$LINUX_VER.tar.xz" && cd "linux-$LINUX_VER/tools/perf/" && \ 
-        apt-get update && apt -y install flex bison && \ 
+        # Install libelf-dev or `perf probe` gets disabled
+        apt-get update && apt -y install flex bison ocaml libelf-dev && \ 
         make -C . && make install && \
         # copy perf into the executable path. Works as long as "/usr/local/bin"
         # is in the $PATH variable
