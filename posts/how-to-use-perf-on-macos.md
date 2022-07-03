@@ -12,7 +12,11 @@ This is a quick post that details how to run perf (also known as perf_events) on
 
 It is usually included in the Linux kernel, but there's no way install it on a Mac. This is a pain because you'd usually want to profile (and generate flame-graphs [^1]) for your applications locally and not on a prod/staging server because that has a suitable Linux distribution running.
 
-On OSX you can use Docker containers to create such an environment and install perf by downloading the Linux kernel source and building perf manually:
+On OSX you can use Docker containers to create such an environment and install perf by downloading the Linux kernel source and building perf manually.
+
+**TLDR;** If you need a quick solution, try using the Docker image with instructions [here](https://github.com/OpeOnikute/perf-tools). The rest of the post just describes how to create the image and install perf.
+
+The steps for creating the image are:
 
 1. Create a Dockerfile with the base image of the distribution you intend to use. e.g. if you're targeting a Node app for profiling, you can use a Node base image which is debian-based.
 
