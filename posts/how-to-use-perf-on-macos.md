@@ -14,7 +14,7 @@ It is usually included in the Linux kernel, but there's no way install it on a M
 
 On OSX you can use Docker containers to create such an environment and install perf by downloading the Linux kernel source and building perf manually.
 
-**TLDR;** If you need a quick solution, try using the Docker image with instructions [here](https://github.com/OpeOnikute/perf-tools). The rest of the post just describes how to create the image and install perf.
+**TLDR;** If you need a quick solution, try using the Nginx-based Docker image with instructions [here](https://github.com/OpeOnikute/perf-tools). The rest of the post just describes how to create a Node-based image and install perf.
 
 The steps for creating the image are:
 
