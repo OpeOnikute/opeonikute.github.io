@@ -37,7 +37,10 @@ The steps for creating the image are:
         wget "https://cdn.kernel.org/pub/linux/kernel/v$LINUX_NUM.x/linux-$LINUX_VER.tar.xz" && \
         tar -xf "./linux-$LINUX_VER.tar.xz" && cd "linux-$LINUX_VER/tools/perf/" && \ 
         # Install libelf-dev or `perf probe` gets disabled
-        apt-get update && apt -y install flex bison ocaml libelf-dev && \ 
+        apt-get update && apt -y install python-dev flex bison ocaml \ 
+            libelf-dev libdw-dev systemtap-sdt-dev libunwind-dev \
+            libperl-dev binutils-dev libzstd-dev libcap-dev \
+            libnuma-dev libbabeltrace-dev && \
         make -C . && make install && \
         # copy perf into the executable path. Works as long as "/usr/local/bin"
         # is in the $PATH variable
@@ -55,7 +58,8 @@ The steps for creating the image are:
 
     EXPOSE 3000
 
-    ENTRYPOINT ["node", "app.js"]
+    # Start Node with debug symbols available. (Don't do that in production)
+    ENTRYPOINT ["node", "--perf-basic-prof", "app.js"]
     ```
 
 4. Build the image.
