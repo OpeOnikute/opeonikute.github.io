@@ -4,15 +4,16 @@ title: Running Pygame in a Docker container (MacOS)
 sub_title: 
 read_time: 3
 date: Aug 2019
+updated: Jul 2022
 featured_image: https://opeonikute.dev//media/Screen_Shot_2019-05-31_at_09-548f6c6f-d375-44d3-b794-845e5e2a0041.23.51.png
 image-theme: dark
 ---
 
 When I was going through the Ejo repo again, i tried to *dockerize* the application like I normally do. But since the app is running Pygame, it presented a different sort of challenge than *dockerizing* a web server app (WSA), since it’s essentially a GUI application.
 
-I decided to give it a try since early Google results seemed like it was hard, but possible. Turns out I should’ve just stuck to providing a virtual env config and moving on, but the learning experience was worth it.
+I decided to give it a try since early Google results seemed like it was hard, but possible. Turns out I should’ve just stuck to providing a virtual env config and moving on, but the learning experience was worth it. In recent times I found a working solution, which is at the end of the article. Please consider this a TLDR.
 
-My machine is a MacBook running Darwin.
+My machine is a MacBook (originally) running Darwin.
 
 ### XQuartz
 
@@ -122,13 +123,45 @@ I found all these libsdl packages in a docker file for another app supposedly ru
 
 Result? Same error.
 
+### Attempt #5 (3 years later)
+I got an email from Gabriel Araujo who read this post and pointed me to [a previous article](https://medium.com/@mreichelt/how-to-show-x11-windows-within-docker-on-mac-50759f4b65cb) that worked for him. I tried out the steps and it turns out I was pretty close before. Now I don't use Darwin anymore - I'm on Mojave. This could also be a factor but I'm not going to look into that. Here's what worked as seen in the article:
+
+- Install the latest [XQuartz X11 server](https://www.xquartz.org/) and run it
+- Activate the option ‘Allow connections from network clients’ in XQuartz settings
+- Quit & restart XQuartz (to activate the setting)
+- Create a compose file and docker image like before, setting `DISPLAY: host.docker.internal:0` as an environment variable. In the container, `host.docker.internal` resolves to the IP address of your computer which is how requests are forwarded from the container to your machine. Here's how the files look:
+    ```
+    # Dockerfile
+    FROM python:3.7
+
+    COPY requirements.txt .
+    RUN pip install -r requirements.txt
+    COPY . .
+
+    CMD ["python", "main.py"]
+    
+
+    # docker-compose.yml
+    version: '3.7'
+
+    services:
+    app:
+        build: .
+        environment:
+        DISPLAY: host.docker.internal:0
+      
+    ```
+- Make sure xhost forwarding is allowed for localhost and start the docker container. Here's a small bash script:
+    ```
+    #!/bin/bash
+
+    xhost + 127.0.0.1
+
+    docker-compose up -d
+    ```
+
 ### Conclusion? Don't run in a container.
 
-The methods above should work on a Unix distribution like Ubuntu, but because of the limitations MacOS places on accessing hardware drivers, it's best to just install Python on your OSX machine and install pygame. 
+It's now possible to run Pygame in a container, but for performance reasons I will maintiain that it's still best to install Python on your OSX machine and install pygame. But if you absolutely need to, I hope this helps you. It could be as simple as `pip install pygame` and `python <filename>.py`.
 
-It's as simple as `pip install pygame` and `python main.py` or what your file name is.
-
-**Please note:**
-
-- The issue with running Pygame in a container on MacOS are Pygame specific. You can display x11 windows from containers on MacOS. [My post on running Chrome in a container](https://opeonikute.dev/posts/running-chrome-in-a-container) has a great example of this.
-- If you read this and decide to give it a try and get it to work, please shoot me an email at [opeyemionikute@yahoo.com](mailto:opeyemionikute@yahoo.com).
+Thanks to Gabriel Araujo for helping with this.
