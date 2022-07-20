@@ -124,7 +124,7 @@ I found all these libsdl packages in a docker file for another app supposedly ru
 Result? Same error.
 
 ### Attempt #5 (3 years later)
-I got an email from Gabriel Araujo who read this post and pointed me to [a previous article](https://medium.com/@mreichelt/how-to-show-x11-windows-within-docker-on-mac-50759f4b65cb) that worked for him. I tried out the steps and it turns out I was pretty close before. Now I don't use Darwin anymore - I'm on Mojave. This could also be a factor but I'm not going to look into that. Here's what worked as seen in the article:
+I got an email from Gabriel Araujo who read this post and pointed me to [a previous article](https://medium.com/@mreichelt/how-to-show-x11-windows-within-docker-on-mac-50759f4b65cb) that worked for him. I tried out the steps and it turns out I was pretty close before. One factor I'm not going to consider much is that I'm no longer on Darwin - I use Mojave at the time of this writing. Here's what worked as seen in the article:
 
 - Install the latest [XQuartz X11 server](https://www.xquartz.org/) and run it
 - Activate the option ‘Allow connections from network clients’ in XQuartz settings
@@ -162,6 +162,6 @@ I got an email from Gabriel Araujo who read this post and pointed me to [a previ
 
 ### Conclusion? Don't run in a container.
 
-It's now possible to run Pygame in a container, but for performance reasons I will maintiain that it's still best to install Python on your OSX machine and install pygame. But if you absolutely need to, I hope this helps you. It could be as simple as `pip install pygame` and `python <filename>.py`.
+It's now possible to run Pygame in a container, but for performance reasons I will maintain that it's still best to install Python on your OSX machine and install pygame. But if you absolutely need to, I hope this helps you. It could be as simple as `pip install pygame` and `python <filename>.py`.
 
 Thanks to Gabriel Araujo for helping with this.
