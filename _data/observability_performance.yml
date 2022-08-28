@@ -1,3 +1,6 @@
+- title: Distributed Tracing for Batch Workloads with OpenTelemetry
+  link: distributed-tracing-for-batch-workloads
+  date: Aug 2022
 - title: How good is your memory?
   link: how-good-is-your-memory
   date: Dec 2021

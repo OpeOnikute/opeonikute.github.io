@@ -35,3 +35,12 @@ linkedinShare.onclick = function(e) {
   if(linkedinWindow.focus) { linkedinWindow.focus(); }
     return false;
 }
+
+// add lightbox
+const images = document.querySelectorAll('main img');
+for (let i=0; i< images.length; i++) {
+  const image = images[i];
+  image.classList.add('mklbItem');
+  // mklb.js
+  image.addEventListener('click', () => _mklbOpen(image));
+}
