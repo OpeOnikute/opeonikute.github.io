@@ -163,15 +163,9 @@ main.no-image-styling img {
 }
 
 main.blog blockquote {
-  quotes: "“" "”" "‘" "’";
-  margin: 40px;
-}
-
-main.blog blockquote::before {
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  vertical-align: -0.4em;
+  border-left: 0.5px solid white;
+  padding-left: 20px;
+  margin: 20px 0;
 }
 
 main.blog blockquote p {
@@ -348,6 +342,10 @@ code.highlighter-rouge {
   padding-top: 2vw;
 }
 
+main.blog ul, main.blog ol {
+  padding-inline-start: 20px;
+}
+
 ul.about {
   padding: 0;
 }
@@ -419,6 +417,10 @@ main.blog.light-theme .title-date {
   color: rgb(121 121 138);
 }
 
+main.blog.light-theme blockquote {
+  border-left: 0.8px solid rgb(2 3 33 / 91%);
+}
+
 .about-container.light-theme {
   border-top: 1px solid rgb(2 3 33 / 91%);  
 }
@@ -475,9 +477,6 @@ footer.light-theme {
   .link-wrapper {
     flex-direction: column;
     min-height: 30vh;
-  }
-  main.blog blockquote {
-    margin: 40px 20px;
   }
   main.blog ul, main.blog ol {
     padding-inline-start: 10px;
