@@ -4,7 +4,7 @@ title: Distributed Tracing for Batch Workloads with OpenTelemetry
 sub_title: 
 read_time: 6
 date: Aug 2022
-featured_image: https://opeonikute.dev//media/distributed-tracing.png
+featured_image: https://opeonikute.dev/media/distributed-tracing.png
 ---
 
 With the rise of distributed systems in software applications, distributed tracing has become important in understanding how these systems work, and subsequently making them reliable. 
@@ -45,7 +45,7 @@ In distributed tracing, traces are collected for the life cycle of the request, 
 However, off-line data intensive workloads, such as those that fit the MapReduce model, can also benefit from better performance insight.
 > 
 
-As an example, let’s look at a basic NodeJS application that sends a dummy task to RabbitMQ on every request. The worker task itself only sends a request to [google.com](http://google.com). Both the server and worker use OpenTelemetry to export traces [Jaeger](https://www.jaegertracing.io) for visualisation. Here’s what the core logic looks like:
+As an example, let’s look at a basic NodeJS application that sends a dummy task to RabbitMQ on every request. The worker task itself only sends a request to [google.com](http://google.com). Both the server and worker use OpenTelemetry to export traces to [Jaeger](https://www.jaegertracing.io) for visualisation. Here’s what the core logic looks like:
 
 ```jsx
 // app.js
