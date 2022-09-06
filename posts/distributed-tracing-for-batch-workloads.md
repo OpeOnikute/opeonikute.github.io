@@ -233,6 +233,6 @@ Itâ€™s entirely possible that some providers can do this automatically, but itâ€
 
 [^3]: In tracing built for homogeneous systems (e.g. Dapper, Zipkin) which make RPCs for example, the instrumentation is not required as the tracers sit between the layers and record traces automatically.
 
-[^4]: This is an incredible source of value for any company because along with analyzing single requests, you can user-centric create dashboards that present an overall view of the product experience. I experienced this first-hand when I was a part of [building the Observability team at Paystack](https://paystack.com/blog/engineering-design/observability).
+[^4]: This is an incredible source of value for any company because along with analyzing single requests, you can create user-centric dashboards that present an overall view of the product experience. I experienced this first-hand when I was a part of [building the Observability team at Paystack](https://paystack.com/blog/engineering-design/observability).
 
 [^5]: The OTLP propagator requires a getter object which determines how the context is extracted, but this can differ from one provider to the next. e.g. the Datatdog Tracer API required declaration of a "format" as text.
