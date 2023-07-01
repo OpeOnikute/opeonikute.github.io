@@ -302,14 +302,8 @@ footer a {
 code {
   line-height: 20px;
   letter-spacing: normal;
-  border-radius: 5px;
-  padding: 2em 1.5em !important;
+  /* border-radius: 5px; */
 }
-code.highlighter-rouge {
-    padding: 0.5em !important;
-    background: #1E1E1E;
-    color: #DCDCDC;
-  }
 .share-container {
   padding-top: 10px;
   text-align: center;

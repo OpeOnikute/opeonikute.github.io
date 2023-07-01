@@ -16,9 +16,9 @@ function docReady(fn) {
 function setDefaultTheme() {
   let theme = localStorage.getItem('opeonikute-theme');
 
-  // dark is the site default
+  // light is the site default
   if (!theme) {
-    theme = 'dark';
+    theme = 'light';
   }
 
   setTheme(theme);

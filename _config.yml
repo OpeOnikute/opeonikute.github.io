@@ -1,2 +1,3 @@
+highlighter: none
 plugins:  
     - jekyll-redirect-from
