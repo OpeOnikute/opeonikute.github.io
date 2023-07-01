@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Observing NodeJS applications with eBPF
+title: Observing Node.js processes with eBPF
 sub_title:
 read_time: 9
 date: July 2023
