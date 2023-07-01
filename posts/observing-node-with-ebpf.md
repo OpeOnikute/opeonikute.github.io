@@ -104,13 +104,13 @@ With this knowledge, we can add a uprobe to a running Node process once we know 
 
 ![The libuv filesystem open call](/media/libuv_node.png)
 
-The TLDR about libuv is that it is used by Node to handle Async I/O operations. It calls the kernel on behalf of Node for functionality like File System operations and DNS - hence its functions are traceable using attached uprobes from BCC or bpftrace [^7].
+The TLDR about `libuv` is that it is used by Node to handle Async I/O operations. It calls the kernel on behalf of Node for functionality like File System operations and DNS - hence its functions are traceable using attached uprobes from BCC or bpftrace [^7].
 
 ## A non-trivial solution is better than no solution
 
 We know where to trace from now (libuv functions), and what tools to use (uprobes, bpftrace, bcc). How does this hold up in practice? The following steps describe a workable solution:
 
-1. List the libuv functions in the Node binary. This is how you know what you can add a uprobe to. It's quite verbose so you can filter out unneeded functions using `egrep`. e.g to list the fs functions:
+1. List the `libuv` functions in the Node binary. This is how you know what you can add a uprobe to. It's quite verbose so you can filter out unneeded functions using `egrep`. e.g to list the fs functions:
     
     ```console
     vagrant@bullseye:~$ objdump -tT /usr/bin/node | grep uv_fs | egrep -v "(4node|ZN6)" | head -n10
@@ -126,7 +126,7 @@ We know where to trace from now (libuv functions), and what tools to use (uprobe
     000000000111e8f0 g     F .text  00000000000000ae              uv_fs_poll_getpath
     ```
     
-2. Read the docs to see what the function arguments are. You will need this when trying to print arguments like what path was called. To find a function, you can search the libuv docs. e.g. this search for [uv_fs_rename](https://github.com/search?q=repo%3Anodejs%2Fnode%20path%3Adeps%2Fuv%2Fdocs%20uv_fs_rename&type=code) shows that the 3rd argument is the file path, the second is a req struct, etc. If you're curious, you can search for the unfamiliar struct names using the same technique as well. Overall,  the file path seems the most useful for these FS calls.
+2. Read the docs to see what the function arguments are. You will need this when trying to print arguments like what path was called. To find a function, you can search the `libuv` docs. e.g. this search for [uv_fs_rename](https://github.com/search?q=repo%3Anodejs%2Fnode%20path%3Adeps%2Fuv%2Fdocs%20uv_fs_rename&type=code) shows that the 3rd argument is the file path, the second is a req struct, etc. If you're curious, you can search for the unfamiliar struct names using the same technique as well. Overall,  the file path seems the most useful for these FS calls.
     
     ```markdown
     .. c:function:: int uv_fs_rename(uv_loop_t* loop, uv_fs_t* req, const char* path, const char* new_path, uv_fs_cb cb)
@@ -134,41 +134,41 @@ We know where to trace from now (libuv functions), and what tools to use (uprobe
         Equivalent to :man:`rename(2)`.
     ```
     
-3. Attach a uprobe using bpftrace to the libuv function, and you can trace any calls from Node to that function. The syntax for a uprobe is `u:/path/to/binary:<function-name>`. The example below prints out the Process name, PID, File Path and Stack Trace when the `uv_fs_open` function is called [^8]. The file path is the string value of `arg2` as the path is the 3rd argument. For more information about args, see [this section](https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md#4-uprobeuretprobe-dynamic-tracing-user-level-arguments) of the bpftrace reference guide.
+3. Attach a uprobe using bpftrace to the `libuv` function, and you can trace any calls from Node to that function. The syntax for a uprobe is `u:/path/to/binary:<function-name>`. The example below prints out the Process name, PID, File Path and Stack Trace when the `uv_fs_open` function is called [^8]. The file path is the string value of `arg2` as the path is the 3rd argument. For more information about args, see [this section](https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md#4-uprobeuretprobe-dynamic-tracing-user-level-arguments) of the bpftrace reference guide.
 
-```shell
-# Run Node with debug symbols and a mock endpoint that opens a file
-vagrant@bullseye:~$ /usr/bin/node --perf_basic_prof_only_functions /vagrant/src/app.js
-go to http://localhost:8080/ to generate traffic
-gotten file
+    ```shell
+    # Run Node with debug symbols and a mock endpoint that opens a file
+    vagrant@bullseye:~$ /usr/bin/node --perf_basic_prof_only_functions /vagrant/src/app.js
+    go to http://localhost:8080/ to generate traffic
+    gotten file
 
-# Generate test traffic
-vagrant@bullseye:~$ while true; do curl localhost:8080; sleep 2; done
-[...]
+    # Generate test traffic
+    vagrant@bullseye:~$ while true; do curl localhost:8080; sleep 2; done
+    [...]
 
-# Attach a uprobe to uv_fs_open
-vagrant@bullseye:/vagrant$ sudo bpftrace -e 'u:/usr/bin/node:uv_fs_open { printf("process: %s, pid: %d, file path: %s, stack: %s\n", comm, pid, str(arg2), ustack) }'
+    # Attach a uprobe to uv_fs_open
+    vagrant@bullseye:/vagrant$ sudo bpftrace -e 'u:/usr/bin/node:uv_fs_open { printf("process: %s, pid: %d, file path: %s, stack: %s\n", comm, pid, str(arg2), ustack) }'
 
-process: node, pid: 349854, file path: /vagrant/src/text.txt, stack: 
-        uv_fs_open+0
-        [...]
-        uv__read+629
-        uv__stream_io+160
-        uv__io_poll+1372
-        uv_run+324
-        node::NodeMainInstance::Run()+620
-        node::Start(int, char**)+492
-        __libc_start_main+234
-        0x5541d68949564100
+    process: node, pid: 349854, file path: /vagrant/src/text.txt, stack: 
+            uv_fs_open+0
+            [...]
+            uv__read+629
+            uv__stream_io+160
+            uv__io_poll+1372
+            uv_run+324
+            node::NodeMainInstance::Run()+620
+            node::Start(int, char**)+492
+            __libc_start_main+234
+            0x5541d68949564100
 
-vagrant@bullseye:/vagrant$
-```
+    vagrant@bullseye:/vagrant$
+    ```
 
 The output is pretty verbose so I cut out the internal Node functions. In an ideal world, we'd see the full Node stack traces all the time, but as mentioned above this is inconsistent because of the JIT nature of Node. I see some [express](https://expressjs.com/) functions once in a while, but not often enough to be useful.
 
 Regardless, this is powerful because you can filter out by the process, thread, cgroup (for containerized environments), etc. You gain the ability to correlate what is happening on a machine with a Node process, without touching any code. 
 
-For HTTP requests, however, I did some digging and I'm not convinced that Node uses libuv entirely for them. There are some [TCP](https://github.com/nodejs/node/blob/951da5282c7b00eb86a989336d628218fb2df057/deps/uv/docs/src/tcp.rst), [DNS](https://www.notion.so/Observing-NodeJS-applications-with-eBPF-146c9d09f56b4ce3a1df1c23be1843e2?pvs=21) functions, but it's hard to draw a straight line from the Node HTTP module to them. Someone with a better understanding of NodeJS internals would be better placed to investigate that.
+For HTTP requests, however, I did some digging and I'm not convinced that Node uses `libuv` entirely for them. There are some [TCP](https://github.com/nodejs/node/blob/951da5282c7b00eb86a989336d628218fb2df057/deps/uv/docs/src/tcp.rst), [DNS](https://www.notion.so/Observing-NodeJS-applications-with-eBPF-146c9d09f56b4ce3a1df1c23be1843e2?pvs=21) functions, but it's hard to draw a straight line from the Node HTTP module to them. Someone with a better understanding of NodeJS internals would be better placed to investigate that.
 
 This technique can theoretically be used on any underlying library used by Node that satisfies these parameters.
 
@@ -196,6 +196,6 @@ Overall, I think this is too difficult and isn’t a long-term solution. Please 
 
 [^6]: I am learning that in open-source if you don't speak up, it’s very likely that your desired features get dropped (especially when they performance-related). That's why people like [Brendan Gregg](https://www.brendangregg.com/) are so far ahead - others don't care about these things until they have production problems.
 
-[^7]: More information about how to understand the correlation between libuv functions and Node internal functions in [Exposing Node.js internals](https://www.smashingmagazine.com/2020/04/nodejs-internals/).
+[^7]: More information about how to understand the correlation between `libuv` functions and Node internal functions in [Exposing Node.js internals](https://www.smashingmagazine.com/2020/04/nodejs-internals/).
 
 [^8]: [This bpftrace cheatsheet](https://www.brendangregg.com/BPF/bpftrace-cheat-sheet.html) by Brendan Gregg is useful for checking what is available to expose, from bpftrace.
