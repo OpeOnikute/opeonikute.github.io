@@ -1,4 +1,4 @@
-- title: Observing Node.js Processes with eBPF
+- title: Observing Node.js processes with eBPF
   link: observing-node-with-ebpf
   date: July 2023
 - title: Distributed Tracing for Batch Workloads with OpenTelemetry
