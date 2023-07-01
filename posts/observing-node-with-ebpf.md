@@ -141,25 +141,47 @@ We know where to trace from now (libuv functions), and what tools to use (uprobe
     vagrant@bullseye:~$ /usr/bin/node --perf_basic_prof_only_functions /vagrant/src/app.js
     go to http://localhost:8080/ to generate traffic
     gotten file
+    gotten file
 
     # Generate test traffic
     vagrant@bullseye:~$ while true; do curl localhost:8080; sleep 2; done
     [...]
 
     # Attach a uprobe to uv_fs_open
-    vagrant@bullseye:/vagrant$ sudo bpftrace -e 'u:/usr/bin/node:uv_fs_open { printf("process: %s, pid: %d, file path: %s, stack: %s\n", comm, pid, str(arg2), ustack) }'
+    vagrant@bullseye:/vagrant$ sudo bpftrace -e 'u:/usr/bin/node:uv_fs_open 
+    { printf("process: %s, pid: %d, file path: %s, stack: %s\n", comm, pid, str(arg2), ustack) }'
 
     process: node, pid: 349854, file path: /vagrant/src/text.txt, stack: 
-            uv_fs_open+0
-            [...]
-            uv__read+629
-            uv__stream_io+160
-            uv__io_poll+1372
-            uv_run+324
-            node::NodeMainInstance::Run()+620
-            node::Start(int, char**)+492
-            __libc_start_main+234
-            0x5541d68949564100
+        uv_fs_open+0
+        [...]
+        uv__read+629
+        uv__stream_io+160
+        uv__io_poll+1372
+        uv_run+324
+        node::NodeMainInstance::Run()+620
+        node::Start(int, char**)+492
+        __libc_start_main+234
+        0x5541d68949564100
+
+    process: node, pid: 349854, file path: /vagrant/src/text.txt, stack: 
+        uv_fs_open+0
+        Builtin:CallApiCallback+173
+        LazyCompile:* /vagrant/src/handler.js:6+3045
+        Builtin:ArgumentsAdaptorTrampoline+188
+        Builtin:PromiseFulfillReactionJob+50
+        Builtin:RunMicrotasks+538
+        Builtin:JSRunMicrotasksEntry+120
+        v8::internal::(anonymous namespace)::Invoke(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&)+956
+        [...]
+        node::LibuvStreamWrap::OnUvRead(long, uv_buf_t const*)+123
+        uv__read+629
+        uv__stream_io+160
+        uv__io_poll+1372
+        uv_run+324
+        node::NodeMainInstance::Run()+620
+        node::Start(int, char**)+492
+        __libc_start_main+234
+        0x5541d68949564100
 
     vagrant@bullseye:/vagrant$
     ```
