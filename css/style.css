@@ -337,6 +337,10 @@ code {
   padding-top: 2vw;
 }
 
+.about-container p {
+  text-align: center;
+}
+
 main.blog ul, main.blog ol {
   padding-inline-start: 20px;
 }
