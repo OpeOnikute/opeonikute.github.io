@@ -4,7 +4,7 @@ title: Safety Alert
 sub_title: Amber alerts, but more generic and less features.
 read_time: 1
 date: July 2018
-featured_image: https://opeonikute.dev//media/Screen_Shot_2019-05-19_at_20-245fbc4a-aa40-415a-8121-f5ca46df0c1e.44.37.png
+featured_image: https://opeonikute.dev/media/Screen_Shot_2019-05-19_at_20-245fbc4a-aa40-415a-8121-f5ca46df0c1e.44.37.png
 ---
 
 A couple of months ago, a tanker explosion happened in Lagos. A lot of people lost their lives. And then:

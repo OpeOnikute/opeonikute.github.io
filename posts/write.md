@@ -4,7 +4,7 @@ title: Write++
 sub_title: Article generation using pre-defined paths.
 read_time: 2
 date: July 2016
-featured_image: https://opeonikute.dev//media/Screen_Shot_2019-05-17_at_17-b91e7ca1-7408-48c4-9d4d-34cfbe5febfc.22.51.png
+featured_image: https://opeonikute.dev/media/Screen_Shot_2019-05-17_at_17-b91e7ca1-7408-48c4-9d4d-34cfbe5febfc.22.51.png
 ---
 
 ![](/media/Screen_Shot_2019-05-17_at_17-b91e7ca1-7408-48c4-9d4d-34cfbe5febfc.22.51.png)

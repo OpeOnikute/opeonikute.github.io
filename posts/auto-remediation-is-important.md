@@ -1,10 +1,17 @@
-# Auto-remediation is important
+---
+layout: post
+title: Auto-remediation is important
+sub_title:
+read_time: 5
+date: January 2025
+featured_image: https://opeonikute.dev/media/autoremediation_graph.png
+---
 
 Building software at scale is hard. Maintenance is even harder. No company can succeed without a solid approach to handling operational problems.  Failures will happen. As fleet sizes cross 10,000 servers, services need to be increasingly operations-friendly [^1]. Each service should run with as little human intervention as possible. Unfortunately, Operations teams such as DevOps and SRE still find themselves intervening regularly.
 
 There are several considerations when building an ops-friendly product. Some examples are designing for scale, providing redundancy, and building automatic failure recovery. As an experienced SRE, I have a vested interest in the last item, **failure recovery without human intervention**. How do we get there?
 
-![/media/autoremediation_graph.png](Auto-remediation%20is%20important%2017f6b6f8a049804da453c1e5a017700d/IMG_0095.png)
+![Intervention vs Ops Friendliness](/media/autoremediation_graph.png)
 
 In 2018, a payment outage left millions of Visa customers in Europe unable to make payments with their cards. This caused widespread panic, and rightly so. People want to assurance that their money is safe and accessible. The postmortem revealed that a faulty [datacenter switch](https://www.computerweekly.com/news/252443325/Visa-reveals-rare-datacentre-switch-fault-as-root-cause-of-June-2018-outage) caused a number of transaction failures. Considering it took  ~10 hours for the issue to be resolved, I think it’s safe to say that a lot of people worked together for a while to get the fix out. Without intervention, it would’ve been even longer. 
 
@@ -24,7 +31,7 @@ It is also common to use an orchestration system such as Kubernetes. Hardware fa
 
 It is common to find on-premise infrastructure in larger companies. When you own both the software and hardware, it’s more likely that you need to think about infrastructure auto-remediation. This is why these companies have had to solve problems from the bottom up and have created well-known solutions. These solutions often form the basis of cloud offerings and other well-known orchestration systems. Kubernetes for example was based largely on Borg, a large-scale cluster management system developed by Google [^2]. Meta has described FBAR, an auto-remediation system that was initially designed to automatically recover from hardware failures but has since been extended to service owners for custom remediation [^3]. Microsoft Autopilot automates provisioning and deployment, as well as recovery from faulty software and hardware [^4]. More recently, Cloudflare described an auto-remediation system built by SRE to kill toil, with additional reliability provided by durable execution technology (the author should look familiar) [^5].
 
-![/media/autoremediation_companies.png](Auto-remediation%20is%20important%2017f6b6f8a049804da453c1e5a017700d/IMG_0094.png)
+![Auto remediation companies](/media/autoremediation_companies.png)
 
 Having built one from the ground up, I have seen firsthand how transformative an auto-remediation system can be. Reducing toil and making on-calls less stressful is one thing, but creating a shared strategy and vision is even more beneficial. I intend to write more long-form material about how to design such a system and achieve ops-friendly environments. For now, you can read the article on the Cloudflare blog. If you have any questions or something you’ve found interesting, please reach out. I’m particularly interested in companies where this is less of a problem that needs solving - things just seem to work. Why?
 
@@ -36,14 +43,14 @@ Speak soon.
 
 ### Footnotes
 
-[1] James Hamilton: On Designing and Deploying Internet-Scale Services [https://s3.amazonaws.com/systemsandpapers/papers/hamilton.pdf](https://s3.amazonaws.com/systemsandpapers/papers/hamilton.pdf)
+[1]: James Hamilton: On Designing and Deploying Internet-Scale Services [https://s3.amazonaws.com/systemsandpapers/papers/hamilton.pdf](https://s3.amazonaws.com/systemsandpapers/papers/hamilton.pdf)
 
-[2] Google: Large-scale cluster management at Google with Borg [https://dl.acm.org/doi/pdf/10.1145/2741948.2741964](https://dl.acm.org/doi/pdf/10.1145/2741948.2741964)
+[2]: Google: Large-scale cluster management at Google with Borg [https://dl.acm.org/doi/pdf/10.1145/2741948.2741964](https://dl.acm.org/doi/pdf/10.1145/2741948.2741964)
 
-[3] Meta: FBAR (Facebook Auto-Remediation) was initially described in  [https://engineering.fb.com/2011/09/15/data-center-engineering/making-facebook-self-healing/](https://engineering.fb.com/2011/09/15/data-center-engineering/making-facebook-self-healing/)
+[3]: Meta: FBAR (Facebook Auto-Remediation) was initially described in  [https://engineering.fb.com/2011/09/15/data-center-engineering/making-facebook-self-healing/](https://engineering.fb.com/2011/09/15/data-center-engineering/making-facebook-self-healing/)
 
-[4] Microsoft: Automatic Data Center Management [https://www.microsoft.com/en-us/research/publication/autopilot-automatic-data-center-management/](https://www.microsoft.com/en-us/research/publication/autopilot-automatic-data-center-management/)
+[4]: Microsoft: Automatic Data Center Management [https://www.microsoft.com/en-us/research/publication/autopilot-automatic-data-center-management/](https://www.microsoft.com/en-us/research/publication/autopilot-automatic-data-center-management/)
 
-[5] Cloudflare: Improving platform resilience at Cloudflare through automation [https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare/](https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare/)
+[5]: Cloudflare: Improving platform resilience at Cloudflare through automation [https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare/](https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare/)
 
-[6] Meta: Predicting Remediations for Hardware Failures in Large-Scale Datacenters [https://research.facebook.com/publications/predicting-remediations-for-hardware-failures-in-large-scale-datacenters/](https://research.facebook.com/publications/predicting-remediations-for-hardware-failures-in-large-scale-datacenters/)
+[6]: Meta: Predicting Remediations for Hardware Failures in Large-Scale Datacenters [https://research.facebook.com/publications/predicting-remediations-for-hardware-failures-in-large-scale-datacenters/](https://research.facebook.com/publications/predicting-remediations-for-hardware-failures-in-large-scale-datacenters/)
