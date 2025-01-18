@@ -443,10 +443,6 @@ footer.light-theme {
   .about-content {
     padding: 0;
   }
-  .about-item {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
   .about-item.first{
     border-top: none;
   }
