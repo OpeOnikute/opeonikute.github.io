@@ -4,7 +4,7 @@ title: Ejo
 sub_title: Yoruba Snake Game
 read_time: 5
 date: June 2015
-featured_image: https://opeonikute.dev//media/Screen_Shot_2019-05-31_at_18-68f781df-b88a-4804-9262-e39b15ef598a.28.03.png
+featured_image: https://opeonikute.dev/media/Screen_Shot_2019-05-31_at_18-68f781df-b88a-4804-9262-e39b15ef598a.28.03.png
 ---
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/K5F-aGDIYaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
