@@ -209,6 +209,7 @@ main.blog h4 {
 .posts .date {
   font-size: small;
   color: #eab208;
+  margin: 0;
 }
 
 header {

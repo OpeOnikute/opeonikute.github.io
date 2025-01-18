@@ -43,14 +43,14 @@ Speak soon.
 
 ### Footnotes
 
-[^1]: James Hamilton - On Designing and Deploying Internet-Scale Services [https://s3.amazonaws.com/systemsandpapers/papers/hamilton.pdf](https://s3.amazonaws.com/systemsandpapers/papers/hamilton.pdf)
+[^1]: James Hamilton - [On Designing and Deploying Internet-Scale Services](https://s3.amazonaws.com/systemsandpapers/papers/hamilton.pdf)
 
-[^2]: Google - Large-scale cluster management at Google with Borg [https://dl.acm.org/doi/pdf/10.1145/2741948.2741964](https://dl.acm.org/doi/pdf/10.1145/2741948.2741964)
+[^2]: Google - [Large-scale cluster management at Google with Borg](https://dl.acm.org/doi/pdf/10.1145/2741948.2741964)
 
-[^3]: Meta - FBAR (Facebook Auto-Remediation) was initially described in  [https://engineering.fb.com/2011/09/15/data-center-engineering/making-facebook-self-healing/](https://engineering.fb.com/2011/09/15/data-center-engineering/making-facebook-self-healing/)
+[^3]: Meta - FBAR (Facebook Auto-Remediation) was initially described in  [Making Facebook self-healing](https://engineering.fb.com/2011/09/15/data-center-engineering/making-facebook-self-healing/)
 
-[^4]: Microsoft - Automatic Data Center Management [https://www.microsoft.com/en-us/research/publication/autopilot-automatic-data-center-management/](https://www.microsoft.com/en-us/research/publication/autopilot-automatic-data-center-management/)
+[^4]: Microsoft - [Automatic Data Center Management](https://www.microsoft.com/en-us/research/publication/autopilot-automatic-data-center-management/)
 
-[^5]: Cloudflare - Improving platform resilience at Cloudflare through automation [https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare/](https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare/)
+[^5]: Cloudflare - [Improving platform resilience at Cloudflare through automation](https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare/)
 
-[^6]: Meta - Predicting Remediations for Hardware Failures in Large-Scale Datacenters [https://research.facebook.com/publications/predicting-remediations-for-hardware-failures-in-large-scale-datacenters/](https://research.facebook.com/publications/predicting-remediations-for-hardware-failures-in-large-scale-datacenters/)
+[^6]: Meta - [Predicting Remediations for Hardware Failures in Large-Scale Datacenters](https://research.facebook.com/publications/predicting-remediations-for-hardware-failures-in-large-scale-datacenters/)
