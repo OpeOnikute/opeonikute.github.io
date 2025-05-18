@@ -1,19 +1,6 @@
-
-- An LLM chat interface to talk to me based on the information in my blog (TODO: This is blocked on switching to a ).
-    - Built on Temporal to automatically retry prompts
-- Section about alternatives (NoteBookLM, etc) and how you can use them in this scenario
-- Section about how a setup in a news agency would probably look like
-- Send email to Techcabal editor ✅
-    - Inform them about danger of open wordpress
-    - Suggest a page on AI training policy for their website
-    - Chance to read the draft, option to add the Techcabal information to the post?
-- Add a bottom update to the write++ post, linking to the new one
-- Send message to Skweird
-- Rewrite this as a research paper and submit to a journal to get feedback
-
 ---
 layout: post
-title: TBD
+title: Something about AI in journalism
 sub_title: TBD
 read_time: 
 date: May 2025
@@ -41,17 +28,26 @@ In the rest of this post, I'll discuss LLMs in the context of journalism. How ca
 
 ### Training a Model
 
-**The title here is a bit misleading.
-Maybe not? You don't need to train the model because all you need is the exta context.
-So a simple paragraph about choosing the right model will suffice.**
+The foundation of any LLM is the underlying model. Most popular vendors have a fair amount of available models with different price points. There are also several open-source models of comparable quality. The models are trained on a vast amount of data, which helps them to generate and understand human language.
 
-#### *Insert title about RAG*
+Because existing models are already so good at language, there should be no need for a journalist/newsroom to train one. Training is expensive and it's more cost-effective to use one of the existing models. The skill you should be honing is choosing the right model -- personally I prefer the OpenAI models for any sort of creative writing/ideation.
+
+The existence of AI doesn't we should blindly apply it to everything, though. It's important to understand **why** we are applying LLMs to story-telling. It's not enough to use a shiny new technology just because it exists. It needs to provide exponential benefits over existing techniques to provide a return on investment.
+
+The main power of AI agents is their ability to handle non-deterministic scenarios, where traditional approaches fall short. They can evaluate context, consider different scenarios and spot patterns [^4]. Instead of a sequential, checklist-based approach, an LLM can take in multiple pieces of information and apply a holistic approach to solving a complex problem.
+
+The world of journalism is full of unstructured data that need to be broken down, understood and used to create compelling stories. With the right approach, we can use AI tools to write more insightful, creative and important stories.
+
+With a good base model, we then need to provide real-time context for accurate results. Even though LLMs are trained on a vast database of information, it's very likely that they don't have local context, or that the training information is already out-of-date.
+
+There are two primary ways to provide this context - Retrieval Augmented Generation (RAG) and more recently the Model Context Protocol (MCP).
+
+#### Retrieval Augmented Generation (RAG)
 
 
-#### *Title about MCP*
+#### Model Context Protocol (MCP)
 - Also add a simple MCP server demo for a news site?
     - Another open-source project to spam
-- 
 
 ### Research question: how do you design an in-house information system to ensure news accuracy?
 
@@ -63,10 +59,27 @@ So a simple paragraph about choosing the right model will suffice.**
 
 ### Auto-RAG
 
+### Other Existing Tools
+
 ### Bonus: RAG demo (my website)
 * Will need an open-source model so people can test 
 * Or should I use Auto-RAG to promote Cloudflare and somehow embed it into the post?
 
 ### Footnotes
-[^1]: Original post with a confusing, non-indicative name https://opeonikute.dev/posts/write
-[^2]: AI chatbots unable to accurately summarise news, BBC finds https://www.bbc.com/news/articles/c0m17d8827ko
+[^1]: [Original post with a confusing, non-indicative name](https://opeonikute.dev/posts/write)
+[^2]: [AI chatbots unable to accurately summarise news, BBC finds](https://www.bbc.com/news/articles/c0m17d8827ko)
+[^3]: [Open Router, Models](https://openrouter.ai/models)
+[^4]: [A practical guide to building agents - Open AI](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf)
+
+# Notes
+- An LLM chat interface to talk to me based on the information in my blog (TODO: This is blocked on switching to a ).
+    - Built on Temporal to automatically retry prompts
+- Section about alternatives (NoteBookLM, etc) and how you can use them in this scenario
+- Section about how a setup in a news agency would probably look like
+- Send email to Techcabal editor ✅
+    - Inform them about danger of open wordpress
+    - Suggest a page on AI training policy for their website
+    - Chance to read the draft, option to add the Techcabal information to the post?
+- Add a bottom update to the write++ post, linking to the new one
+- Send message to Skweird
+- Rewrite this as a research paper and submit to a journal to get feedback
