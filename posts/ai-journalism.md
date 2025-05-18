@@ -12,31 +12,31 @@ I came into the tech industry in Nigeria at a fortunate time. There was a very s
 
 *TODO* - create the conflict - why I had the idea.
 
-Almost 10 years ago, I had an idea for a tool to generate stories for journalists based on strictly-defined prompts [^1]. After answering a couple of questions, the users would get a long-form story they could tweak at will. If that sounds familiar, it's because that has turned out to be Generative AI. 
+Almost 10 years ago, I had an idea for a tool to generate stories for journalists based on strictly-defined prompts [^1]. After answering a couple of questions, the user gets a long-form story they can tweak at will. If that sounds familiar, it's because it has turned out to be Generative AI. 
 
-A usable solution was not in my skillset at the time and the technology wasn't there. I also obviously had no way of knowing that it would manifest in this way, but it has been interesting to see technology finally catch up to a version of my vision. 
+I did not pursue this idea any further because a usable solution was not in my skillset at the time, and the technology wasn't there. I also obviously had no way of knowing that it would manifest in this way. It has however been interesting to see technology finally catch up to a version of this idea. 
 
 Also, nobody reached out:
 > Hopefully i’ll be able to revisit this later in some machine-learning capacity. If you’re reading this and have ideas on how this could work, please reach out.
 
 ## *Insert title of next section*
-Nowadays, I don't believe we should aim to have machines generate our stories. Journalism is about much more than generating content, and Large-Language Models (LLMs) cannot be fully trusted with both real-time and historical facts. BBC research found that major AI chatbots like ChatGPT and Gemini produced significant inaccuracies in over half of the news summaries that they tested [^2].
+Nowadays, I don't believe we should aim to have machines generate our stories. Journalism is about much more than generating content, and Large-Language Models (LLMs) cannot be fully trusted with both real-time and historical facts. BBC research recently found that popular AI tools like ChatGPT and Gemini produced significant inaccuracies in over half of the news summaries that they tested [^2].
 
-It should not be surprising that I now think the best use of such a tool would be as an assistant for research, fact-checking, and ideation. LLMs should not replace our fundamental ability to reason and create.
+It should not be surprising that I now think the best use of such a tool would be as an assistant for research, fact-checking, and ideation. **LLMs should not replace our fundamental ability to reason and create**.
 
-In the rest of this post, I'll discuss LLMs in the context of journalism. How can we use AI to write better stories in the real world?
+So how can we use AI to write better stories in the real world?
 
 ### Training a Model
 
-The foundation of any LLM is the underlying model. Most popular vendors have a fair amount of available models with different price points. There are also several open-source models of comparable quality. The models are trained on a vast amount of data, which helps them to generate and understand human language.
+The foundation of any LLM is the underlying model. Most popular vendors have a fair amount of available models with different price points. There are also several open-source models of comparable quality [^3]. The models are trained on a vast amount of data, which helps them to generate and understand human language.
 
-Because existing models are already so good at language, there should be no need for a journalist/newsroom to train one. Training is expensive and it's more cost-effective to use one of the existing models. The skill you should be honing is choosing the right model -- personally I prefer the OpenAI models for any sort of creative writing/ideation.
+Because existing models are already so good at human language, there should be no need for a journalist/newsroom to train their own models. Training is expensive and it's more cost-effective to use one of the existing models. The skill you should probably be honing is choosing the right model -- personally I prefer the OpenAI models for any sort of creative writing/ideation.
 
-The existence of AI doesn't we should blindly apply it to everything, though. It's important to understand **why** we are applying LLMs to story-telling. It's not enough to use a shiny new technology just because it exists. It needs to provide exponential benefits over existing techniques to provide a return on investment.
+The existence of AI doesn't mean we should blindly apply it to everything, though. It's important to understand *why* we are applying LLMs to story-telling. It's not enough to use a shiny new technology just because it exists. It needs to provide exponential benefits over existing techniques to provide a return on investment.
 
-The main power of AI agents is their ability to handle non-deterministic scenarios, where traditional approaches fall short. They can evaluate context, consider different scenarios and spot patterns [^4]. Instead of a sequential, checklist-based approach, an LLM can take in multiple pieces of information and apply a holistic approach to solving a complex problem.
+The main power of AI agents is their ability to handle non-deterministic scenarios, where traditional approaches fall short. They can evaluate context, consider different scenarios and spot patterns [^4]. Instead of a sequential, checklist-based approach, an LLM can take in structured/un-structured information and apply a holistic approach to solving a complex problem.
 
-The world of journalism is full of unstructured data that need to be broken down, understood and used to create compelling stories. With the right approach, we can use AI tools to write more insightful, creative and important stories.
+The world of journalism is full of unstructured data that needs to be broken down, understood and used to create compelling stories. With the right approach, we can use AI tools to write more insightful, creative and important stories.
 
 With a good base model, we then need to provide real-time context for accurate results. Even though LLMs are trained on a vast database of information, it's very likely that they don't have local context, or that the training information is already out-of-date.
 
