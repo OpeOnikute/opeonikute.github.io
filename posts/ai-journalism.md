@@ -7,7 +7,9 @@
     - Inform them about danger of open wordpress
     - Suggest a page on AI training policy for their website
     - Chance to read the draft, option to add the Techcabal information to the post?
+- Add a bottom update to the write++ post, linking to the new one
 - Send message to Skweird
+- Rewrite this as a research paper and submit to a journal to get feedback
 
 ---
 layout: post
@@ -31,10 +33,40 @@ Also, nobody reached out:
 > Hopefully i’ll be able to revisit this later in some machine-learning capacity. If you’re reading this and have ideas on how this could work, please reach out.
 
 ## *Insert title of next section*
-The fundamental premise was wrong though. Nowadays I don't believe we should be aiming to have machines generate our stories.
+Nowadays, I don't believe we should aim to have machines generate our stories. Journalism is about much more than generating content, and Large-Language Models (LLMs) cannot be fully trusted with both real-time and historical facts. BBC research found that major AI chatbots like ChatGPT and Gemini produced significant inaccuracies in over half of the news summaries that they tested [^2].
+
+It should not be surprising that I now think the best use of such a tool would be as an assistant for research, fact-checking, and ideation. LLMs should not replace our fundamental ability to reason and create.
+
+In the rest of this post, I'll discuss LLMs in the context of journalism. How can we use AI to write better stories in the real world?
+
+### Training a Model
+
+**The title here is a bit misleading.
+Maybe not? You don't need to train the model because all you need is the exta context.
+So a simple paragraph about choosing the right model will suffice.**
+
+#### *Insert title about RAG*
 
 
+#### *Title about MCP*
+- Also add a simple MCP server demo for a news site?
+    - Another open-source project to spam
+- 
 
+### Research question: how do you design an in-house information system to ensure news accuracy?
+
+#### Real-time streaming
+
+#### Human in-the-loop
+
+#### Guardrails
+
+### Auto-RAG
+
+### Bonus: RAG demo (my website)
+* Will need an open-source model so people can test 
+* Or should I use Auto-RAG to promote Cloudflare and somehow embed it into the post?
 
 ### Footnotes
 [^1]: Original post with a confusing, non-indicative name https://opeonikute.dev/posts/write
+[^2]: AI chatbots unable to accurately summarise news, BBC finds https://www.bbc.com/news/articles/c0m17d8827ko
