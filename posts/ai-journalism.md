@@ -28,6 +28,8 @@ So how can we use AI to write better stories in the real world?
 
 ### Training a Model
 
+*TODO* LLM model arhcitecture image
+
 The foundation of any LLM is the underlying model. Most popular vendors have a fair amount of available models with different price points. There are also several open-source models of comparable quality [^3]. The models are trained on a vast amount of data, which helps them to generate and understand human language.
 
 Because existing models are already so good at human language, there should be no need for a journalist/newsroom to train their own models. Training is expensive and it's more cost-effective to use one of the existing models. The skill you should probably be honing is choosing the right model -- personally I prefer the OpenAI models for any sort of creative writing/ideation.
@@ -44,10 +46,105 @@ There are two primary ways to provide this context - Retrieval Augmented Generat
 
 #### Retrieval Augmented Generation (RAG)
 
+RAG is a method used to improve the output of an LLM by allowing having it reference external, authoritative knowledge before generating a response. With access to factual information, the model is less likely to "*hallucinate*" [^2]. This is especially important in a field like journalism where wrong information can spread like wildfire.
+
+*TODO* - RAG Image but in the context of journalism content (websites, books, blogs, articles)
+
+With RAG, an LLM assistant for journalism can first obtain relevant new information from websites, blogs, books, etc, for relevant, context-aware responses. Basic users of AI tools simply instruct the provider to "search the web", but it would be even more useful to implement in-house RAG based on internal proprietary data and in-house research.
+
+A basic RAG system can be implemented in a sequence of steps:
+1. Ingest the data: Compile the information into an accessible source like a filesystem or database. There are several options because tools like LangChain [can load several types of documents](https://python.langchain.com/docs/integrations/document_loaders/), from webpages and PDFs, to cloud providers.
+
+2. Pre-process the data: To solve for context-window limitations, basic RAG splits text data into chunks and indexed. These are then used to create vector embeddings and stored in a vector database. When providing context to the LLMs, the same mechanism is then used to do a similar search between the user query and the stored data [^5]. This helps the LLM find the most relevant information.
+
+    ```
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+    def split_documents(self, documents):
+        """Split documents into smaller chunks for better retrieval."""
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000,
+            chunk_overlap=200,
+            length_function=len,
+        )
+        chunks = text_splitter.split_documents(documents)
+        print(f"Split into {len(chunks)} chunks")
+        return chunks
+
+    # Split documents into chunks 
+    documents = self.load_documents()
+    chunks = self.split_documents(documents)
+    ```
+
+3. Store the data in a vector database: Production-grade systems should store in a proper database. But for test purposes, local storage is acceptable.
+
+    ```
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    from langchain_chroma import Chroma
+    
+    persist_dir = "./vectorstore
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
+    # Create and persist the vector store
+    vector_store = Chroma.from_documents(
+        documents=chunks,
+        embedding=embeddings,
+        persist_directory=persist_dir
+    )
+    ```
+
+4. Prompt augmentation and response generation: When handling a query, the prompt provided to the LLM can then be enriched with the most relevant documents based on the basic semantic search.
+
+    ```
+    def setup_qa_chain(self, vector_store: Chroma) -> RetrievalQA:
+        """Set up the question-answering chain"""
+        prompt_template = """You are an expert on African technology companies and startups.
+Use the following articles to answer the question. If you don't know or aren't sure, say so.
+Always cite your sources using the provided URLs.
+
+Articles:
+{context}
+
+Question: {question}
+
+Answer with facts from the provided articles, citing sources using URLs when possible:"""
+        
+        PROMPT = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
+        
+        # Create the chain
+        qa_chain = RetrievalQA.from_chain_type(
+            llm=self.llm,
+            chain_type="stuff",
+            retriever=vector_store.as_retriever(
+                search_type="similarity",
+                search_kwargs={"k": 3}
+            ),
+            chain_type_kwargs={
+                "prompt": PROMPT,
+                "verbose": True
+            },
+            return_source_documents=True
+        )
+        
+        return qa_chain
+    
+    qa_chain = self.setup_qa_chain(vector_store)
+
+    ## Answer a user's question
+    result = qa_chain({"query": question})
+    ```
+
+I'd argue that while vector embeddings are useful and can help with making sense of a large corpus of unstructured data, it's possible to do RAG by simply just augmenting prompts. If context windows don't matter much and you have a limited set of specific data, you can just load the text into the prompt. That's also a form of RAG, albeit very basic.
+
+Full sample code can be found on [Github](https://github.com/OpeOnikute/news-rag).
 
 #### Model Context Protocol (MCP)
 - Also add a simple MCP server demo for a news site?
     - Another open-source project to spam
+    - A server that can get a link to a blog, read it using beautifulsoup and create the resources (pages/articles) to the LLM. But managing context windows is important
+        - The MCP server can do things like get specific posts
+            - Maybe a combination of RAG and MCP?
+            - Implementing any specific text search to handle context windows only works if you can fetch the relevant content, which is ultimately RAG
 
 ### Research question: how do you design an in-house information system to ensure news accuracy?
 
@@ -70,6 +167,8 @@ There are two primary ways to provide this context - Retrieval Augmented Generat
 [^2]: [AI chatbots unable to accurately summarise news, BBC finds](https://www.bbc.com/news/articles/c0m17d8827ko)
 [^3]: [Open Router, Models](https://openrouter.ai/models)
 [^4]: [A practical guide to building agents - Open AI](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf)
+[^5]: [Retrieval-Augmented Generation for Large
+Language Models: A Survey](https://arxiv.org/abs/2312.10997)
 
 # Notes
 - An LLM chat interface to talk to me based on the information in my blog (TODO: This is blocked on switching to a ).
