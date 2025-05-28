@@ -99,15 +99,15 @@ A basic RAG system can be implemented in a sequence of steps:
     def setup_qa_chain(self, vector_store: Chroma) -> RetrievalQA:
         """Set up the question-answering chain"""
         prompt_template = """You are an expert on African technology companies and startups.
-Use the following articles to answer the question. If you don't know or aren't sure, say so.
-Always cite your sources using the provided URLs.
+        Use the following articles to answer the question. If you don't know or aren't sure, say so.
+        Always cite your sources using the provided URLs.
 
-Articles:
-{context}
+        Articles:
+        {context}
 
-Question: {question}
+        Question: {question}
 
-Answer with facts from the provided articles, citing sources using URLs when possible:"""
+        Answer with facts from the provided articles, citing sources using URLs when possible:"""
         
         PROMPT = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
         
@@ -167,8 +167,7 @@ Full sample code can be found on [Github](https://github.com/OpeOnikute/news-rag
 [^2]: [AI chatbots unable to accurately summarise news, BBC finds](https://www.bbc.com/news/articles/c0m17d8827ko)
 [^3]: [Open Router, Models](https://openrouter.ai/models)
 [^4]: [A practical guide to building agents - Open AI](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf)
-[^5]: [Retrieval-Augmented Generation for Large
-Language Models: A Survey](https://arxiv.org/abs/2312.10997)
+[^5]: [Retrieval-Augmented Generation for Large Language Models: A Survey](https://arxiv.org/abs/2312.10997)
 
 # Notes
 - An LLM chat interface to talk to me based on the information in my blog (TODO: This is blocked on switching to a ).
