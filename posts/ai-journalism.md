@@ -53,9 +53,11 @@ RAG is a method used to improve the output of an LLM by allowing having it refer
 With RAG, an LLM assistant for journalism can first obtain relevant new information from websites, blogs, books, etc, for relevant, context-aware responses. Basic users of AI tools simply instruct the provider to "search the web", but it would be even more useful to implement in-house RAG based on internal proprietary data and in-house research.
 
 A basic RAG system can be implemented in a sequence of steps:
-1. Ingest the data: Compile the information into an accessible source like a filesystem or database. There are several options because tools like LangChain [can load several types of documents](https://python.langchain.com/docs/integrations/document_loaders/), from webpages and PDFs, to cloud providers.
+1. **Ingest the data**:
+    Compile the information into an accessible source like a filesystem or database. There are several options because tools like LangChain [can load several types of documents](https://python.langchain.com/docs/integrations/document_loaders/), from webpages and PDFs, to cloud providers.
 
-2. Pre-process the data: To solve for context-window limitations, basic RAG splits text data into chunks and indexed. These are then used to create vector embeddings and stored in a vector database. When providing context to the LLMs, the same mechanism is then used to do a similar search between the user query and the stored data [^5]. This helps the LLM find the most relevant information.
+2. **Pre-process the data**: 
+    To solve for context-window limitations, basic RAG splits text data into chunks and indexed. These are then used to create vector embeddings and stored in a vector database. When providing context to the LLMs, the same mechanism is then used to do a similar search between the user query and the stored data [^5]. This helps the LLM find the most relevant information.
 
     ```
     from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -76,7 +78,8 @@ A basic RAG system can be implemented in a sequence of steps:
     chunks = self.split_documents(documents)
     ```
 
-3. Store the data in a vector database: Production-grade systems should store in a proper database. But for test purposes, local storage is acceptable.
+3. **Store the data in a vector database**: 
+    Production-grade systems should store in a proper database. But for test purposes, local storage is acceptable.
 
     ```
     from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -93,7 +96,8 @@ A basic RAG system can be implemented in a sequence of steps:
     )
     ```
 
-4. Prompt augmentation and response generation: When handling a query, the prompt provided to the LLM can then be enriched with the most relevant documents based on the basic semantic search.
+4. **Prompt augmentation and response generation**:
+    When handling a query, the prompt provided to the LLM can then be enriched with the most relevant documents based on the basic semantic search.
 
     ```
     def setup_qa_chain(self, vector_store: Chroma) -> RetrievalQA:
@@ -139,6 +143,14 @@ I'd argue that while vector embeddings are useful and can help with making sense
 Full sample code can be found on [Github](https://github.com/OpeOnikute/news-rag).
 
 #### Model Context Protocol (MCP)
+MCP is a more recent development from Anthropic. Their aim was to define an industry standard for providing LLMs access to external resources [^6]. Similar to RAG, this saves LLMs from their isolation from data.
+
+One problem with RAG is the need to implement an LLM integration for every data source. Instead, developers can create an MCP server and **any** for any LLM to use. The data is exposed through MCP servers, and consumed by MCP clients (LLM applications).
+
+We've already seen an explosion of MCP servers in the past couple of months, with several infrastructure companies also making it possible to host remote MCP servers. While the standard is nascent, it's simple to implement with little barrier-to-entry. The main concerns have been security, which has seen several proposals [^7].
+
+*TODO: Make MCP server demo page for news site*
+
 - Also add a simple MCP server demo for a news site?
     - Another open-source project to spam
     - A server that can get a link to a blog, read it using beautifulsoup and create the resources (pages/articles) to the LLM. But managing context windows is important
@@ -168,6 +180,8 @@ Full sample code can be found on [Github](https://github.com/OpeOnikute/news-rag
 [^3]: [Open Router, Models](https://openrouter.ai/models)
 [^4]: [A practical guide to building agents - Open AI](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf)
 [^5]: [Retrieval-Augmented Generation for Large Language Models: A Survey](https://arxiv.org/abs/2312.10997)
+[^6]: [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
+[^7]: [Authentication #64](https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/64)
 
 # Notes
 - An LLM chat interface to talk to me based on the information in my blog (TODO: This is blocked on switching to a ).
