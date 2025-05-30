@@ -158,11 +158,23 @@ We've already seen an explosion of MCP servers in the past couple of months, wit
             - Maybe a combination of RAG and MCP?
             - Implementing any specific text search to handle context windows only works if you can fetch the relevant content, which is ultimately RAG
 
-### Research question: how do you design an in-house information system to ensure news accuracy?
+### Research: How do you design an LLM-powered news pipeline?
 
-#### Real-time streaming
+For any of this to be relevant to the industry, it needs to actually work in practice. A great way to get an edge on other news agencies is to create a structured data pipeline that can be combined with the power of LLMs, alongside existing best practices. 
 
-#### Human in-the-loop
+LLMs can improve several workstreams as assistants:
+- **Summarisation**: During research, you can get an LLM to summarise streams of verbose documents.
+- **Script ideation**: Instead of blindly generating stories, you can get new ideas and iterate on existing ones.
+- **Fact-checking**: With access to both your internal tools and several external sources, LLMs can support and scale up fact-checking during the writing process.
+- **Content personalisation**: You can rewrite existing posts to tailor to specific audiences, or even translate posts to other languages while maintaining the original tone.
+- **General research**: Ask questions, get answers quickly.
+
+The pipeline itself will differ based on company/agency/industry goals, and the scale of the technical team. However, consider the following basic framework for an internal pipeline.
+
+#### Ingest, index and store information
+
+
+#### Use the information: Human in-the-loop techniques
 
 #### Guardrails
 
