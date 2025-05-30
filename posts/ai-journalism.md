@@ -238,26 +238,41 @@ result = safe_qa_chain("Tell me about TechCabal")
 
 *TODO: Insert AutoRAG gif*
 
-If you need a quick and simple way to add get an LLM assistant for any existing content, Auto RAG might interest you [^8]. You can use AutoRAG to build a simple chatbot that can answer questions about a website. Teams would typically use this to help customers get answers to product questions or navigate documentation, but I can see how it can easily apply to writing as well.
+If you need a quick and simple way to add get an LLM assistant for any existing content, Auto RAG might interest you [^8]. You can use AutoRAG - a Cloudflare product - to build a simple chatbot that can answer questions about a website. Teams would typically use this to help customers get answers to product questions or navigate documentation, but I can see how it can easily apply to writing as well.
 
 Instead of building a complicated RAG system (that you have to maintain), you can use AutoRAG to provide research, fact-checking and summary assistants to your team members. This is an easy way to get introduced to the world of LLMs, and it's available on the free plan as well.
 
 Personally, I plan to experiment with implementing AutoRAG for my personal website. It can help answer questions about me and my career for anyone that just wants to skim. It can also be a useful tool to help a journalist quickly get information about a company from their website without relying on search-engine indexing.
 
-*Disclaimer: Cloudflare is my employer*.
+A new industry-standard addition to press kits, perhaps?
+
+*Disclaimer: Cloudflare is my employer. For more information about AutoRAG, see the [demo on Youtube](https://youtu.be/JUFdbkiDN2U?si=YY8nKCdvTH6VSfOw)*.
 
 #### Other Existing Tools
 
 There are several other ways to get more productive using LLMs without engineering firepower. I don't think this would be any different from workflows I use during my personal research, so I will briefly run through some tools I find helpful today.
 
-1. **ChatGPT**: 
+1. **ChatGPT**: I use ChatGPT for general daily questions, but it's also my most-used tool for scripting and ideation. I find that it's better at the "creative" aspects than other tools, at least for me. My favourite feature however is Deep Research. I enjoy getting in-depth reports about niche subjects from sources far and wide. It's great that you can also tell it to take a look at research papers, which I find useful to the autheniticity of any ideation I do. The obvious challenge with a consumer product is the lack of context, but with the rise of MCP servers, I won't be surprised if more people create servers and connect their resources to ChatGPT directly. This obviously comes with a risk of data infringement/safety, but it depends on you and your appetite.
 
-2. **Gemini**:
+2. **Gemini**: My primary use for Gemini is Deep Research. While I prefer the output and depth of ChatGPT responses, it takes a long time. This can be frustrating when have a lot of tasks to do. Gemini is also very thorough - a bit too verbose for my liking, but thorough. It's also the more affordable option and you get more value for your money.
 
-3. **NotebookLM**:
+3. **NotebookLM**: I was blown away the first time I used NotebookLM to analyse a document I uploaded. It's a great way to do single-instance RAG and by extension, useful for ideation and research. I haven't used it extensively in a while, but it's a tool you should definitely be looking at to improve your research workflow [^9].
 
-4. **Napkin AI**:
+4. **Elicit**: I enjoy using Elicit for research because it's a great way to find research papers relevant to any topic, using plaintext queries. A similar niche tool to find resources relevant to journalism would be great, but if you ever need to find papers, I recommend. Imagine if you could find old newspapers that reference a topic you are writing about on the fly? Someone speak to Ridwan from [archivi.ng](https://archivi.ng/).
 
+4. **Napkin AI**: Napkin is great for getting sketches based on your text. I use it to get rough ideas for diagrams, especially when I'm struggling to visualise a thought [^10].
+
+# TODOs
+- Send email to Techcabal editor ✅
+    - Inform them about danger of open wordpress
+    - Suggest a page on AI training policy for their website
+    - Chance to read the draft, option to add the Techcabal information to the post?
+- Ask AI to review the post and:
+    - Recommend improvements
+    - Suggest titles
+- Add a top update to the write++ post, linking to the new one
+- Send message to Skweird
+- Rewrite this as a research paper and submit to a journal to get feedback
 
 ### Footnotes
 [^1]: [Original post with a confusing, non-indicative name](https://opeonikute.dev/posts/write)
@@ -268,17 +283,5 @@ There are several other ways to get more productive using LLMs without engineeri
 [^6]: [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
 [^7]: [Authentication #64](https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/64)
 [^8]: [Cloudflare AutoRAG](https://developers.cloudflare.com/autorag/)
-
-# Notes
-- Section about alternatives (NoteBookLM, etc) and how you can use them in this scenario
-- Section about how a setup in a news agency would probably look like
-- Send email to Techcabal editor ✅
-    - Inform them about danger of open wordpress
-    - Suggest a page on AI training policy for their website
-    - Chance to read the draft, option to add the Techcabal information to the post?
-- Ask AI to review the post and:
-    - Recommend improvements
-    - Suggest titles
-- Add a bottom update to the write++ post, linking to the new one
-- Send message to Skweird
-- Rewrite this as a research paper and submit to a journal to get feedback
+[^9]: [NotebookLM: Your Personalized AI Research Assistant](https://notebooklm.google/)
+[^10]: [Napkin AI: Get Visuals rom Your Text](https://www.napkin.ai/)
