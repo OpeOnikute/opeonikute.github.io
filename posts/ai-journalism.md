@@ -73,9 +73,10 @@ A basic RAG system can be implemented in a sequence of steps:
         print(f"Split into {len(chunks)} chunks")
         return chunks
 
+    # Load all the documents into memory
+    documents = load_documents() 
     # Split documents into chunks 
-    documents = self.load_documents()
-    chunks = self.split_documents(documents)
+    chunks = split_documents(documents)
     ```
 
 3. **Store the data in a vector database**: 
@@ -117,7 +118,7 @@ A basic RAG system can be implemented in a sequence of steps:
         
         # Create the chain
         qa_chain = RetrievalQA.from_chain_type(
-            llm=self.llm,
+            llm=OpenAI(temperature=0),
             chain_type="stuff",
             retriever=vector_store.as_retriever(
                 search_type="similarity",
@@ -132,7 +133,7 @@ A basic RAG system can be implemented in a sequence of steps:
         
         return qa_chain
     
-    qa_chain = self.setup_qa_chain(vector_store)
+    qa_chain = setup_qa_chain(vector_store)
 
     ## Answer a user's question
     result = qa_chain({"query": question})
@@ -175,7 +176,7 @@ The pipeline itself will differ based on company/agency/industry goals, and the 
 
 *TODO Image of the framework*
 
-**Ingest, index and store information**
+**#1: Ingest, index and store information**
 
 The system begins with a proper ingestion layer that takes in information from several sources - third-party news feeds (APIs), social media feeds, and internal documents/databases. The pipeline orchestrator can poll these sources or listen to webhooks for new updates. Each incoming item can then be normalised into a common format and pre-processed.
 
@@ -183,7 +184,7 @@ Pre-processing is necessary to clean up unwanted information like HTML tags (if 
 
 After processing and filtering, the data can then be stored in an in-house database/content repository. To help with effective RAG, it would also be useful to index the data in a vector database. This knowledge index can then be exposed to LLMs using techniques shown in the examples above.
 
-**Use the information: Human in-the-loop techniques**
+**#2: Use the information: Human in-the-loop techniques**
 
 When building automation, not enough people consider the main point - it's there to *help* humans. The best transformation is achievable if you consistently prioritise *how* the automation works hand-in-hand with humans.
 
@@ -195,17 +196,68 @@ An editor can review an LLM-generated summary and check what sources were used, 
 
 As a senior employee, you should encourage these techniques instead of looking to replace humans with LLMs blindly. Your reward is most likely a more efficient organisation that can hit greater goals than initially planned.
 
-**Guardrails**
+**#3: Guardrails**
 
-[^8]
+*TODO - Image of different guardrail examples for journalists*
 
-### Auto-RAG
+Another way to ensure that LLMs behave the way you want is to implement guardrails. Well-designed guardrails will help you to manage risk, navigate compliance, ensure safety and even protect against security breaches.
 
-### Other Existing Tools
+You can think of guardrails as a layered defense mechanism [^4]. As a journalist, the easiest way to get started with guardrails is to replicate the checks you'd normally make. For example, if there are certain brand guidelines for every article, a guardrail can be used to make sure LLMs do not deviate from that. This can be referred to as a brand-relevance classifier. 
 
-### Bonus: RAG demo (my website)
-* Will need an open-source model so people can test 
-* Or should I use Auto-RAG to promote Cloudflare and somehow embed it into the post?
+Another example of a guardrail could be to ensure safety and security. You can guard against common software security attacks by preventing SQL injection, jailbreaks or prompt injections. While it is unlikely that an LLM produces malicious output, you should always aim to be protected against worst-case scenarios.
+
+If there are certain types of content that are out-of-bounds for your brand such as political satire or propaganda, a content-moderation classifier can be added org-wide to decrease risk and save human time. It also wouldn't hurt to have a fact-checking classifier to confirm that LLM output is accurate and reduce the changes that human fact-checkers need to make.
+
+As your usage of LLMs evolves, you can continue to tweak the guardrails to reflect your current goals.
+
+Looking back at our example in RAG, we can add a guardrail to prevent propaganda. We simply create a new chain that has our safety principles added.
+
+```
+from langchain.chains import ConstitutionalChain
+
+# Define safety principles
+safety_principles = [
+    ConstitutionalPrinciple(
+        name="No Propaganda",
+        critique_request="Does this output contain political propaganda?",
+        revision_request="Rewrite to remove the propaganda"
+    ),
+]
+
+safe_qa_chain = ConstitutionalChain.from_llm(
+    # Existing QA Chain with RAG enabled
+    chain=qa_chain,
+    constitutional_principles=safety_principles,
+    llm=llm
+)
+
+result = safe_qa_chain("Tell me about TechCabal")
+```
+
+#### Existing Tools: Auto-RAG
+
+*TODO: Insert AutoRAG gif*
+
+If you need a quick and simple way to add get an LLM assistant for any existing content, Auto RAG might interest you [^8]. You can use AutoRAG to build a simple chatbot that can answer questions about a website. Teams would typically use this to help customers get answers to product questions or navigate documentation, but I can see how it can easily apply to writing as well.
+
+Instead of building a complicated RAG system (that you have to maintain), you can use AutoRAG to provide research, fact-checking and summary assistants to your team members. This is an easy way to get introduced to the world of LLMs, and it's available on the free plan as well.
+
+Personally, I plan to experiment with implementing AutoRAG for my personal website. It can help answer questions about me and my career for anyone that just wants to skim. It can also be a useful tool to help a journalist quickly get information about a company from their website without relying on search-engine indexing.
+
+*Disclaimer: Cloudflare is my employer*.
+
+#### Other Existing Tools
+
+There are several other ways to get more productive using LLMs without engineering firepower. I don't think this would be any different from workflows I use during my personal research, so I will briefly run through some tools I find helpful today.
+
+1. **ChatGPT**: 
+
+2. **Gemini**:
+
+3. **NotebookLM**:
+
+4. **Napkin AI**:
+
 
 ### Footnotes
 [^1]: [Original post with a confusing, non-indicative name](https://opeonikute.dev/posts/write)
@@ -215,17 +267,18 @@ As a senior employee, you should encourage these techniques instead of looking t
 [^5]: [Retrieval-Augmented Generation for Large Language Models: A Survey](https://arxiv.org/abs/2312.10997)
 [^6]: [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
 [^7]: [Authentication #64](https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/64)
-[^8]: [A practical guide to building agents](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf)
+[^8]: [Cloudflare AutoRAG](https://developers.cloudflare.com/autorag/)
 
 # Notes
-- An LLM chat interface to talk to me based on the information in my blog (TODO: This is blocked on switching to a ).
-    - Built on Temporal to automatically retry prompts
 - Section about alternatives (NoteBookLM, etc) and how you can use them in this scenario
 - Section about how a setup in a news agency would probably look like
 - Send email to Techcabal editor ✅
     - Inform them about danger of open wordpress
     - Suggest a page on AI training policy for their website
     - Chance to read the draft, option to add the Techcabal information to the post?
+- Ask AI to review the post and:
+    - Recommend improvements
+    - Suggest titles
 - Add a bottom update to the write++ post, linking to the new one
 - Send message to Skweird
 - Rewrite this as a research paper and submit to a journal to get feedback
