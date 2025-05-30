@@ -160,6 +160,8 @@ We've already seen an explosion of MCP servers in the past couple of months, wit
 
 ### Research: How do you design an LLM-powered news pipeline?
 
+*If you're not interested in an engineering approach and you want to consume existing tools instead, skip to the sections below.*
+
 For any of this to be relevant to the industry, it needs to actually work in practice. A great way to get an edge on other news agencies is to create a structured data pipeline that can be combined with the power of LLMs, alongside existing best practices. 
 
 LLMs can improve several workstreams as assistants:
@@ -169,14 +171,33 @@ LLMs can improve several workstreams as assistants:
 - **Content personalisation**: You can rewrite existing posts to tailor to specific audiences, or even translate posts to other languages while maintaining the original tone.
 - **General research**: Ask questions, get answers quickly.
 
-The pipeline itself will differ based on company/agency/industry goals, and the scale of the technical team. However, consider the following basic framework for an internal pipeline.
+The pipeline itself will differ based on company/agency/industry goals, and the scale of the technical team. You can however consider the following basic framework for an internal pipeline.
 
-#### Ingest, index and store information
+*TODO Image of the framework*
 
+**Ingest, index and store information**
 
-#### Use the information: Human in-the-loop techniques
+The system begins with a proper ingestion layer that takes in information from several sources - third-party news feeds (APIs), social media feeds, and internal documents/databases. The pipeline orchestrator can poll these sources or listen to webhooks for new updates. Each incoming item can then be normalised into a common format and pre-processed.
 
-#### Guardrails
+Pre-processing is necessary to clean up unwanted information like HTML tags (if scraping other websites), or remove duplicates/irrelevant items. Depending on the scale, ingestion can be implemented using stream processing (e.g. Airflow, AWS Kinesis) or just simple batch jobs.
+
+After processing and filtering, the data can then be stored in an in-house database/content repository. To help with effective RAG, it would also be useful to index the data in a vector database. This knowledge index can then be exposed to LLMs using techniques shown in the examples above.
+
+**Use the information: Human in-the-loop techniques**
+
+When building automation, not enough people consider the main point - it's there to *help* humans. The best transformation is achievable if you consistently prioritise *how* the automation works hand-in-hand with humans.
+
+In the context of LLMs, you should consider their strengths and how powerful they are, but also their downsides. Some common downside are hallucination and misunderstanding given tasks. The former can be improved using the context-provding techniques we've discussed, and the latter with better prompting.
+
+It's however still possible for LLMs to get things wrong. This is why you should always design with human-in-the-loop in mind. For each of the workstream examples, a human should always cross-check and act as a judge of the data produced by an LLM. This isn't much different from working with an intern or assistant.
+
+An editor can review an LLM-generated summary and check what sources were used, and flag any claims. Research assistants can provide feedback to LLMs about the accuracy and quality of generated content. Instead of just one draft of an article, an LLM can be used to generate 2-3 and they can be rated during team collaborative sessions.
+
+As a senior employee, you should encourage these techniques instead of looking to replace humans with LLMs blindly. Your reward is most likely a more efficient organisation that can hit greater goals than initially planned.
+
+**Guardrails**
+
+[^8]
 
 ### Auto-RAG
 
@@ -194,6 +215,7 @@ The pipeline itself will differ based on company/agency/industry goals, and the 
 [^5]: [Retrieval-Augmented Generation for Large Language Models: A Survey](https://arxiv.org/abs/2312.10997)
 [^6]: [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
 [^7]: [Authentication #64](https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/64)
+[^8]: [A practical guide to building agents](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf)
 
 # Notes
 - An LLM chat interface to talk to me based on the information in my blog (TODO: This is blocked on switching to a ).
