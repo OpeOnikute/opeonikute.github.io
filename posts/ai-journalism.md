@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Something about AI in journalism
-sub_title: TBD
-read_time: 
+title: I Predicted AI Journalism 10 Years Ago - And I Got it Wrong
+sub_title: From a simple idea in 2015 to today's AI revolution.
+read_time: 15 minutes
 date: May 2025
-featured_image: TBD
+featured_image: https://opeonikute.dev/media/ai-rag-example.png
 image-theme: dark no-image-styling
 ---
 
@@ -246,28 +246,17 @@ A new industry-standard addition to press kits, perhaps? *For more information a
 
 #### Other Existing Tools
 
-There are several other ways to get more productive using LLMs without engineering firepower. I don't think this would be any different from workflows I use during my personal research, so I will briefly run through some tools I find helpful today.
+There are several other ways to get more productive using LLMs without engineering firepower. These are some of the tools that I find helpful today:
 
-1. **ChatGPT**: I use ChatGPT for general daily questions, but it's also my most-used tool for scripting and ideation. I find that it's better at the "creative" aspects than other tools, at least for me. My favourite feature however is Deep Research. I enjoy getting in-depth reports about niche subjects from sources far and wide. It's great that you can also tell it to take a look at research papers, which I find useful to the autheniticity of any ideation I do. The obvious challenge with a consumer product is the lack of context, but with the rise of MCP servers, I won't be surprised if more people create servers and connect their resources to ChatGPT directly. This obviously comes with a risk of data infringement/safety, but it depends on you and your appetite.
+1. **ChatGPT**: I use ChatGPT for general daily questions, but it's also my most-used tool for scripting and ideation. I find that it's better at the "creative" aspects than other tools. My favourite feature however, is Deep Research. I enjoy getting in-depth reports about niche subjects from various sources. For example, it can look at research papers, which enhances the authenticity of any ideation. The obvious challenge with using a consumer product is the lack of context, but with the rise of MCP servers, I won't be surprised if more people create servers and connect their resources to ChatGPT directly. Direct integration obviously comes with a risk of data infringement/safety, but it depends on you and your risk appetite.
 
-2. **Gemini**: My primary use for Gemini is Deep Research. While I prefer the output and depth of ChatGPT responses, it takes a long time. This can be frustrating when have a lot of tasks to do. Gemini is also very thorough - a bit too verbose for my liking, but thorough. It's also the more affordable option and you get more value for your money.
+2. **Gemini**: My primary use for Gemini is Deep Research. While I prefer the output and depth of ChatGPT DR responses, it can take a long time to produce a result. This can be frustrating when have a lot of tasks to do. Gemini is also very thorough. A bit too verbose for my liking, but thorough. It's also the more affordable option and you get more value (and executions) for your money.
 
 3. **NotebookLM**: I was blown away the first time I used NotebookLM to analyse a document I uploaded. It's a great way to do single-instance RAG and by extension, useful for ideation and research. I haven't used it extensively in a while, but it's a tool you should definitely be looking at to improve your research workflow [^9].
 
 4. **Elicit**: I enjoy using Elicit for research because it's a great way to find research papers relevant to any topic, using plaintext queries. A similar niche tool to find resources relevant to journalism would be great, but if you ever need to find papers, I recommend. Imagine if you could find old newspapers that reference a topic you are writing about on the fly? Someone speak to Ridwan from [archivi.ng](https://archivi.ng/).
 
 4. **Napkin AI**: Napkin is great for getting sketches based on your text. I use it to get rough ideas for diagrams, especially when I'm struggling to visualise a thought [^10].
-
-# TODOs
-- Send email to Techcabal editor ✅
-    - Inform them about danger of open wordpress
-    - Suggest a page on AI training policy for their website
-    - Chance to read the draft, option to add the Techcabal information to the post?
-- Ask AI to review the post and:
-    - Recommend improvements
-    - Suggest titles
-- Send message to Skweird
-- Rewrite this as a research paper and submit to a journal to get feedback
 
 ### Footnotes
 [^1]: [My original post with a confusing name](https://opeonikute.dev/posts/write)
