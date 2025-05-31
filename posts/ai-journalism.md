@@ -28,19 +28,19 @@ So how can we use AI to write better stories in the real world?
 
 ### Training a Model
 
-*TODO* LLM model arhcitecture image
+![Choosing a model](/media/ai-training-model.png)
 
 The foundation of any LLM is the underlying model. Most popular vendors have a fair amount of available models with different price points. There are also several open-source models of comparable quality [^3]. The models are trained on a vast amount of data, which helps them to generate and understand human language.
 
-Because existing models are already so good at human language, there should be no need for a journalist/newsroom to train their own models. Training is expensive and it's more cost-effective to use one of the existing models. The skill you should probably be honing is choosing the right model -- personally I prefer the OpenAI models for any sort of creative writing/ideation.
+Because existing models are already so good at human language, there should be no need for a journalist/newsroom to train their own models. Training is expensive and it's more cost-effective to use one of the existing models. The skill you should probably be honing is **choosing the right model**. personally I prefer the OpenAI models for any sort of creative writing/ideation.
 
-The existence of AI doesn't mean we should blindly apply it to everything, though. It's important to understand *why* we are applying LLMs to story-telling. It's not enough to use a shiny new technology just because it exists. It needs to provide exponential benefits over existing techniques to provide a return on investment.
+The existence of AI doesn't mean we should blindly apply it to everything, though. It's important to be clear about *why* you are applying LLMs to story-telling. It's not enough to use a shiny new technology just because it exists. It needs to provide exponential benefits over existing techniques to provide a return on the human and capital investment.
 
-The main power of AI agents is their ability to handle non-deterministic scenarios, where traditional approaches fall short. They can evaluate context, consider different scenarios and spot patterns [^4]. Instead of a sequential, checklist-based approach, an LLM can take in structured/un-structured information and apply a holistic approach to solving a complex problem.
+A strength of AI agents is their ability to handle non-deterministic scenarios, where traditional software programs falls short. They can evaluate context, consider different scenarios and spot patterns [^4]. Instead of a sequential, checklist-based approach, an LLM can take in structured/un-structured information and apply a holistic approach to solving a complex problem.
 
-The world of journalism is full of unstructured data that needs to be broken down, understood and used to create compelling stories. With the right approach, we can use AI tools to write more insightful, creative and important stories.
+This makes LLM perfect for the world of journalism, which is full of unstructured data to be broken down, understood and used to create compelling stories. With the right approach, we can use AI tools to write more insightful stories.
 
-With a good base model, we then need to provide real-time context for accurate results. Even though LLMs are trained on a vast database of information, it's very likely that they don't have local context, or that the training information is already out-of-date.
+With a good base model chosen, we then need to provide real-time context for accurate results. Even though LLMs are trained on a vast database of information, it's very likely that they don't have local context, or that the training information is already out-of-date.
 
 There are two primary ways to provide this context - Retrieval Augmented Generation (RAG) and more recently the Model Context Protocol (MCP).
 
@@ -48,7 +48,7 @@ There are two primary ways to provide this context - Retrieval Augmented Generat
 
 RAG is a method used to improve the output of an LLM by allowing having it reference external, authoritative knowledge before generating a response. With access to factual information, the model is less likely to "*hallucinate*" [^2]. This is especially important in a field like journalism where wrong information can spread like wildfire.
 
-*TODO* - RAG Image but in the context of journalism content (websites, books, blogs, articles)
+![RAG Architecture](/media/ai-rag-example.png)
 
 With RAG, an LLM assistant for journalism can first obtain relevant new information from websites, blogs, books, etc, for relevant, context-aware responses. Basic users of AI tools simply instruct the provider to "search the web", but it would be even more useful to implement in-house RAG based on internal proprietary data and in-house research.
 

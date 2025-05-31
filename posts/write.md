@@ -9,7 +9,7 @@ featured_image: https://opeonikute.dev/media/Screen_Shot_2019-05-17_at_17-b91e7c
 
 ![](/media/Screen_Shot_2019-05-17_at_17-b91e7ca1-7408-48c4-9d4d-34cfbe5febfc.22.51.png)
 
-*Update (2025): I technology has caught up to this vision, and I have written about it [here](/posts/ai-journalism)*
+*Update (2025): Technology has caught up to the vision in this post, and I have written about it [here](/posts/ai-journalism).*
 
 Inspired by [Automated Insights](https://automatedinsights.com/), the aim of this project is to generate stories/articles based on user inputs. A suitable approach for this would ideally be to train an AI to generate stories using Natural Language Generation (NLG), but this was ahead of my skillset (and still is) at the time. 
 
