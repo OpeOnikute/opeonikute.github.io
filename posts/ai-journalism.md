@@ -2,7 +2,7 @@
 layout: post
 title: I predicted AI journalism 10 years ago - and I got it wrong
 sub_title: From a simple idea in 2015 to today's AI revolution.
-read_time: 15 minutes
+read_time: 15
 date: May 2025
 featured_image: https://opeonikute.dev/media/ai-rag-example.png
 image-theme: dark no-image-styling
@@ -150,14 +150,82 @@ One problem with RAG is the need to implement an LLM integration for every data 
 
 We've already seen an explosion of MCP servers in the past couple of months, with several infrastructure companies also making it possible to host remote MCP servers. While the standard is nascent, it's simple to implement with little barrier-to-entry. The main concerns have been security, which has seen several proposals [^8].
 
-*TODO: Make MCP server demo page for news site*
+An MCP server for a news agency/website is a simple way to connect LLMs to the proprietary information. The server can provide (and describe) tools for the LLMs to get context in specific ways. i.e. instead of implementing RAG and adding context to the LLM prompt, you provide a server that tells the LLM how to do different things.
 
-- Also add a simple MCP server demo for a news site?
-    - Another open-source project to spam
-    - A server that can get a link to a blog, read it using beautifulsoup and create the resources (pages/articles) to the LLM. But managing context windows is important
-        - The MCP server can do things like get specific posts
-            - Maybe a combination of RAG and MCP?
-            - Implementing any specific text search to handle context windows only works if you can fetch the relevant content, which is ultimately RAG
+Here's how a simple MCP server for a blog could look like:
+
+```
+from mcp.server import NotificationOptions, Server
+import mcp.server.stdio
+
+# Initialize the MCP server
+#
+# The Server classes poll the news sources and store
+# the information in a local SQLite database. 
+#
+# Each tool call made by the LLM is then simply a wrapper
+# for an SQL query for post information.
+#
+app = Server("news-server")
+news_server = NewsServer(
+    base_url="https://example-news-site.com",
+    rss_feeds=[
+        "https://example-news-site.com/rss",
+        "https://feeds.example-news.com/latest"
+    ]
+)
+
+@app.list_tools()
+async def handle_list_tools() -> list[types.Tool]:
+    """List available tools for the LLM"""
+    return [
+        types.Tool(
+            name="get_article",
+            description="""
+            Fetch full article content from a URL. 
+            
+            COST OPTIMIZATION INSTRUCTIONS:
+            - Use 'get_article_summary' first to decide if full content is needed
+            - Full articles may contain 1000+ tokens - use sparingly
+            - Cache is utilized automatically to reduce redundant fetches
+            """,
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "description": "Full URL of the article to fetch"
+                    }
+                },
+                "required": ["url"]
+            }
+        ),
+    ]
+
+
+async def main():
+    # Run the server using stdin/stdout streams
+    async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
+        await app.run(
+            read_stream,
+            write_stream,
+            InitializationOptions(
+                server_name="news-server",
+                server_version="0.1.0",
+                capabilities=app.get_capabilities(
+                    notification_options=NotificationOptions(),
+                    experimental_capabilities={},
+                ),
+            ),
+        )
+
+if __name__ == "__main__":
+    import atexit
+    atexit.register(lambda: asyncio.run(cleanup()))
+    asyncio.run(main())
+```
+
+While MCP is a refreshing way to provide context to LLMs, it's not an automatic shortcut to escape the challenges of RAG. The data ingestion and indexing requirements remain - you still need the data stored somewhere before it can be exposed. It's also likely that you need real-time information, which becomes even more of a challenge.
 
 ### An LLM-powered news pipeline?
 
