@@ -10,17 +10,15 @@ image-theme: dark no-image-styling
 
 I came into the tech industry in Nigeria at a fortunate time. There was a very strong sense of community, with a lot of early-phase builders working together. My fortune was not just because those builders existed though -- it was because platforms like TechCabal told their stories so we could learn about them.
 
-*TODO* - create the conflict - why I had the idea.
-
-Almost 10 years ago, I had an idea for a tool to generate stories for journalists based on strictly-defined prompts [^1]. After answering a couple of questions, the user gets a long-form story they can tweak at will. If that sounds familiar, it's because it has turned out to be Generative AI. 
+Almost 10 years ago, I had an idea for a tool to generate stories for journalists based on strictly-defined prompts [^1]. As I consumed several articles, I was intrigued by what it took to write great stories and how software could help. After answering a couple of questions, the user gets a long-form story they can tweak at will. If that sounds familiar, it's because it has turned out to be Generative AI. 
 
 I did not pursue this idea any further because a usable solution was not in my skillset at the time, and the technology wasn't there. I also obviously had no way of knowing that it would manifest in this way. It has however been interesting to see technology finally catch up to a version of this idea. 
 
 Also, nobody reached out:
 > Hopefully i’ll be able to revisit this later in some machine-learning capacity. If you’re reading this and have ideas on how this could work, please reach out.
 
-## *Insert title of next section*
-Nowadays, I don't believe we should aim to have machines generate our stories. Journalism is about much more than generating content, and Large-Language Models (LLMs) cannot be fully trusted with both real-time and historical facts. BBC research recently found that popular AI tools like ChatGPT and Gemini produced significant inaccuracies in over half of the news summaries that they tested [^2].
+## Generative Story-telling is finally here
+Nowadays, I don't believe we should aim to have machines fully generate our stories. Journalism is about much more than generating content, and Large-Language Models (LLMs) cannot be fully trusted with both real-time and historical facts. BBC research recently found that popular AI tools like ChatGPT and Gemini produced significant inaccuracies in over half of the news summaries that they tested [^2].
 
 It should not be surprising that I now think the best use of such a tool would be as an assistant for research, fact-checking, and ideation. **LLMs should not replace our fundamental ability to reason and create**.
 
@@ -174,7 +172,7 @@ LLMs can improve several workstreams as assistants:
 
 The pipeline itself will differ based on company/agency/industry goals, and the scale of the technical team. You can however consider the following basic framework for an internal pipeline.
 
-*TODO Image of the framework*
+![Framework for Journalism](/media/ai-journalist-framework.png)
 
 **#1: Ingest, index and store information**
 
@@ -198,7 +196,7 @@ As a senior employee, you should encourage these techniques instead of looking t
 
 **#3: Guardrails**
 
-*TODO - Image of different guardrail examples for journalists*
+![Guardrails](/media/ai-llm-guardrails.png)
 
 Another way to ensure that LLMs behave the way you want is to implement guardrails. Well-designed guardrails will help you to manage risk, navigate compliance, ensure safety and even protect against security breaches.
 
@@ -236,7 +234,7 @@ result = safe_qa_chain("Tell me about TechCabal")
 
 #### Existing Tools: Auto-RAG
 
-*TODO: Insert AutoRAG gif*
+*Disclaimer: Cloudflare is my current employer.*
 
 If you need a quick and simple way to add get an LLM assistant for any existing content, Auto RAG might interest you [^8]. You can use AutoRAG - a Cloudflare product - to build a simple chatbot that can answer questions about a website. Teams would typically use this to help customers get answers to product questions or navigate documentation, but I can see how it can easily apply to writing as well.
 
@@ -244,9 +242,7 @@ Instead of building a complicated RAG system (that you have to maintain), you ca
 
 Personally, I plan to experiment with implementing AutoRAG for my personal website. It can help answer questions about me and my career for anyone that just wants to skim. It can also be a useful tool to help a journalist quickly get information about a company from their website without relying on search-engine indexing.
 
-A new industry-standard addition to press kits, perhaps?
-
-*Disclaimer: Cloudflare is my employer. For more information about AutoRAG, see the [demo on Youtube](https://youtu.be/JUFdbkiDN2U?si=YY8nKCdvTH6VSfOw)*.
+A new industry-standard addition to press kits, perhaps? *For more information about AutoRAG, see the [demo on Youtube](https://youtu.be/JUFdbkiDN2U?si=YY8nKCdvTH6VSfOw)*.
 
 #### Other Existing Tools
 
@@ -270,12 +266,11 @@ There are several other ways to get more productive using LLMs without engineeri
 - Ask AI to review the post and:
     - Recommend improvements
     - Suggest titles
-- Add a top update to the write++ post, linking to the new one
 - Send message to Skweird
 - Rewrite this as a research paper and submit to a journal to get feedback
 
 ### Footnotes
-[^1]: [Original post with a confusing, non-indicative name](https://opeonikute.dev/posts/write)
+[^1]: [My original post with a confusing name](https://opeonikute.dev/posts/write)
 [^2]: [AI chatbots unable to accurately summarise news, BBC finds](https://www.bbc.com/news/articles/c0m17d8827ko)
 [^3]: [Open Router, Models](https://openrouter.ai/models)
 [^4]: [A practical guide to building agents - Open AI](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf)
