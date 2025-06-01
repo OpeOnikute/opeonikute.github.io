@@ -10,12 +10,14 @@ image-theme: dark no-image-styling
 
 Almost ten years ago, I came into the tech industry in Nigeria at a fortunate time. There was a very strong sense of community, with a lot of early-phase builders working together. My good fortune was because platforms like TechCabal told the stories of these builders. The inspiration I got from these stories became the foundation for my career, and it was incredibly important that they were told.
 
-As I consumed several articles, I was intrigued by what it took to write great stories and how software could help. I had an idea for a tool to generate stories for journalists based on strictly-defined prompts [^1].  After answering a couple of questions, the user gets a long-form story they can tweak at will. If any of that sounds familiar, it's because it has turned out to be a simple usecase of Generative AI. 
+As I consumed several articles, I was intrigued by what it took to write great stories and how software could help. I had an idea for a tool to generate stories for journalists based on strictly-defined prompts [^1].  After answering a couple of questions, you get a long-form story can be tweaked at will. If any of that sounds familiar, it's because it has turned out to be a simple usecase for Generative AI. 
 
 I did not pursue the idea any further because a usable solution was not in my skillset at the time, and the technology wasn't there. I also had no way of knowing that it would manifest in this way. In hindsight what I simply needed to do was invent the Transformer model [^2] and co-found OpenAI, one of the most valuable companies in the world today.
 
 Also, nobody reached out:
 > Hopefully i’ll be able to revisit this later in some machine-learning capacity. If you’re reading this and have ideas on how this could work, please reach out.
+
+Thank you to [Osarumen](https://x.com/skweird) for supporting the original idea and encouraging me to pursue it further.
 
 ## Generative story-telling is finally here. Now what?
 Nowadays, I don't believe we should aim to have machines fully generate our stories. Journalism is about much more than generating content, and Large-Language Models (LLMs) cannot be fully trusted with both real-time and historical facts. BBC research recently found that popular AI tools like ChatGPT and Gemini produced significant inaccuracies in over half of the news summaries that they tested [^3].
@@ -28,19 +30,19 @@ So how can we use AI to write better stories in the real world?
 
 ![Choosing a model](/media/ai-training-model.png)
 
-The foundation of any LLM is the underlying model. Most popular vendors have a fair amount of available models with different price points. There are also several open-source models of comparable quality [^4]. The models are trained on a vast amount of data, which helps them to generate and understand human language.
+The foundation of any LLM is the underlying model. Most popular vendors have a vast amount of available models with different price points. There are also several open-source models of comparable quality [^4]. The models are trained on a vast amount of data, which helps them to generate and understand human language.
 
 Because existing models are already so good at human language, there should be no need for a journalist/newsroom to train their own models. Training is expensive and it's more cost-effective to use one of the existing models. The skill you should probably be honing is **choosing the right model**. Personally, I prefer the OpenAI models for any sort of creative writing/ideation.
 
 The existence of AI doesn't mean we should blindly apply it to everything, though. It's important to be clear about *why* you are applying LLMs to story-telling. It's not enough to use a shiny new technology just because it exists. There's no need to replace one tool with another if it doesn't provide any real benefit.
 
-A strength of AI agents is their ability to handle non-deterministic scenarios, where traditiona short. They can evaluate context, consider different scenarios and spot patterns [^5]. Instead of a sequential, checklist-based approach, an LLM can take in structured/un-structured information and apply a holistic approach to solving a complex problem.
+The answer to *"why LLMs?"* is best explored by understanding what they are good at. They are able to better handle non-deterministic scenarios where traditional systems fall short. They can evaluate context, consider different scenarios and spot patterns [^5]. Instead of a sequential, checklist-based approach, an LLM can take in structured/un-structured information and apply a holistic approach to solving a complex problem.
 
 This strength makes LLM perfect for the world of journalism, which is full of unstructured data to be broken down, understood and used to create compelling stories. With the right approach, we can use AI tools to write more insightful stories.
 
-With a good base model chosen, we then need to provide real-time context for accurate results. Even though LLMs are trained on a vast database of information, it's very likely that they don't have local context, or that the training information is already out-of-date.
+Even though LLMs are trained on a vast database of information, it's very likely that they don't have local context, or that the training information is already out-of-date. This can cause them to hallucinate and provide answers that are out-of-context or just plain wrong.
 
-There are two primary ways to provide this context - Retrieval Augmented Generation (RAG) and more recently the Model Context Protocol (MCP).
+There are two primary ways to provide context - Retrieval Augmented Generation (RAG) and more recently the Model Context Protocol (MCP).
 
 *If you're not interested in an engineering approach and you want to consume existing tools instead, skip to the relevant sections below.*
 
@@ -50,14 +52,14 @@ RAG is a method used to improve the output of an LLM by allowing it to reference
 
 ![RAG Architecture](/media/ai-rag-example.png)
 
-With RAG, an LLM assistant for journalism can first obtain relevant new information from websites, blogs, books, etc, for relevant, context-aware responses. While users of AI products like ChatGPT can simply instruct the LLM to "search the web", it would be even more useful at scale to implement in-house RAG based on internal proprietary data and research.
+With RAG, an LLM assistant for journalism can first obtain relevant new information from websites, blogs, books, etc, for context-aware responses. While users of AI products like ChatGPT can simply instruct the LLM to "search the web", a more powerful solution is to implement in-house RAG based on proprietary data and research.
 
 A basic RAG system can be implemented as follows:
 1. **Ingest the data**:
-    Compile the information into an accessible source like a filesystem or database. There are several options because LLM tools like LangChain [can load several types of documents](https://python.langchain.com/docs/integrations/document_loaders/), from webpages and PDFs, to cloud providers.
+    Compile the information into an accessible source like a filesystem or database. For example, you can implement a basic web scraper or listen to RSS feeds. There are several options because LLM tools like LangChain [can load several types of documents](https://python.langchain.com/docs/integrations/document_loaders/), from webpages and PDFs, to cloud providers.
 
 2. **Pre-process the data**: 
-    To solve for context-window limitations, basic RAG splits text data into chunks and indexed. These are then used to create vector embeddings and stored in a vector database. When providing context to the LLMs, the same mechanism is then used to do a similarity search between the user query and the stored data [^6]. This helps the LLM find the most relevant information.
+    To solve for context-window limitations, basic RAG splits text data into chunks. These are then used to create vector embeddings and stored in a vector database. When providing context to the LLMs, the same mechanism is used to do a similarity search between the user query and the stored data [^6]. This helps the LLM find the most relevant information.
 
     ```
     from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -148,7 +150,7 @@ MCP is a more recent development from Anthropic. Their aim was to define an indu
 
 One problem with RAG is the need to implement an LLM integration for every data source. Instead, developers can create an MCP server for **any** MCP client application to consume.
 
-We've already seen an explosion of MCP servers in the past couple of months, with several infrastructure companies also making it possible to host remote MCP servers. While the standard is nascent, it's simple to implement with little barrier-to-entry. The main concerns have been security, which has seen several proposals [^8].
+We've already seen an explosion of MCP servers in the past couple of months, with several infrastructure companies also making it possible to host remote MCP servers. While the standard is nascent, it's simple to implement with little barrier-to-entry. The main concern has been security, which has seen several proposals [^8].
 
 An MCP server for a news agency/website is a simple way to connect LLMs to the proprietary information. The server can provide (and describe) tools for the LLMs to get context in specific ways. i.e. instead of implementing RAG and adding context to the LLM prompt, you provide a server that tells the LLM how to do different things.
 
