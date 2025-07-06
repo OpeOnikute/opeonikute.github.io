@@ -43,6 +43,8 @@ I go into more detail and walk through the code a bit in [this video](http://tod
 
 ### The Grafana JSON Model
 
+![Dash Example](/media/grafana_dash_example.png)
+
 Every dashboard is represented by a JSON object. This is really useful for interacting with dashboards in code - forming the basis for advances like [dashboards-as-code](https://grafana.com/blog/2022/12/06/a-complete-guide-to-managing-grafana-as-code-tools-tips-and-tricks/). I've particularly found it useful when working with larger teams to declare dashboards using Terraform.
 
 Here's what the model looks like. Each dashboard has a unique identifier and other useful metadata, such as the templating, annotations and tags.
@@ -76,11 +78,7 @@ Here's what the model looks like. Each dashboard has a unique identifier and oth
 }
 ```
 
-The dashboard below has a Text, Gauge and Time Series panel.
-
-![Dash Example](/media/grafana_dash_example.png)
-
-Here's how the panels look in JSON:
+The dashboard shown above has three (3) panels of different types - Text, Gauge and Time Series. This is how they look in the JSON model:
 ```
 "panels": [
 {
@@ -151,7 +149,9 @@ Here's how the panels look in JSON:
 
 This structure makes it possible to provide all the relevant dashboard to an LLM. We don't need to load the entire JSON into prompts - we can pick and choose the relevant fields based on the goal. For basic questions, the most common information needed would be the Dashboard ID, title and panel information. 
 
-More advanced troubleshooting would then need to provide other fields like `options` (Panel Options) and `fieldConfig` (e.g. Thresholds, Overrides). A full description of the JSON model can be found on the [Grafana website](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/).
+More advanced troubleshooting would then need to provide other fields like `options` (Panel Options) and `fieldConfig` (e.g. Thresholds, Overrides). 
+
+A full description of the JSON model can be found on the [Grafana website](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/).
 
 ### Retrieval Augmented Generation (RAG)
 ### The Model Context Protocol (MCP)
