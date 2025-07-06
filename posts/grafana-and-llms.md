@@ -5,6 +5,7 @@ sub_title:
 read_time: 
 date: July 2025
 featured_image:
+image-theme: dark no-image-styling
 ---
 
 ## TODO: Intro section - what about?
@@ -153,7 +154,92 @@ More advanced troubleshooting would then need to provide other fields like `opti
 
 A full description of the JSON model can be found on the [Grafana website](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/).
 
+### Prompting
+
+Context is an important part of getting the right help from an LLM. The main source of context is the prompt. Your success depends on how well you structure the prompt and the information you provide [1].
+You can structure your prompt using three different roles: system, user, and assistant.
+
+The system role sets the overall behaviour/rules for the LLM, while the user role represents the input from the user. The assistant role represents the LLM response. The set of roles for a Grafana assistant LLM would look like the example below:
+```
+[
+  {
+    "role": "system",
+    "content": "You are a Grafana expert assistant. You help users with dashboards, queries, data source configuration, panel customization, and alerting. Always provide clear, step-by-step guidance with examples."
+  },
+  {
+    "role": "user",
+    "content": "How do I create a panel that shows CPU usage over time using Prometheus in Grafana?"
+  },
+  {
+    "role": "assistant",
+    "content": "To create a panel showing CPU usage over time in Grafana using Prometheus:\n\n1. **Add a Panel**:\n   - Click 'Add Panel'..."
+  }
+]
+```
+
+Getting your prompts right is important. I like to be as descriptive as possible and leave nothing to interpretation. But there's only so much you can achieve by just describing your dashboard. You'd ideally want the LLM to understand the dashboard natively by providing the relevant dashboard properties for your prompt. This is a form of Retrieval Augmented Generation (RAG).
+
 ### Retrieval Augmented Generation (RAG)
+
+RAG provides a way to get better context into LLM by first retrieving relevant data to enhance the prompt. Most RAG implementations in the wild use a vector database. When the user query comes in, the vector embeddings are used to do a similarity match to find the most relevant data. 
+
+For example, with a vector database based on thousands of incident report documents, an LLM can answer broad questions about incidents during inference. The logic can first do a vector search to find the most relevant incidents based on the user's query and augment the prompt. I described this in more detail in my previous post (See: [Prompt augmentation and response generation](/posts/ai-journalism)).
+
+For Grafana dashboards, we can augment the prompts with dashboard information using the JSON model. We don't need a vector database, but I still consider this a form of RAG. Before passing a user query to the LLM, we can fetch the dashboard properties and add them to the prompt:
+
+```
+    dashboard = await get_dashboard_via_grafana(dashboard_uid)
+    dashboard_info = f"""
+Dashboard Title: {dashboard.get('title', 'Unknown')}
+Description: {dashboard.get('description', 'No description')}
+Dashboard ID: {dashboard_id}
+Dashboard UID: {dashboard_uid}
+
+Panels in this dashboard:
+"""
+    for panel in dashboard.get('panels', []):
+        panel_info = f"""
+- Panel: {panel.get('title', 'Untitled')}
+Type: {panel.get('type', 'Unknown')}
+Description: {panel.get('description', 'No description')}
+Query: {panel.get('targets', [{}])[0].get('expr', 'No query')}
+"""
+        dashboard_info += panel_info
+
+    # Create the prompt with dashboard context and modification capabilities
+    prompt = f"""
+    
+You are a Grafana dashboard assistant with the ability to modify dashboards. You have access to information about the entire dashboard:
+
+{dashboard_info}
+
+You can suggest and make changes to the dashboard based on the user's request. When modifying the dashboard, consider:
+1. Panel layouts and organization
+2. Panel titles and descriptions
+3. Dashboard variables and templates
+4. Panel queries and visualizations
+
+User Question: {text}
+
+Please provide a helpful response based on the dashboard context above. If changes are needed, explain what changes you have made and why."""
+
+    payload = {
+        "model": MODEL_NAME,
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a helpful Grafana dashboard assistant that can analyze and modify dashboard configurations."
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ]
+    }
+```
+
+This basic form of RAG is a useful way to get more context-aware responses from LLMs about dashboards.
+
 ### The Model Context Protocol (MCP)
 
 ### Handling Context Windows
@@ -169,3 +255,7 @@ Amongst other intermediate to advance Grafana concepts, this specific course cha
 To get notified when the course becomes available, feel free to follow me on LinkedIn or Twitter. You can also subscribe to my Substack account below. If you want me to personally reach out to you, try sending a message wherever you can reach me and I'll do my best to get to everyone.
 
 Finally, the best way to keep track of Grafana advancements is to receive the newsletters from Grafana Labs, which is something you get when you create a Grafana Cloud account. If I hadn't, I probably wouldn't have found out that Grafana had publicly announced with LLM plans before writing this.
+
+## Footnotes
+
+[^1]: [Basics of Prompting](https://www.promptingguide.ai/introduction/basics)
