@@ -156,7 +156,7 @@ A full description of the JSON model can be found on the [Grafana website](https
 
 ### Prompting
 
-Context is an important part of getting the right help from an LLM. The main source of context is the prompt. Your success depends on how well you structure the prompt and the information you provide [1].
+Context is an important part of getting the right help from an LLM. The main source of context is the prompt. Your success depends on how well you structure the prompt and the information you provide [^1].
 You can structure your prompt using three different roles: system, user, and assistant.
 
 The system role sets the overall behaviour/rules for the LLM, while the user role represents the input from the user. The assistant role represents the LLM response. The set of roles for a Grafana assistant LLM would look like the example below:
@@ -242,6 +242,76 @@ This basic form of RAG is a useful way to get more context-aware responses from 
 
 ### The Model Context Protocol (MCP)
 
+The main limitation of a RAG-only approach is the lack of an intuitive way to take some action based on the LLM response. While it's not impossible to do so, you'd need to carefully prompt the LLM to return specific data structures. For example, if I need an LLM to modify a dashboard, I'd add prompt to return the relevant updated JSON. I can then parse that JSON in the response and call the Grafana API to make the changes.
+
+While this approach sounds plausible in theory, it's common to have errors. Some LLMs find it difficult to strictly adhere to the return structure, and it's easy to exhaust context windows if the LLM is returning entire dashboard JSON models. MCP is a natural solution for this problem [^2]. With access to a Grafana MCP server, the LLMs can use available "tools" to query and make updates to dashboards.
+
+Grafana has an open-source MCP server in active development at [grafana/mcp-grafana](https://github.com/grafana/mcp-grafana). Building the server locally is pretty straightforward. You can then add it to your MCP client (which could be your backend server or even an IDE like Cursor).
+
+```
+# Build the server
+GOBIN="$HOME/go/bin" go install github.com/grafana/mcp-grafana/cmd/mcp-grafana@latest
+
+# Add the server config to your client
+{
+  "mcpServers": {
+    "grafana": {
+      "command": "mcp-grafana",
+      "args": [],
+      "env": {
+        "GRAFANA_URL": "http://localhost:3000",
+        "GRAFANA_API_KEY": "<your service account token>"
+      }
+    }
+  }
+}
+```
+
+With the server available, here's how using MCP works in practice. When a user query is received, the client (your backend) first needs to initialise the server connection. This initial connection provides information about the "tools" available from the MCP server. Grafana MCP has a wide array of tools such as `search_dashboards`, `get_datasource_by_uid`, and `update_dashboard`.
+
+Once the LLM knows what tools are available, it will intuitively call them during inference. The backend can then handle that by checking for any tool calls in the LLM response. The example below will loop as long as there are tool calls, but in practice it's best to add some validation/guardrails for these calls.
+
+```
+# Connect to the MCP server
+session = await _stack.enter_async_context(ClientSession(stdio, write))
+init_response = await session.initialize()
+print(f"\nConnected to server with protocol version: {init_response.protocolVersion}")
+
+# Get available tools
+tools_response = await session.list_tools()
+available_tools = tools_response.tools
+
+# Process a query
+messages.append({"role": "user", "content": query})
+
+## Convert tools to OpenAI format
+tools_for_openai = [convert_tool_format(tool) for tool in available_tools]
+
+## Get initial LLM response
+response = openai.chat.completions.create(
+    model=model,
+    tools=tools_for_openai,
+    messages=messages
+)
+messages.append(response.choices[0].message.model_dump())
+final_text = []
+content = response.choices[0].message
+
+## If the LLM is attempting a tool call, do it. Or else, return the message
+if content.tool_calls is None:
+    final_text.append(content.content)
+    return "\n".join(final_text) 
+
+while content.tool_calls is not None:
+    tool_call = content.tool_calls[0]
+    result = await self.process_tool_call(tool_call)
+    # ...
+```
+
+With an MCP server, we don't need to load the prompt with dashboard info anymore. The LLM knows to use the `search_dashboards` or `get_dashboard_by_uid` tools to get the relevant details.
+
+*TODO: Gif of "printing" the tool calls in the terminal*
+
 ### Handling Context Windows
 
 ### Context Pipelines, Guardrails
@@ -259,3 +329,4 @@ Finally, the best way to keep track of Grafana advancements is to receive the ne
 ## Footnotes
 
 [^1]: [Basics of Prompting](https://www.promptingguide.ai/introduction/basics)
+[^2]: [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) - Anthropic
