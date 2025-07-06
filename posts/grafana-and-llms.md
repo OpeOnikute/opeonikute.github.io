@@ -43,6 +43,116 @@ I go into more detail and walk through the code a bit in [this video](http://tod
 
 ### The Grafana JSON Model
 
+Every dashboard is represented by a JSON object. This is really useful for interacting with dashboards in code - forming the basis for advances like [dashboards-as-code](https://grafana.com/blog/2022/12/06/a-complete-guide-to-managing-grafana-as-code-tools-tips-and-tricks/). I've particularly found it useful when working with larger teams to declare dashboards using Terraform.
+
+Here's what the model looks like. Each dashboard has a unique identifier and other useful metadata, such as the templating, annotations and tags.
+```
+{
+  "id": null,
+  "uid": "cLV5GDCkz",
+  "title": "New dashboard",
+  "tags": [],
+  "timezone": "browser",
+  "editable": true,
+  "graphTooltip": 1,
+  "panels": [],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": []
+  },
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": "5s",
+  "schemaVersion": 17,
+  "version": 0,
+  "links": []
+}
+```
+
+The dashboard below has a Text, Gauge and Time Series panel.
+
+![Dash Example](/media/grafana_dash_example.png)
+
+Here's how the panels look in JSON:
+```
+"panels": [
+{
+    "fieldConfig": //...
+    "id": 1,
+    "options": {
+        "code": //...
+        "content": "# Service Monitoring Dashboard\n\nThis dashboard monitors CPU usage, memory consumption, and response times for our three microservices.",
+        "mode": "markdown"
+    },
+    "pluginVersion": "11.5.2",
+    "title": "Dashboard Overview",
+    "type": "text"
+},
+{
+    "datasource": {
+        "type": "prometheus",
+        "uid": //...
+    },
+    "fieldConfig": {
+        "defaults": //...
+        "overrides": []
+    },
+    "gridPos": //...
+    "id": 6,
+    "options": //...
+    "pluginVersion": "11.5.2",
+    "targets": [
+        {
+            "editorMode": "code",
+            "expr": "100 - (avg by(service) (rate(node_cpu_seconds_total{mode=\"idle\"}[1m])) * 100)",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+        }
+    ],
+    "title": "CPU utilisation per service",
+    "type": "gauge"
+},
+{
+    "datasource": {
+        "type": "prometheus",
+        "uid": "Prometheus"
+    },
+    "description": "Memory consumption by service",
+    "fieldConfig": //...
+    "gridPos": //...
+    "id": 3,
+    "options": //...
+    "pluginVersion": "11.5.2",
+    "targets": [
+        {
+            "datasource": {
+            "type": "prometheus",
+            "uid": "Prometheus"
+            },
+            "editorMode": "code",
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes",
+            "legendFormat": "{{service}}",
+            "range": true,
+            "refId": "A"
+        }
+    ],
+    "title": "Memory Consumption",
+    "type": "timeseries"
+}]
+```
+
+This structure makes it possible to provide all the relevant dashboard to an LLM. We don't need to load the entire JSON into prompts - we can pick and choose the relevant fields based on the goal. For basic questions, the most common information needed would be the Dashboard ID, title and panel information. 
+
+More advanced troubleshooting would then need to provide other fields like `options` (Panel Options) and `fieldConfig` (e.g. Thresholds, Overrides). A full description of the JSON model can be found on the [Grafana website](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/).
+
 ### Retrieval Augmented Generation (RAG)
 ### The Model Context Protocol (MCP)
 
