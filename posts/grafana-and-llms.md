@@ -24,11 +24,13 @@ Before writing any scripts for this course, I asked other SREs [what they curren
 
 A dashboard tool like Grafana has to support both simple and complex use-cases, and the nature of the tooling reflects that. Unfortunately, the complex tools can easily get in the way of the simple use-cases, as they are present on the same client. An approach I've seen Grafana (and Prometheus) take to make the tooling easier to understand is to add helpers. For example, Grafana includes help descriptors for Transformations, and tools like [Promlens](https://promlens.com/) provide assistance for writing and understanding [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
-*TODO - Image of the Grafana table helpers*
+![Query descriptors](/media/grafana_query_descriptors.png)
 
-Naturally, I think this type of assistance is the future of making Grafana simple to use.
+Naturally, this type of assistance is the future of making Grafana simple to use.
 
 ## Grafana and LLMs
+
+*TODO* Gif of the open-source panel interacting with the dashboard.
 
 Artificial Intelligence has really taken off in more day-to-day usecases in the last couple of years. Previously limited to industry professional and big companies, we now have several tools that bring the power AI to our doorstep. ChatGPT is becoming the go-to search mechanism for humans, Cursor is increasingly useful for vibe-coding and building MVPs, NotebookLM is great for research and must be transforming the lives of students, etc.
 
@@ -80,73 +82,8 @@ Here's what the model looks like. Each dashboard has a unique identifier and oth
 ```
 
 The dashboard shown above has three (3) panels of different types - Text, Gauge and Time Series. This is how they look in the JSON model:
-```
-"panels": [
-{
-    "fieldConfig": //...
-    "id": 1,
-    "options": {
-        "code": //...
-        "content": "# Service Monitoring Dashboard\n\nThis dashboard monitors CPU usage, memory consumption, and response times for our three microservices.",
-        "mode": "markdown"
-    },
-    "pluginVersion": "11.5.2",
-    "title": "Dashboard Overview",
-    "type": "text"
-},
-{
-    "datasource": {
-        "type": "prometheus",
-        "uid": //...
-    },
-    "fieldConfig": {
-        "defaults": //...
-        "overrides": []
-    },
-    "gridPos": //...
-    "id": 6,
-    "options": //...
-    "pluginVersion": "11.5.2",
-    "targets": [
-        {
-            "editorMode": "code",
-            "expr": "100 - (avg by(service) (rate(node_cpu_seconds_total{mode=\"idle\"}[1m])) * 100)",
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "A"
-        }
-    ],
-    "title": "CPU utilisation per service",
-    "type": "gauge"
-},
-{
-    "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
-    },
-    "description": "Memory consumption by service",
-    "fieldConfig": //...
-    "gridPos": //...
-    "id": 3,
-    "options": //...
-    "pluginVersion": "11.5.2",
-    "targets": [
-        {
-            "datasource": {
-            "type": "prometheus",
-            "uid": "Prometheus"
-            },
-            "editorMode": "code",
-            "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes",
-            "legendFormat": "{{service}}",
-            "range": true,
-            "refId": "A"
-        }
-    ],
-    "title": "Memory Consumption",
-    "type": "timeseries"
-}]
-```
+
+![JSON example](/media/grafana_json_model.mov)
 
 This structure makes it possible to provide all the relevant dashboard to an LLM. We don't need to load the entire JSON into prompts - we can pick and choose the relevant fields based on the goal. For basic questions, the most common information needed would be the Dashboard ID, title and panel information. 
 
@@ -313,6 +250,19 @@ With an MCP server, we don't need to load the prompt with dashboard info anymore
 *TODO: Gif of "printing" the tool calls in the terminal*
 
 ### Handling Context Windows
+
+A context window is the amount of text (or tokens) a language model can "see" and use to understand and generate responses. It is essentially the working memory of the model. A normal window includes your question, the model's response and any other relevant data. Most LLM providers have limits - GPT-4-turbo allows 128,000 tokens (300 pages of text), while Claude 3 Sonnet allows 200,000 tokens.
+
+As you've probaly noticed, the Grafana JSON model can become quite verbose. It's quite simple to exhaust context limits by having the LLM parse the entire JSON. This is especially a concern while using MCP, as the LLM is at liberty to inspect all the information it deems necessary. I briefly discussed possible strategies in [mcp-grafana/issues/101](https://github.com/grafana/mcp-grafana/issues/101), but this section will explore in more detail.
+
+Options (TODO):
+- Vector Retrieval
+- a lightweight filter can trim the JSON to relevant parts based on keywords or structure. Techniques include using JSONPath queries or simple string matches to keep only sections with high keyword overlap. 
+- Metadata-Based Query Filtering: Leverage known structure or tags in the data to narrow the search space before fetching any JSON. Dashboard JSON often has identifiers (UIDs, titles, data source names, etc.).
+- Structured Chunking of JSON: Instead of treating JSON as one monolithic blob, chunk it into hierarchical pieces that align with its structure (e.g. each panel, each variable list, etc.).
+- Tool-Assisted JSON Access (Agentic Retrieval): Rather than blindly stuffing JSON into the prompt, design an agent or server-side tool API that the LLM can invoke to get exactly the data it needs. For example, the Grafana Model Context Protocol (MCP) approach introduces tools like get_dashboard_via_uid (to retrieve a full dashboard JSON) and envisions a get_dashboard_property for grabbing a specific part of the JSON on demand
+
+This is probably worthy of a dedicated post.
 
 ### Context Pipelines, Guardrails
 *not dissimilar to what I mentioned during the journalism post*
