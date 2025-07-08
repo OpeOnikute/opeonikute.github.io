@@ -83,7 +83,7 @@ Here's what the model looks like. Each dashboard has a unique identifier and oth
 
 The dashboard shown above has three (3) panels of different types - Text, Gauge and Time Series. This is how they look in the JSON model:
 
-![JSON example](/media/grafana_json_model.mov)
+![JSON example](/media/grafana_json_model.gif)
 
 This structure makes it possible to provide all the relevant dashboard to an LLM. We don't need to load the entire JSON into prompts - we can pick and choose the relevant fields based on the goal. For basic questions, the most common information needed would be the Dashboard ID, title and panel information. 
 
@@ -255,17 +255,21 @@ A context window is the amount of text (or tokens) a language model can "see" an
 
 As you've probaly noticed, the Grafana JSON model can become quite verbose. It's quite simple to exhaust context limits by having the LLM parse the entire JSON. This is especially a concern while using MCP, as the LLM is at liberty to inspect all the information it deems necessary. I briefly discussed possible strategies in [mcp-grafana/issues/101](https://github.com/grafana/mcp-grafana/issues/101), but this section will explore in more detail.
 
-Options (TODO):
-- Vector Retrieval
-- a lightweight filter can trim the JSON to relevant parts based on keywords or structure. Techniques include using JSONPath queries or simple string matches to keep only sections with high keyword overlap. 
-- Metadata-Based Query Filtering: Leverage known structure or tags in the data to narrow the search space before fetching any JSON. Dashboard JSON often has identifiers (UIDs, titles, data source names, etc.).
-- Structured Chunking of JSON: Instead of treating JSON as one monolithic blob, chunk it into hierarchical pieces that align with its structure (e.g. each panel, each variable list, etc.).
-- Tool-Assisted JSON Access (Agentic Retrieval): Rather than blindly stuffing JSON into the prompt, design an agent or server-side tool API that the LLM can invoke to get exactly the data it needs. For example, the Grafana Model Context Protocol (MCP) approach introduces tools like get_dashboard_via_uid (to retrieve a full dashboard JSON) and envisions a get_dashboard_property for grabbing a specific part of the JSON on demand
+From my research, there are a couple of options here:
+- **Vector Retrieval**: In the spirit of RAG, we could split each dashboard JSON into chunks, and embed those chunks in a Vector database. During inference, we can then do a similarity search for the most relevant parts of the JSON. While this might work in theory, I'm not sure how much better it is for JSON vs. regular text.
+- **JSONPath**: This was mentioned in the Github issue, and looks promising. It looks like a simple way to query JSON. A simple filter in the MCP server can trim the JSON to the relevant parts and include only those in the response. The known dashboard identifiers (UIDs, titles, data source names, etc), can be used to narrow the search. The tricky part is identifying what fields are being referred to in the query, but I'd imagine that LLMs are great at identifying what the fields are, so lean on them for the translation?
+- **Structured Chunking**: Instead of treating JSON as one monolithic blob, the idea here is to split into logical chunks that are self-contained and meaningful. It's pretty much a sharding approach but is probably not worth the reasoning complexity.
+- **Tool-Assisted JSON Access**: Not too dissimilar from JSONPath techniques, the idea here is to provide tools to fetch specific parts of the dashboard on-demand e.g. get_dashboard_property. The agent can then use this at will, based on instruction.
 
-This is probably worthy of a dedicated post.
+This section is probably worthy of a dedicated post with relevant code samples.
 
 ### Context Pipelines, Guardrails
-*not dissimilar to what I mentioned during the journalism post*
+
+For most of your prompts to make total sense beyond what is available on dashboards, you'll probably need to get more widespread context from internal sources. This is not dissimilar to the news context pipeline I described [in the last post](/posts/ai-journalism). 
+
+It might however be possible to get that context using what is available to Grafana. If you have great observability practices (i.e. your metrics, annotations and alerts provide a great view of how your systems are running), then you could get away with providing only your telemetry to Grafana. As long as your prompts are direct enough to focus on just the monitoring problems, it should work fairly well.
+
+Guardrails are another hot but useful topic. A common concern with using LLMs is the need for a human-in-the-loop to ensure accuracy. The Grafana team is [also thinking about this](https://grafana.com/blog/2025/05/07/llm-grafana-assistant/), and are exploring different ways to improve agent accuracy. The guardrail model (similar to LLM-as-a-judge) is my current favorite way of thinking about this -- have multiple agents verify the outputs of the LLMs in different stages. e.g. initial output -> correctness agent -> grammar agent -> Query Verifier agent, etc. 
 
 ## Grafana Cloud LLM announcement, and the future
 As I mentioned earlier, users of Grafana Cloud can expect a native LLM integration soon. The interface looks like Cursor a bit, which translates well for existing Cursor users. If you're however thinking of implementing your own solution, I describe everything in full in my upcoming course on Linkedin Learning! 
