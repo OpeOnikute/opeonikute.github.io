@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Grafana and LLMs
-sub_title: 
-read_time: 
+sub_title: Can Natural Language be the solution to Grafana woes?
+read_time: 12
 date: July 2025
-featured_image:
+featured_image: https://opeonikute.dev/media/grafana_dash_example.png
 image-theme: dark no-image-styling
 ---
 
@@ -14,7 +14,7 @@ A similar shift is happening with LLMs, which are taking self-service to the nex
 
 The dream of simply asking computers for answers is not new. In the 70s, IBM Researchers created Query-by-Example get information by filling a form instead of writing SQL [^2]. The power and flexibility of LLMs in understanding natural-language has made this dream more of a reality.
 
-In my upcoming course, I teach about all the key concepts of [Grafana](https://grafana.com/) - a powerful dashboarding tool. In one of the chapters, I explain how LLMs and natural-language queries can shift how we interact with dashboards and more importantly, how to get it done. In this post, I'll provide a detailed overview of all the relevant concepts. 
+In my upcoming course, I teach about all the key concepts of [Grafana](https://grafana.com/) - a powerful dashboarding tool. In one of the chapters, I explain how LLMs and natural-language queries can shift how we interact with dashboards and more importantly, how to get it done. In this post, I'll provide a detailed overview of all the relevant concepts.
 
 ## Problems with Grafana
 As far as easy-to-use platforms go, Grafana has some catching-up to do. A few years ago, I did not enjoy working with Grafana - especially when I needed to create table panels. What I'd expect to be a 30-minute task would end up taking more than double the time, leaving me frustrated.
@@ -25,7 +25,7 @@ A dashboard tool like Grafana has to support both simple and complex use-cases, 
 
 ![Query descriptors](/media/grafana_query_descriptors.png)
 
-Naturally, this type of assistance is the future of making Grafana simple to use.
+Naturally, this type of assistance is the future of making Grafana simple to use. So, **can Natural Language be the solution to Grafana woes?**
 
 ## Grafana and LLMs
 
