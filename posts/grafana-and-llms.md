@@ -8,14 +8,13 @@ featured_image:
 image-theme: dark no-image-styling
 ---
 
-## TODO: Intro section - what about?
-- A rallying cry, a story?
-- The point would be how LLMs are changing the way we interact with our work?
-- How they can be helpful?
-    - Provide a concrete, real-world example that people that aim for
-    - Then bring it home to Grafana, and what we hope this means to dashboarding
-    - But talk about what it actually means right now (Grafana Labs had been snoozing until recently, etc)
-    - Mention the course
+Technological shifts have always defined the way we interpret data. In the 1990s, getting a sales report or chart meant waiting for data specialists to pull data from databases. The 2000s changed that with self-service tools like Tableau, that introduced user-friendly interfaces to interact with the data [^1]. An analyst could click to filter data or plot a graph, with no SQL or coding required.
+
+A similar shift is happening with LLMs, which are taking self-service to the next level. Instead of dragging charts around, **what if users could describe the insights they need using natural language**?
+
+The dream of simply asking computers for answers is not new. In the 70s, IBM Researchers created Query-by-Example get information by filling a form instead of writing SQL [^2]. The power and flexibility of LLMs in understanding natural-language has made this dream more of a reality.
+
+In my upcoming course, I teach about all the key concepts of [Grafana](https://grafana.com/) - a powerful dashboarding tool. In one of the chapters, I explain how LLMs and natural-language queries can shift how we interact with dashboards and more importantly, how to get it done. In this post, I'll provide a detailed overview of all the relevant concepts. 
 
 ## Problems with Grafana
 As far as easy-to-use platforms go, Grafana has some catching-up to do. A few years ago, I did not enjoy working with Grafana - especially when I needed to create table panels. What I'd expect to be a 30-minute task would end up taking more than double the time, leaving me frustrated.
@@ -93,7 +92,7 @@ A full description of the JSON model can be found on the [Grafana website](https
 
 ### Prompting
 
-Context is an important part of getting the right help from an LLM. The main source of context is the prompt. Your success depends on how well you structure the prompt and the information you provide [^1].
+Context is an important part of getting the right help from an LLM. The main source of context is the prompt. Your success depends on how well you structure the prompt and the information you provide [^3].
 You can structure your prompt using three different roles: system, user, and assistant.
 
 The system role sets the overall behaviour/rules for the LLM, while the user role represents the input from the user. The assistant role represents the LLM response. The set of roles for a Grafana assistant LLM would look like the example below:
@@ -181,7 +180,7 @@ This basic form of RAG is a useful way to get more context-aware responses from 
 
 The main limitation of a RAG-only approach is the lack of an intuitive way to take some action based on the LLM response. While it's not impossible to do so, you'd need to carefully prompt the LLM to return specific data structures. For example, if I need an LLM to modify a dashboard, I'd add prompt to return the relevant updated JSON. I can then parse that JSON in the response and call the Grafana API to make the changes.
 
-While this approach sounds plausible in theory, it's common to have errors. Some LLMs find it difficult to strictly adhere to the return structure, and it's easy to exhaust context windows if the LLM is returning entire dashboard JSON models. MCP is a natural solution for this problem [^2]. With access to a Grafana MCP server, the LLMs can use available "tools" to query and make updates to dashboards.
+While this approach sounds plausible in theory, it's common to have errors. Some LLMs find it difficult to strictly adhere to the return structure, and it's easy to exhaust context windows if the LLM is returning entire dashboard JSON models. MCP is a natural solution for this problem [^4]. With access to a Grafana MCP server, the LLMs can use available "tools" to query and make updates to dashboards.
 
 Grafana has an open-source MCP server in active development at [grafana/mcp-grafana](https://github.com/grafana/mcp-grafana). Building the server locally is pretty straightforward. You can then add it to your MCP client (which could be your backend server or even an IDE like Cursor).
 
@@ -282,5 +281,7 @@ Finally, the best way to keep track of Grafana advancements is to receive the ne
 
 ## Footnotes
 
-[^1]: [Basics of Prompting](https://www.promptingguide.ai/introduction/basics)
-[^2]: [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) - Anthropic
+[^1]: [The Past, Present, and Future of BI](https://www.datagravity.dev/p/the-past-present-and-future-of-bi) by Chris Zeoli
+[^2]: [Query By Example](https://en.wikipedia.org/wiki/Query_by_Example#:~:text=The%20motivation%20behind%20QBE%20is,than%20typing%20in%20their%20names) - Wikipedia
+[^3]: [Basics of Prompting](https://www.promptingguide.ai/introduction/basics)
+[^4]: [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) - Anthropic
