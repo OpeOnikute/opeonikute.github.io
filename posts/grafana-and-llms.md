@@ -30,7 +30,7 @@ Naturally, this type of assistance is the future of making Grafana simple to use
 
 ## Grafana and LLMs
 
-*TODO* Gif of the open-source panel interacting with the dashboard.
+![LLM Demo](/media/grafana_llm_demo.gif)
 
 Artificial Intelligence has really taken off in more day-to-day usecases in the last couple of years. Previously limited to industry professional and big companies, we now have several tools that bring the power AI to our doorstep. ChatGPT is becoming the go-to search mechanism for humans, Cursor is increasingly useful for vibe-coding and building MVPs, NotebookLM is great for research and must be transforming the lives of students, etc.
 
@@ -247,7 +247,7 @@ while content.tool_calls is not None:
 
 With an MCP server, we don't need to load the prompt with dashboard info anymore. The LLM knows to use the `search_dashboards` or `get_dashboard_by_uid` tools to get the relevant details.
 
-*TODO: Gif of "printing" the tool calls in the terminal*
+![MCP example](/media/grafana_mcp_output.gif)
 
 ### Handling Context Windows
 
