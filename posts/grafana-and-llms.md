@@ -8,29 +8,28 @@ featured_image: https://opeonikute.dev/media/grafana_dash_example.png
 image-theme: dark no-image-styling
 ---
 
-Technological shifts have always defined the way we interpret data. In the 1990s, getting a sales report or chart meant waiting for data specialists to pull data from databases. The 2000s changed that with self-service tools like Tableau, that introduced user-friendly interfaces to interact with the data [^1]. An analyst could click to filter data or plot a graph, with no SQL or coding required.
+Technological shifts have always defined the way we interpret data. In the 1990s, getting a sales report or chart meant waiting for data specialists to pull data from databases. The 2000s changed that with self-service tools like Tableau, that introduced user-friendly interfaces to visualise the data [^1]. An analyst could click to filter data or plot a graph, with no SQL or coding required.
 
-A similar shift is happening with AI/LLMs, which is taking self-service to the next level by allowing users to ask simple questions. The dream of simply asking computers for answers is not new. In the 70s, IBM Researchers created Query-by-Example - a way to get information by filling a form instead of writing SQL [^2]. I have been thinking about what this means for monitoring -- Instead of dragging charts around, **what if users could describe the insights they need using natural language**?
+A similar shift is happening with AI and LLMs, which allow users to ask simple questions to get insights. This dream of simply asking computers for answers is not new. In the 1970s, IBM Researchers created Query-by-Example - a way to get information by filling a form instead of writing SQL [^2]. In a similar vein, several LLM tools have been built to assist with every-day tasks. I have been thinking about what this means for monitoring -- Instead of dragging charts around, **what if users could describe the insights they need using natural language**?
 
-In my upcoming course, I teach about all the key concepts of [Grafana](https://grafana.com/) - a powerful dashboarding tool. In one of the chapters, I explain how LLMs and natural-language queries can shift how we interact with dashboards and more importantly, how to get it done. This post provides an introduction to all the relevant concepts.
+My next online course focuses on [Grafana](https://grafana.com/) - the popular dashboarding tool for visualising metrics. In one of the chapters, I explain how LLMs and natural-language queries can shift how we interact with dashboards and more importantly, how to get it done.
 
-Before writing any scripts for the course, I asked other SREs [what they currently hate](https://www.reddit.com/r/sre/comments/1j6fzyd/what_do_you_hate_about_using_grafana/) about using Grafana. A lot of the comments were about difficulty doing basic things with panels. 
+**But why is the use of LLMs in dashboards relevant?**
 
 ## Problems with Grafana
+Before writing any scripts for the course, I asked other SREs [what they currently hate](https://www.reddit.com/r/sre/comments/1j6fzyd/what_do_you_hate_about_using_grafana/) about using Grafana. A lot of the comments were about difficulty doing basic things with panels. 
+
 As far as easy-to-use platforms go, Grafana has some catching-up to do. A few years ago, I did not enjoy working with Grafana - especially when I needed to create table panels. What I'd expect to be a 30-minute task would end up taking more than double the time, leaving me frustrated.
 
 A dashboard tool like Grafana has to support both simple and complex use-cases, and the nature of the tooling reflects that. Unfortunately, the complex tools can easily get in the way of the simple. An approach I've seen Grafana (and Prometheus) take to make the tooling easier to understand is to add helpers. Grafana includes help descriptors for Transformations, and tools like [Promlens](https://promlens.com/) provide assistance for writing and understanding [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
 ![Query descriptors](/media/grafana_query_descriptors.png)
 
-Naturally, this type of assistance is the future of making Grafana simple to use. So, **can natural-language be the solution to Grafana woes?**
+Naturally, this type of assistance is the future of making Grafana simple to use. **Can natural-language be the solution to Grafana woes?**
 
 ## Grafana and LLMs
 
 ![LLM Demo](/media/grafana_llm_demo.gif)
-
-**TODO: Change this intro**
-While there is consistent chatter about AI replacing entire jobs and making us irrelevant, the reality is that the goal should never be to replace humans. LLMs in particular are proving to be great for assistance - augmenting existing roles and opening up new dedicated roles. This is why I believe LLMs are a natural fit for assisting people with dashboarding.
 
 With the right context provided, an LLM assistant for your dashboard can both be a search engine and assistant. You could ask the LLM to help you troubleshoot a tricky Transformation that's not working, show you new insights in specific ways, and previously impossible tasks like spotting anomalies become easier.
 
