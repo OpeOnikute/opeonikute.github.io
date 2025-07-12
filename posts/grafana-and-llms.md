@@ -10,7 +10,7 @@ image-theme: dark no-image-styling
 
 Technological shifts have always defined the way we interpret data. In the 1990s, getting a sales report or chart meant waiting for data specialists to pull data from databases. The 2000s changed that with self-service tools like Tableau, that introduced user-friendly interfaces to visualise the data with no SQL or coding required [^1].
 
-A similar shift is happening with LLMs, which allow users to ask questions to get insights. I have been thinking about what this means for monitoring -- Instead of dragging charts around, **what if users could describe the insights they need using natural language**? This dream of simply asking computers for answers is not new. In the 1970s, IBM Researchers created Query-by-Example - a way to get information by filling a form instead of writing SQL [^2].
+A similar shift is happening with LLMs, which allow users to ask questions to get insights. I have been thinking about what this means for monitoring -- Instead of dragging charts around, **what if users could describe the insights they need using natural language**? This dream of simply asking computers for answers is not new. In the 1970s, IBM Researchers created Query-by-Example - a way to get information by filling a form instead of writing SQL [^2]. 50 years later, the technology has caught up to the vision.
 
 My next online course focuses on [Grafana](https://grafana.com/) - a widely-used tool for visualising metrics using dashboards. In one of the chapters, I explain how LLMs and natural-language queries can shift how we interact with dashboards and more importantly, how to get it done.
 
@@ -35,7 +35,7 @@ With the right context provided, an LLM assistant for your dashboard can both be
 
 Earlier this year, I spent a lot of time researching what was currently available, and I wasn't too impressed with what Grafana had available. There was no integration for LLM assistance in dashboards. That changed two months ago at the latest GrafanaCon, where they announced [plans for a native LLM agent built into Grafana Cloud](https://grafana.com/blog/2025/05/07/llm-grafana-assistant/).
 
-Before the announcement, I had come up with an open-source way to get LLMs into Grafana dashboards natively. Inspired by [this Youtube video](https://youtu.be/fOF-SmDU9zo?si=eksJRNOmnQF8SHAF) from Grafana Labs, we can use a panel plugin that can receive text queries and send them to an LLM. The main change I made is in the architecrure - a backend API is more secure and should be the bridge between the plugin and the LLM.
+Before the announcement, I had come up with an open-source way to get LLMs into Grafana dashboards natively. Inspired by [this Youtube video](https://youtu.be/fOF-SmDU9zo?si=eksJRNOmnQF8SHAF) from Grafana Labs, this solution uses a panel plugin that can receive text queries and send them to an LLM. The main change I made is in the architecture - a backend API is more secure and should be the bridge between the plugin and the LLM.
 
 I go into more detail and walk through the code a bit in [this video](http://todo). The rest of this post will discuss everything that's relevant about how LLMs can interact with Grafana.
 
