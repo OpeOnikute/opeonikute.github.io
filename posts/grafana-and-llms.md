@@ -37,7 +37,7 @@ Earlier this year, I spent a lot of time researching what was currently availabl
 
 Before the announcement, I had come up with an open-source way to get LLMs into Grafana dashboards natively. Inspired by [this Youtube video](https://youtu.be/fOF-SmDU9zo?si=eksJRNOmnQF8SHAF) from Grafana Labs, this solution uses a panel plugin that can receive text queries and send them to an LLM. The main change I made is in the architecture - a backend API is more secure and should be the bridge between the plugin and the LLM.
 
-I go into more detail and walk through the code a bit in [this video](http://todo). The rest of this post will discuss everything that's relevant about how LLMs can interact with Grafana.
+I go into more detail and walk through the code a bit in [this video](https://youtu.be/tQLKtcek9mo). The rest of this post will discuss everything that's relevant about how LLMs can interact with Grafana.
 
 ### The Grafana JSON Model
 
@@ -269,7 +269,7 @@ Guardrails are another hot but useful topic. A common concern with using LLMs is
 ## Grafana Cloud LLM announcement, and the future
 As I mentioned earlier, users of Grafana Cloud can expect a native LLM integration soon. The interface looks like Cursor a bit, which translates well for existing Cursor users. If you're however thinking of implementing your own solution, I describe everything in full in my upcoming course on Linkedin Learning! 
 
-Amongst other intermediate to advance Grafana concepts, this specific course chapter covers a full intro to LLMs, how it's relevant to Grafana, the role of RAG/MCP and finally a detailed description and demos of the LLM plugin. If you only want an overview of the idea, feel free to just watch [the Youtube video](http://todo).
+Amongst other intermediate to advance Grafana concepts, this specific course chapter covers a full intro to LLMs, how it's relevant to Grafana, the role of RAG/MCP and finally a detailed description and demos of the LLM plugin. If you only want an overview of the idea, feel free to just watch [the Youtube video](https://youtu.be/tQLKtcek9mo).
 
 To get notified when the course becomes available, feel free to follow me on LinkedIn or Twitter. You can also subscribe to my Substack account below. If you want me to personally reach out to you, try sending a message wherever you can reach me and I'll do my best to get to everyone.
 
