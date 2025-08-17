@@ -212,6 +212,11 @@ main.blog h4 {
   margin: 0;
 }
 
+.posts .description {
+  font-size: small;
+  margin: 0;
+}
+
 header {
   color: white;
   background: white;
