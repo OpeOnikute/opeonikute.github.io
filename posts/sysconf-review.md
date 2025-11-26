@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Sysconf 2025 Review
-sub_title: 
-read_time: 
-date:
-featured_image:
+sub_title: Improving engineering excellence through knowledge
+read_time: 7 min
+date: Nov 2025
+featured_image: https://opeonikute.dev/media/sysconf-tweet.png
 image-theme: dark no-image-styling
 ---
 
@@ -46,7 +46,7 @@ You can find the full video [on Youtube](https://youtu.be/5KFaMKGNjTU?si=QWgNWde
 
 ![Paul talking about TFL](/media/sysconf-tfl.png)
 
-Paul is a researcher that believes the models of the future should be trained on billions of independent devices. One drawback of the way models are trained today is privacy. What if we could have our devices contribute to anonymised learning and prevent big companies from harvesting our data for training purposes?
+[Paul](https://x.com/po_oamen) is a researcher that believes the models of the future should be trained on billions of independent devices. One drawback of the way models are trained today is privacy. What if we could have our devices contribute to anonymised learning and prevent big companies from harvesting our data for training purposes?
 
 As is common with research, this was mostly theoretical. It provides a very useful thought experiment about the future of training (and maybe even inference). Full talk is on [here](https://youtu.be/mAptRTmmvYk?si=QmEzw08RhlwTb0lU).
 
@@ -68,19 +68,18 @@ Watch the full talk on [Youtube](https://youtu.be/nFrvAM03OHg?si=4Tx1lMEFF4B6Etx
 
 ![Justin talk about AI agents](/media/sysconf-graph-theory.png)
 
-In one of my favourite talks of the day, Justin spoke about how to reason about AI agents using graph theory. 
-He went through a detailed introduction to the fundamentals of graph theory, including the mathematical definitions.
+In one of my favourite talks of the day, [Justin](https://de.linkedin.com/in/justinirabor) spoke about how to reason about AI agents using graph theory. He went through a detailed introduction to the fundamentals of graph theory, including the mathematical definitions.
 
-The aim of the talk was to give us a mental model of how agents behave, by reframing them through the lens of graph theory. This mental model would then make it easier to predict and debug their behaviour. The talk was a great example of the practical application of fundamental principles.
+The aim of the talk was to give us a mental model of how agents behave by reframing them through the lens of graph theory. This mental model then makes it easier to predict and debug agents' behaviour. This is a good example of applying fundamental principles to a practical problem.
 
-Graph theory has so many practical usecases, and I encourage you to spend some time learning the fundamentals. Some useful resources:
+Graph theory has a lot of usecases, and I encourage you to spend some time learning the fundamentals. Some useful resources:
 - [Building effective agents - Anthropic](https://www.anthropic.com/engineering/building-effective-agents)
 - [Full course catalog on Graph Theory](https://arxiv.org/pdf/2308.04512)
 - [Another great-looking course](https://youtu.be/oXcCAAEDte0?si=WEeKqCsD59CHAiPz)
 
 One observation that is probably only relevant to me -- he mentioned the difference between workflows and agents being *agency*. It sounds obvious in hindsight: a workflow is a defined list of steps that need to be executed, while agents can make decisions and execute steps that were not predicted/planned for. 
 
-Workflows are generally easier to reason about because it ends up being a DAG (Directed Acyclic Graph) most of the time, while agents will surely have more complex graph patterns. While most of automation I build is related to workflows, it's a useful thought experiment for eventually building more complex, interoperable automation with agents.
+A workflows is generally easier to reason about because it ends up being a DAG (Directed Acyclic Graph) most of the time, while agents will surely have more complex graph patterns. While most of automation I build is related to workflows, it's a useful thought experiment for eventually building more complex, interoperable automation with agents.
 
 Watch the full talk on [Youtube](https://youtu.be/iwAQ_XmD24o?si=jYZ4UyhEMWLxiLYq).
 
@@ -90,9 +89,9 @@ Watch the full talk on [Youtube](https://youtu.be/iwAQ_XmD24o?si=jYZ4UyhEMWLxiLY
 
 This talk was given by [Somtochi](https://x.com/somtochiama), who gave a thorough introduction to coredumps and debugging them. I thought it was very brave to do a live demo of a coredump debugging session, and it went very well.
 
-Like monitoring, Coredump debugging is not a commonly-referenced topic, until it is needed for troubleshooting. This is a great example of something to practice before you need it, and to understand the fundamentals of what you're doing when troubleshooting. Somto does a fantastic job of providing all of this information, so watch the talk.
+Like monitoring, Coredump debugging is not a commonly-referenced topic until it is needed for troubleshooting. It is good to practice debugging before you need it, and to understand the fundamentals of what you're doing when troubleshooting. Somtochi does a fantastic job of providing all of this information, so watch the talk.
 
-I had some extra thoughts about the sensitivity of coredumps and the dangers of taking coredumps from a running process, which were covered in the QA section. If you're interested in how to reason about coredumps in NodeJS, take a look at [How good is your memory?](https://opeonikute.dev/posts/how-good-is-your-memory) on this blog.
+I had some extra thoughts about the sensitivity of coredumps and the dangers of taking coredumps from a running process, which were covered in the QA section. If you're interested in how to reason about coredumps in NodeJS, read [How good is your memory?](https://opeonikute.dev/posts/how-good-is-your-memory) on this blog.
 
 Watch the full talk on [Youtube](https://youtu.be/BuH3BbJe88Y?si=0jPKZBlMwBBWu1r-).
 
@@ -110,7 +109,7 @@ Watch the full talk on [Youtube](https://youtu.be/h3IX5wjzNMM?si=Ja1_k70ddG2ewWa
 
 ![Fanan talking about iZombie](/media/sysconf-izombie.png)
 
-This was my last talk of the day so I was a bit distracted. It was so good though that I've already rewatched on Youtube. Fanan provides a great introduction to the fundamentals of concurrency in Go, and how to solve simplify overwhelming problems.
+This was my last talk of the day so I was a bit distracted. It was so good though that I've already rewatched on Youtube. [Fanan](https://x.com/The_cocoreidh) provides a great introduction to the fundamentals of concurrency in Go, and how to solve simplify overwhelming problems.
 
 The talk goes through solving a challenging problem with great fundamentals, which fit really well into the theme of the day. Other attendees also seemed very tuned-in and engaged.
 
