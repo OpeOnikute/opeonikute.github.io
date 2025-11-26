@@ -2,7 +2,7 @@
 layout: post
 title: Sysconf 2025 Review
 sub_title: Improving engineering excellence through knowledge
-read_time: 7 min
+read_time: 7
 date: Nov 2025
 featured_image: https://opeonikute.dev/media/sysconf-tweet.png
 image-theme: dark no-image-styling
