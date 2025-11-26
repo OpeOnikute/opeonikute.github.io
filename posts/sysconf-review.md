@@ -8,9 +8,9 @@ featured_image:
 image-theme: dark no-image-styling
 ---
 
-On the 8th of November, I attended the Sysconf Conference organised by the Sysdesign team. This was the best Sysconf yet in my opinion, although I barely had time to enjoy the talks in the last one as I was a [speaker](https://youtu.be/OH0CuqNpo_A?si=swXiRa8IdENZwA8g).
+On the 8th of November, I attended Sysconf 2025. This was the best Sysconf yet in my opinion, although I barely had time to enjoy the talks in the last one as I was a [speaker](https://youtu.be/OH0CuqNpo_A?si=swXiRa8IdENZwA8g).
 
-This time however, I had all the time to attend more talks, and had a blast. 
+This time, I was able to attend more talks and had a blast. 
 
 ![Tweet about the conference](/media/sysconf-tweet.png)
 
@@ -68,35 +68,60 @@ Watch the full talk on [Youtube](https://youtu.be/nFrvAM03OHg?si=4Tx1lMEFF4B6Etx
 
 ![Justin talk about AI agents](/media/sysconf-graph-theory.png)
 
-- My favorite talk of the day
-- Fundamentals of graph theory
-- Why it is important
-- Practical applications when reasoning about AI agents
-- Interesting observation about workflows vs. agents: the difference being AGENCY. How it applies to what I've been thinking about for the past year.
+In one of my favourite talks of the day, Justin spoke about how to reason about AI agents using graph theory. 
+He went through a detailed introduction to the fundamentals of graph theory, including the mathematical definitions.
+
+The aim of the talk was to give us a mental model of how agents behave, by reframing them through the lens of graph theory. This mental model would then make it easier to predict and debug their behaviour. The talk was a great example of the practical application of fundamental principles.
+
+Graph theory has so many practical usecases, and I encourage you to spend some time learning the fundamentals. Some useful resources:
+- [Building effective agents - Anthropic](https://www.anthropic.com/engineering/building-effective-agents)
+- [Full course catalog on Graph Theory](https://arxiv.org/pdf/2308.04512)
+- [Another great-looking course](https://youtu.be/oXcCAAEDte0?si=WEeKqCsD59CHAiPz)
+
+One observation that is probably only relevant to me -- he mentioned the difference between workflows and agents being *agency*. It sounds obvious in hindsight: a workflow is a defined list of steps that need to be executed, while agents can make decisions and execute steps that were not predicted/planned for. 
+
+Workflows are generally easier to reason about because it ends up being a DAG (Directed Acyclic Graph) most of the time, while agents will surely have more complex graph patterns. While most of automation I build is related to workflows, it's a useful thought experiment for eventually building more complex, interoperable automation with agents.
+
+Watch the full talk on [Youtube](https://youtu.be/iwAQ_XmD24o?si=jYZ4UyhEMWLxiLYq).
 
 ## Dead Programs Tell Tales: A Peek at Coredumps
-- Very good overview of coredumps and why they are useful
-- Brave to do a live demo
-- Debugging session was fruitful
-- My extra thoughts about the sensitivity of coredumps and taking coredumps from a running process
+
+![Somto talks about coredumps](/media/sysconf-coredump.png)
+
+This talk was given by [Somtochi](https://x.com/somtochiama), who gave a thorough introduction to coredumps and debugging them. I thought it was very brave to do a live demo of a coredump debugging session, and it went very well.
+
+Like monitoring, Coredump debugging is not a commonly-referenced topic, until it is needed for troubleshooting. This is a great example of something to practice before you need it, and to understand the fundamentals of what you're doing when troubleshooting. Somto does a fantastic job of providing all of this information, so watch the talk.
+
+I had some extra thoughts about the sensitivity of coredumps and the dangers of taking coredumps from a running process, which were covered in the QA section. If you're interested in how to reason about coredumps in NodeJS, take a look at [How good is your memory?](https://opeonikute.dev/posts/how-good-is-your-memory) on this blog.
+
+Watch the full talk on [Youtube](https://youtu.be/BuH3BbJe88Y?si=0jPKZBlMwBBWu1r-).
 
 ## A Panel on Technical Leadership
-- Main takeaways about excellence
-- Ife implicitly saying "it's important to work for a great company"
-- Some advice about promotions and how to be an excellent person to deserve one
-- I'm curious about what more junior people learned from this talk
+
+![Panel on leadership](/media/sysconf-leadership.png)
+
+This was a panel on technical leadership with five engineering leaders. The main takeaways for me were about excellence and doing great work. They also gave a lot of useful advice about promotions and accountability, but it all ultimately boiled down to excellence.
+
+I'm curious what more junior people learned from this talk, so feel free to reach out or mention the Sysconf team in a tweet!
+
+Watch the full talk on [Youtube](https://youtu.be/h3IX5wjzNMM?si=Ja1_k70ddG2ewWaz).
 
 ## Forget the 1 Billion Rows Challenge, Let’s Solve The I, Zombie Endless
-- Great intro about the fundamentals of concurrency in Go
-- Looks like a challenging problem solved with great fundamentals
-- Other attendees seemed very tuned-in and impressed. I was distracted.
 
+![Fanan talking about iZombie](/media/sysconf-izombie.png)
 
-The talks I'm sad that I missed entirely (or most of):
+This was my last talk of the day so I was a bit distracted. It was so good though that I've already rewatched on Youtube. Fanan provides a great introduction to the fundamentals of concurrency in Go, and how to solve simplify overwhelming problems.
+
+The talk goes through solving a challenging problem with great fundamentals, which fit really well into the theme of the day. Other attendees also seemed very tuned-in and engaged.
+
+See full video on [Youtube](https://youtu.be/8Tqb6GW7E18?si=LEp64dZm3GGJZA-N).
+
+## Conclusions
+It was a long day and there are several talk I missed entirely (or most of):
 - What Makes It Go Brrrrr? An Introduction to the Inner Workings of LLM Inference Engines by Habeeb Shopeju
 - Networking Stalemates: An Insider View to CLOSE_WAIT Sockets by Emmanuel Bakare
 - How We Handle Data Encryption at InfraRed by Allen Akinkunle
 
-All the videos should be available on Youtube or somewhere else eventually, so I'll try to catch them then. I also spent very little time networking, so if you want to have a chat about anything, feel free to reach out! I spend a lot of time thinking about research, SRE, Youtube and machine-learning these days. Any of these topics is a great way to get my attention.
+All the videos are available on Youtube, so I'll try to catch them there. I also spent very little time networking, so if you want to have a chat about anything, feel free to reach out! I spend a lot of time thinking about research, SRE, Youtube and machine-learning these days. Any of these topics is a great way to get my attention.
 
 See you at Sysconf '26!
