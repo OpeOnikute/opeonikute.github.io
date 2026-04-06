@@ -9,3 +9,4 @@ gem "jekyll"
 gem "jekyll-redirect-from"
 
 # gem "rails"
+ruby "3.2.2"
