@@ -66,5 +66,8 @@ DEPENDENCIES
   jekyll
   jekyll-redirect-from
 
+RUBY VERSION
+  ruby 3.2.11
+
 BUNDLED WITH
-   2.2.15
+  4.0.9
