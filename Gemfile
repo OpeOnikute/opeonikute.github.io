@@ -9,4 +9,5 @@ gem "jekyll"
 gem "jekyll-redirect-from"
 
 # gem "rails"
-ruby "3.2.11"
+# allow any Ruby >= 3.2.11
+ruby '>= 3.2.11'
