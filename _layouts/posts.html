@@ -121,6 +121,19 @@
       </div>
       <div>
         <h1>Writing</h1>
+        <h2>2026</h2>
+        <ul class="posts">
+          {% for item in site.data["2026"] %}
+          <li>
+              <a class="post-item" href="/posts/{{item.link}}">
+                {{item.title}}
+              </a>
+              <p class="date">
+                {{item.date}}
+              </p>
+          </li>
+          {% endfor %}
+        </ul>
         <h2>2025</h2>
         <ul class="posts">
           {% for item in site.data["2025"] %}
