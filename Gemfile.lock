@@ -3,8 +3,11 @@ GEM
   specs:
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    base64 (0.3.0)
+    bigdecimal (4.1.1)
     colorator (1.1.0)
     concurrent-ruby (1.1.8)
+    csv (3.3.5)
     em-websocket (0.5.2)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -39,10 +42,11 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    liquid (4.0.3)
+    liquid (4.0.4)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logger (1.7.0)
     mercenary (0.4.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -63,8 +67,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  base64
+  bigdecimal
+  csv
   jekyll
   jekyll-redirect-from
+  liquid (>= 4.0.4)
+  logger
+
+RUBY VERSION
+  ruby 3.4.9
 
 BUNDLED WITH
-   2.2.15
+  4.0.9

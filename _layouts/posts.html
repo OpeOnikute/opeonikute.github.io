@@ -121,9 +121,22 @@
       </div>
       <div>
         <h1>Writing</h1>
+        <h2>2026</h2>
+        <ul class="posts">
+          {% for item in site.data["2026"] %}
+          <li>
+              <a class="post-item" href="/posts/{{item.link}}">
+                {{item.title}}
+              </a>
+              <p class="date">
+                {{item.date}}
+              </p>
+          </li>
+          {% endfor %}
+        </ul>
         <h2>2025</h2>
         <ul class="posts">
-          {% for item in site.data.2025 %}
+          {% for item in site.data["2025"] %}
           <li>
               <a class="post-item" href="/posts/{{item.link}}">
                 {{item.title}}
@@ -136,7 +149,7 @@
         </ul>
         <h2>2023</h2>
         <ul class="posts">
-          {% for item in site.data.2023 %}
+          {% for item in site.data["2023"] %}
           <li>
               <a class="post-item" href="/posts/{{item.link}}">
                 {{item.title}}
@@ -149,7 +162,7 @@
         </ul>
         <h2>2022</h2>
         <ul class="posts">
-          {% for item in site.data.2022 %}
+          {% for item in site.data["2022"] %}
           <li>
               <a class="post-item" href="/posts/{{item.link}}">
                 {{item.title}}
@@ -162,7 +175,7 @@
         </ul>
         <h2>2021</h2>
         <ul class="posts">
-          {% for item in site.data.2021 %}
+          {% for item in site.data["2021"] %}
           <li>
               <a class="post-item" href="/posts/{{item.link}}">
                 {{item.title}}
@@ -175,7 +188,7 @@
         </ul>
         <h2>2020</h2>
         <ul class="posts">
-          {% for item in site.data.2020 %}
+          {% for item in site.data["2020"] %}
           <li>
               <a class="post-item" href="/posts/{{item.link}}">
                 {{item.title}}
@@ -188,7 +201,7 @@
         </ul>
         <h2>2019</h2>
         <ul class="posts">
-          {% for item in site.data.2019 %}
+          {% for item in site.data["2019"] %}
           <li>
               <a class="post-item" href="/posts/{{item.link}}">
                 {{item.title}}
@@ -201,7 +214,7 @@
         </ul>
         <h2>2018</h2>
         <ul class="posts">
-          {% for item in site.data.2018 %}
+          {% for item in site.data["2018"] %}
           <li>
               <a class="post-item" href="/posts/{{item.link}}">
                 {{item.title}}
@@ -214,7 +227,7 @@
         </ul>
         <h2>2016</h2>
         <ul class="posts">
-          {% for item in site.data.2016 %}
+          {% for item in site.data["2016"] %}
           <li>
               <a class="post-item" href="/posts/{{item.link}}">
                 {{item.title}}
@@ -227,7 +240,7 @@
         </ul>
         <h2>2015</h2>
         <ul class="posts">
-          {% for item in site.data.2015 %}
+          {% for item in site.data["2015"] %}
           <li>
               <a class="post-item" href="/posts/{{item.link}}">
                 {{item.title}}
