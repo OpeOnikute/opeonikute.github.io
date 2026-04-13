@@ -8,9 +8,9 @@ featured_image:
 image-theme: dark no-image-styling
 ---
 
-A few weeks ago I published a video [^1] that walks through **gradient descent** in the context of something SREs actually care about: **whether we can forecast load and latency** well enough to act before customers feel pain. If you prefer video, the full walkthrough is here: [Gradient descent for traffic forecasting](https://www.youtube.com/watch?v=vNDvFW2pOxQ).
+A few weeks ago I published a video [^1] that walks through gradient descent in the context of something SREs actually care about: whether we can forecast load and latency well enough to act before customers feel pain. If you prefer video, the full walkthrough is here: [Gradient descent for traffic forecasting](https://www.youtube.com/watch?v=vNDvFW2pOxQ).
 
-This post is the companion write-up. The important part is not the algebra on its own — it is what happens when you apply two standard optimisers (**closed-form linear regression** and **gradient descent**) to noisy service metrics, and how far you can trust a linear model when saturation hits.
+This post is the companion write-up. The important part is not the algebra on its own — it is what happens when you apply two standard optimisers (closed-form linear regression and gradient descent) to noisy service metrics, and how far you can trust a linear model when saturation hits.
 
 All of the experiments live in a notebook in my [autoscaling-playground repo](https://github.com/OpeOnikute/autoscaling-playground/blob/main/notebooks/traffic_forecasting.ipynb) [^2].
 
@@ -18,11 +18,11 @@ All of the experiments live in a notebook in my [autoscaling-playground repo](ht
 
 The notebook uses rows from a microservices bottleneck-detection style dataset. We get an aggregate of **CPU**, **network RX/TX**, and **latency**. The broad aim is capacity planning — if CPU and traffic are increasing on a smooth trend, can we translate that combination of load into an expected latency?
 
-That idea only works if the relationship between load and latency stays **roughly linear**. In the exammples we picked (only those where CPU and network rise over time while latency stays low, then jumps when saturation shows up), the plots make the limitation obvious: **latency stops behaving linearly once the system saturates**.
+That idea only works if the relationship between load and latency stays roughly linear. In the exammples we picked (only those where CPU and network rise over time while latency stays low, then jumps when saturation shows up), the plots make the limitation obvious: **latency stops behaving linearly once the system saturates**.
 
 ## Combining two linear models for the prediction
 
-In the notebook, we built **two linear models** and chained them.
+In the notebook, we built two linear models and chained them.
 
 | Model | Inputs | Target | Role |
 | --- | --- | --- | --- |
@@ -38,7 +38,7 @@ For linear regression, we minimise **mean squared error**, a concept that I intr
 Comparing both:
 
 - **Closed form**: can get expensive when feature matrices grow huge.
-- **Gradient descent**: iterative and needs a sensible **learning rate**.
+- **Gradient descent**: iterative and needs a sensible learning rate.
 
 For Model 1, the notebook fits the same trend both ways. Gradient descent runs on standardised time and CPU so the optimiser is well-behaved, then predictions are mapped back to the original scale for comparison with the closed-form line.
 
@@ -60,9 +60,9 @@ So Model 2 is intentionally trained on baseline windows only — the period befo
 
 ## What next?
 
-The notebook closes with a caveat -- a forecast that assumes smooth trends can **over- or under-shoot** badly when saturation is driven by thresholds, contention, or external dependencies. A more durable operational approach might combine trend models with **change-point or anomaly-style** methods (including unsupervised cues) to detect when you have left the linear regime, instead of extending a line and hoping.
+The notebook closes with a caveat -- a forecast that assumes smooth trends can over- or under-shoot badly when saturation is driven by thresholds, contention, or external dependencies. A more durable operational approach might combine trend models with change-point or anomaly-style methods (including unsupervised cues), instead of just extending a line and hoping.
 
 ## Footnotes
 
-[^1]: YT video is [Machine Learning for Monitoring | Predict Your System's Future with Gradient Descent](https://www.youtube.com/watch?v=vNDvFW2pOxQ).
+[^1]: YT video is [Predict Your System's Future with Gradient Descent](https://www.youtube.com/watch?v=vNDvFW2pOxQ).
 [^2]: Notebook on [Github](https://github.com/OpeOnikute/autoscaling-playground/blob/main/notebooks/traffic_forecasting.ipynb).
