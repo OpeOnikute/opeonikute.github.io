@@ -30,4 +30,4 @@ The illusion manifests itself in two ways. First, while you get those extra task
 
 Ultimately, the course was completed and released, but not without costing me a lot of other work that would’ve otherwise gone into getting a 10x greater chance of success. It also came at a cost of stress, and lots of it. I can’t scale the amount and quality of courses I make if it costs so much physically and mentally to make one.
 
-When making the next course, I’ll still use agents extensively for research and general assistance, but I’ll be focusing on the 2x.
+When making the next course, I’ll still use agents extensively for research and general assistance, but I’ll be focusing on the 10x.
