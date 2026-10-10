@@ -8,7 +8,7 @@ featured_image: https://opeonikute.dev/media/10x-illusion.png
 image-theme: no-image-styling
 ---
 
-I recently released a new intensive course on [Grafana MCP](https://www.udemy.com/course/grafana-mcp-production-ai-observability-on-aws). It is 2 hours long, with 30 videos across 7 chapters. Making the course took 2-3 months of work that I mostly did alone. But I had help — AI, which led me into a trap.
+I recently released a new intensive course on [Grafana MCP](https://www.udemy.com/course/grafana-mcp-production-ai-observability-on-aws/?couponCode=BB5380250A90BE18B71C). It is 2 hours long, with 30 videos across 7 chapters. Making the course took 2-3 months of work that I mostly did alone. But I had help — AI, which led me into a trap.
 
 You see, because AI is so good at doing several tasks now, it’s easy to think you can save time and money by orchestrating several agents to do things you’d have normally outsourced. Bridging several domains with AI gives you an illusion of productivity, but it can hurt you.
 
